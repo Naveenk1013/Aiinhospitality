@@ -1,0 +1,57 @@
+[build]
+  publish = "."
+
+# Pretty, clean URL rewrites for student access
+[[redirects]]
+  from = "/unit1"
+  to = "/Unit 1 Digital Twins & Extended Reality.html"
+  status = 200
+
+[[redirects]]
+  from = "/module1"
+  to = "/Unit 1 Digital Twins & Extended Reality.html"
+  status = 200
+
+[[redirects]]
+  from = "/unit2"
+  to = "/Unit 2 Service Robotics and Automation.html"
+  status = 200
+
+[[redirects]]
+  from = "/module2"
+  to = "/Unit 2 Service Robotics and Automation.html"
+  status = 200
+
+[[redirects]]
+  from = "/unit3"
+  to = "/Unit 3  Blockchain, IoB & AI Agents.html"
+  status = 200
+
+[[redirects]]
+  from = "/module3"
+  to = "/Unit 3  Blockchain, IoB & AI Agents.html"
+  status = 200
+
+[[redirects]]
+  from = "/unit4"
+  to = "/Unit 4 Hospitality 5.0 & Sustainable Technologies.html"
+  status = 200
+
+[[redirects]]
+  from = "/module4"
+  to = "/Unit 4 Hospitality 5.0 & Sustainable Technologies.html"
+  status = 200
+
+# Cache control and security headers
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Module 4: Hospitality 5.0 & Sustainable Technologies</title>
+<style>
+:root{--bg:#f6f9f4;--card:#fff;--ink:#1f2a24;--mute:#5b6a60;--line:#dde5db;--a:#2e7d4f;--a2:#e3f3e8;--b:#1f6f8b;--b2:#e3f2f7;--r:#b3402f;--r2:#fbe9e5;--y:#9a6b0e;--y2:#fdf1d6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141a16;--card:#1d2520;--ink:#ecf0ea;--mute:#a3b0a7;--line:#2f3b33;--a:#7fd4a0;--a2:#1b3326;--b:#6ec1dc;--b2:#1b3039;--r:#f08c7b;--r2:#3b2420;--y:#e8b867;--y2:#3a2f1c}}
+:root[data-theme="dark"]{--bg:#141a16;--card:#1d2520;--ink:#ecf0ea;--mute:#a3b0a7;--line:#2f3b33;--a:#7fd4a0;--a2:#1b3326;--b:#6ec1dc;--b2:#1b3039;--r:#f08c7b;--r2:#3b2420;--y:#e8b867;--y2:#3a2f1c}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Georgia,'Times New Roman',serif}
+.w{max-width:840px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:1.8rem;margin:.2em 0 .1em;line-height:1.2}
+.sub{color:var(--mute);margin:0 0 16px;font-family:system-ui,sans-serif;font-size:.9rem}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;font-family:system-ui,sans-serif;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5}
+.tabs button{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:20px;cursor:pointer;font-size:.88rem;transition:all .2s ease}
+.tabs button:hover{border-color:var(--a);color:var(--a)}
+.tabs button.on{background:var(--a);color:var(--bg);border-color:var(--a);box-shadow:0 2px 6px rgba(46,125,79,0.25)}
+.sec{display:none;opacity:0;transform:translateY(6px);transition:opacity .25s ease,transform .25s ease}
+.sec.on{display:block;opacity:1;transform:translateY(0)}
+h2{font-size:1.35rem;margin:22px 0 8px;border-bottom:2px solid var(--a);padding-bottom:4px}
+.def{background:var(--a2);border-left:4px solid var(--a);padding:12px 14px;border-radius:6px;margin:10px 0}
+.ex{background:var(--b2);border-left:4px solid var(--b);padding:10px 14px;border-radius:6px;margin:8px 0;font-size:.95rem}
+.ex b:first-child{color:var(--b);font-family:system-ui,sans-serif;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em}
+.how{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--a);padding:10px 14px;border-radius:6px;margin:8px 0;font-size:.95rem}
+.how b:first-child{color:var(--a);font-family:system-ui,sans-serif;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em}
+.warn{background:var(--y2);border-left:4px solid var(--y);padding:8px 14px;border-radius:6px;margin:8px 0}
+.bad{background:var(--r2);border-left:4px solid var(--r);padding:8px 14px;border-radius:6px;margin:8px 0}
+details{background:var(--card);border:1px solid var(--line);border-radius:8px;margin:10px 0;padding:0 14px;transition:box-shadow .2s}
+details[open]{box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+summary{cursor:pointer;padding:12px 0;font-weight:700;font-family:system-ui,sans-serif;font-size:.98rem;user-select:none}
+details[open] summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+ul{margin:6px 0 12px;padding-left:20px}li{margin:4px 0}
+table{border-collapse:collapse;width:100%;font-family:system-ui,sans-serif;font-size:.88rem;margin:10px 0}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--a2)}
+.sc{overflow-x:auto}
+svg{max-width:100%;height:auto;display:block;margin:10px auto}
+svg text{font-family:system-ui,sans-serif;fill:var(--ink)}
+.bx{fill:var(--card);stroke:var(--a);stroke-width:1.5}
+.bb{fill:var(--b2);stroke:var(--b);stroke-width:1.5}
+.bg{fill:var(--a2);stroke:var(--a);stroke-width:1.5}
+.by{fill:var(--y2);stroke:var(--y);stroke-width:1.5}
+.ln{stroke:var(--mute);stroke-width:1.5;fill:none}
+.img-card{margin:16px 0;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--card);box-shadow:0 2px 8px rgba(0,0,0,0.04);transition:transform .2s ease,box-shadow .2s ease}
+.img-card:hover{transform:translateY(-2px);box-shadow:0 5px 14px rgba(0,0,0,0.07)}
+.img-card img{width:100%;height:auto;max-height:360px;object-fit:cover;display:block;cursor:zoom-in;transition:filter .2s ease}
+.img-card img:hover{filter:brightness(1.02)}
+.img-card.diagram img{max-height:480px;object-fit:contain;background:#ffffff}
+@media (prefers-color-scheme:dark){.img-card.diagram img{background:#232b26}}
+:root[data-theme="dark"] .img-card.diagram img{background:#232b26}
+.img-card .cap{padding:10px 14px;font-size:.85rem;color:var(--mute);font-family:system-ui,sans-serif;background:var(--card);border-top:1px solid var(--line);line-height:1.45}
+.img-card .cap b{color:var(--ink)}
+.q{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:10px 0;font-family:system-ui,sans-serif}
+.q p{margin:0 0 8px;font-weight:600}
+.q button{display:block;width:100%;text-align:left;margin:5px 0;padding:8px 10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:6px;cursor:pointer;font-size:.9rem;transition:background .2s}
+.q button.ok{background:var(--a2);border-color:var(--a)}.q button.no{background:var(--r2);border-color:var(--r)}
+.q .fb{font-size:.85rem;color:var(--mute);margin-top:6px;display:none}
+.calc{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-family:system-ui,sans-serif;font-size:.92rem}
+.calc label{display:block;margin:8px 0 2px}
+.calc input[type=number]{width:120px;padding:6px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+.calc input[type=range]{width:100%}
+.res{margin-top:10px;font-weight:700;color:var(--a)}
+.timeline-card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px;margin:12px 0;font-family:system-ui,sans-serif}
+.timeline-item{position:relative;padding-left:24px;margin-bottom:14px;border-left:2px solid var(--a)}
+.timeline-item:last-child{margin-bottom:0}
+.timeline-item::before{content:'';position:absolute;left:-6px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--a)}
+.timeline-title{font-weight:700;color:var(--a);font-size:.95rem}
+.timeline-desc{font-size:.88rem;color:var(--ink);margin-top:2px}
+
+/* --- Interactive Simulators & Dynamic Effects --- */
+.i-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:16px 0;font-family:system-ui,sans-serif;box-shadow:0 3px 12px rgba(0,0,0,0.03)}
+.i-card h3{margin:0 0 10px;font-size:1.05rem;display:flex;align-items:center;justify-content:space-between;color:var(--a)}
+.i-badge{background:var(--a2);color:var(--a);font-size:.72rem;font-weight:700;padding:3px 8px;border-radius:20px;text-transform:uppercase;letter-spacing:.05em;display:inline-flex;align-items:center;gap:4px}
+.i-badge.live{background:var(--r2);color:var(--r)}
+.i-badge.live::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--r);animation:pulseDot 1.4s infinite ease-in-out}
+.i-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:10px 0}
+.i-box{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px;text-align:center;transition:background .2s}
+.i-box .val{font-size:1.25rem;font-weight:700;color:var(--ink);margin:3px 0}
+.i-box .lbl{font-size:.72rem;color:var(--mute);text-transform:uppercase;letter-spacing:.04em}
+.i-btn{padding:8px 14px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;font-family:system-ui,sans-serif;font-size:.86rem;font-weight:600;transition:all .2s ease}
+.i-btn:hover{background:var(--a2);border-color:var(--a);color:var(--a)}
+.i-btn.on{background:var(--a);color:#fff;border-color:var(--a);box-shadow:0 2px 6px rgba(46,125,79,0.25)}
+.i-btn-group{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.i-meter-row{margin:8px 0}
+.i-meter-head{display:flex;justify-content:space-between;font-size:.82rem;font-weight:600;color:var(--ink);margin-bottom:3px}
+.i-meter{background:var(--bg);height:10px;border-radius:5px;overflow:hidden;border:1px solid var(--line)}
+.i-meter-bar{height:100%;background:linear-gradient(90deg,var(--a),#48bb78);border-radius:5px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+.i-meter-bar.blue{background:linear-gradient(90deg,var(--b),#4299e1)}
+.i-meter-bar.warn{background:linear-gradient(90deg,var(--y),#ed8936)}
+.i-meter-bar.danger{background:linear-gradient(90deg,var(--r),#f56565)}
+@keyframes pulseDot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.4}}
+@keyframes flowDash{from{stroke-dashoffset:32}to{stroke-dashoffset:0}}
+.flow-line{stroke-dasharray:6 4;animation:flowDash .9s linear infinite}
+.radar-box{position:relative;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px;overflow:hidden;margin:10px 0}
+.radar-beam{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--a),transparent);animation:radarSweep 2s ease-in-out infinite}
+@keyframes radarSweep{0%{top:0;opacity:0}20%{opacity:1}80%{opacity:1}100%{top:100%;opacity:0}}
+
+/* Lightbox Modal */
+.lightbox-modal{position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.85);backdrop-filter:blur(6px);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px;cursor:zoom-out;opacity:0;transition:opacity .25s ease}
+.lightbox-modal.open{display:flex;opacity:1}
+.lightbox-content{max-width:920px;max-height:92vh;display:flex;flex-direction:column;align-items:center;cursor:default}
+.lightbox-content img{max-width:100%;max-height:76vh;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,0.5);object-fit:contain}
+.lightbox-cap{color:#f0f3ee;font-family:system-ui,sans-serif;font-size:.88rem;margin-top:12px;text-align:center;max-width:800px;line-height:1.5}
+.lightbox-close{position:absolute;top:18px;right:22px;background:rgba(255,255,255,0.2);color:#fff;border:none;width:38px;height:38px;border-radius:50%;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.lightbox-close:hover{background:rgba(255,255,255,0.4)}
+</style>
+</head>
+<body>
+<div id="readProgress" style="position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--a),#48bb78,#38b2ac);z-index:9999;transition:width .12s ease-out"></div>
+<div class="w">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-family:system-ui,sans-serif;font-size:.85rem">
+  <a href="index.html" style="text-decoration:none;color:var(--a);font-weight:600;display:inline-flex;align-items:center;gap:4px">← Course Portal</a>
+  <span style="color:var(--mute)">IIHM SEM 5 &bull; AI in Hospitality</span>
+</div>
+<h1>Module 4: Hospitality 5.0 &amp; Sustainable Technologies</h1>
+<p class="sub">AI in Hospitality &bull; Detailed workflows, real-world examples, diagrams, visuals, calculator, and quiz.</p>
+<div class="tabs" id="tabs"></div>
+
+<!-- 1: HOSPITALITY 5.0 -->
+<div class="sec" data-t="1. Hospitality 5.0">
+<h2>Evolution of Hospitality Eras</h2>
+<div class="def">Understanding <b>Hospitality 5.0</b> requires looking at how the industry evolved from basic lodging to an era defined by human-machine synergy, guest intelligence, and environmental stewardship.</div>
+
+<div class="timeline-card">
+  <div class="timeline-item">
+    <div class="timeline-title">Hospitality 1.0: Basic Lodging &amp; Shelter</div>
+    <div class="timeline-desc">Emerged during the early Industrial Age. Focused on providing basic room accommodations, thermal shelter, and essential meals for travelers.</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-title">Hospitality 2.0: Global Hotel Chains &amp; Loyalty Programs</div>
+    <div class="timeline-desc">Characterized by standardized brand services, global expansion, brand consistency, and structured guest loyalty membership programs.</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-title">Hospitality 3.0: Online Travel Agencies (OTAs) &amp; Digital Booking</div>
+    <div class="timeline-desc">Driven by the internet revolution. OTAs (Expedia, Booking.com) expanded consumer choice, price transparency, and online distribution channels.</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-title">Hospitality 4.0: Heavy Automation &amp; Internal Efficiency</div>
+    <div class="timeline-desc">Widespread adoption of guest apps, IoT sensors, cloud-based Property Management Systems (PMS), and basic automation geared toward operational cost-cutting.</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-title">Hospitality 5.0: Human-Centric Tech, AI &amp; Sustainability</div>
+    <div class="timeline-desc">Deep integration of human-machine collaboration, hyper-personalization, predictive guest intelligence, and zero-carbon sustainable operations.</div>
+  </div>
+</div>
+
+<div class="sc"><svg viewBox="0 0 700 90" width="700" role="img" aria-label="Evolutionary stages of hospitality from 1.0 to 5.0">
+<rect class="bx" x="10" y="20" width="120" height="50" rx="6"/><text x="70" y="42" text-anchor="middle" font-size="11" font-weight="700">1.0: Shelter</text><text x="70" y="57" text-anchor="middle" font-size="9">Industrial Era</text>
+<path class="ln" d="M130 45 H150"/>
+<rect class="bx" x="150" y="20" width="120" height="50" rx="6"/><text x="210" y="42" text-anchor="middle" font-size="11" font-weight="700">2.0: Chains</text><text x="210" y="57" text-anchor="middle" font-size="9">Loyalty Programs</text>
+<path class="ln" d="M270 45 H290"/>
+<rect class="bx" x="290" y="20" width="120" height="50" rx="6"/><text x="350" y="42" text-anchor="middle" font-size="11" font-weight="700">3.0: OTAs</text><text x="350" y="57" text-anchor="middle" font-size="9">Digital Discovery</text>
+<path class="ln" d="M410 45 H430"/>
+<rect class="bb" x="430" y="20" width="120" height="50" rx="6"/><text x="490" y="42" text-anchor="middle" font-size="11" font-weight="700">4.0: Tech Ops</text><text x="490" y="57" text-anchor="middle" font-size="9">Cloud PMS &amp; Apps</text>
+<path class="ln" d="M550 45 H570"/>
+<rect class="bg" x="570" y="15" width="120" height="60" rx="6"/><text x="630" y="40" text-anchor="middle" font-size="12" font-weight="700">5.0: Synergy</text><text x="630" y="55" text-anchor="middle" font-size="9">Human + AI + Planet</text>
+</svg></div>
+
+<h2>What is Hospitality 5.0?</h2>
+<div class="def"><b>Hospitality 5.0</b> = using technology <b>to make service more human, not less</b>. Machines handle repetitive operational routines while human staff deliver warmth, empathy, and personal judgement.</div>
+
+<div class="img-card">
+  <img src="images/unit4/hospitality_5_synergy.jpg" alt="Hospitality 5.0 Human-Machine Synergy in Luxury Hotel Lobby">
+  <div class="cap"><b>Figure 1.1: Hospitality 5.0 Human-Machine Synergy</b> — Sleek digital self-check-in kiosks handle routine administrative processing, while smiling hotel ambassadors deliver warm, high-touch hospitality and personal attention.</div>
+</div>
+
+<table><tr><th>Dimension</th><th>Hospitality 4.0</th><th>Hospitality 5.0</th></tr>
+<tr><td>Primary Focus</td><td>Speed, automation, cost reduction</td><td>People + Technology + Planet (Sustainability)</td></tr>
+<tr><td>Guest Experience</td><td>"Fast, but feels standardized and robotic"</td><td>"Effortless, highly personal, and genuinely caring"</td></tr>
+<tr><td>Staff Role</td><td>Risk of replacement by automation</td><td>Empowered and freed for high-value guest interaction</td></tr></table>
+
+<div class="sc"><svg viewBox="0 0 640 120" width="640" role="img" aria-label="Human plus AI collaboration model">
+<rect class="bb" x="30" y="25" width="170" height="70" rx="10"/><text x="115" y="52" text-anchor="middle" font-size="13" font-weight="700">AI / Tech Automation</text><text x="115" y="72" text-anchor="middle" font-size="11">Data analytics, routine tasks, speed</text>
+<text x="235" y="68" text-anchor="middle" font-size="26">+</text>
+<rect class="bg" x="270" y="25" width="170" height="70" rx="10"/><text x="355" y="52" text-anchor="middle" font-size="13" font-weight="700">Human Hospitality</text><text x="355" y="72" text-anchor="middle" font-size="11">Empathy, intuition, problem solving</text>
+<text x="475" y="68" text-anchor="middle" font-size="26">=</text>
+<rect class="by" x="505" y="25" width="125" height="70" rx="10"/><text x="567" y="55" text-anchor="middle" font-size="13" font-weight="700">Hospitality 5.0</text><text x="567" y="73" text-anchor="middle" font-size="13" font-weight="700">Guest Experience</text></svg></div>
+
+<!-- Interactive Synergy Simulator -->
+<div class="i-card" id="synSim">
+  <h3><span>⚡ Live Simulator: Hospitality 4.0 vs 5.0 Operating Model</span> <span class="i-badge live">Interactive</span></h3>
+  <p style="font-size:.86rem;color:var(--mute);margin:0 0 10px">Toggle the operating strategy to compare pure robotic cost-cutting automation against human-AI synergy:</p>
+  <div class="i-btn-group">
+    <button class="i-btn" id="btn4" onclick="setSynMode(4)">Hospitality 4.0 (Robotic Automation)</button>
+    <button class="i-btn on" id="btn5" onclick="setSynMode(5)">Hospitality 5.0 (Human + AI Synergy)</button>
+  </div>
+  <div class="i-grid">
+    <div class="i-box">
+      <div class="val" id="synWarmth" style="color:var(--a)">96%</div>
+      <div class="lbl">Guest Empathy &amp; Warmth</div>
+    </div>
+    <div class="i-box">
+      <div class="val" id="synSpeed">97%</div>
+      <div class="lbl">Check-In Speed</div>
+    </div>
+    <div class="i-box">
+      <div class="val" id="synMorale" style="color:var(--a)">92%</div>
+      <div class="lbl">Staff Job Morale</div>
+    </div>
+    <div class="i-box">
+      <div class="val" id="synNps" style="color:var(--a)">+76</div>
+      <div class="lbl">Net Promoter Score</div>
+    </div>
+  </div>
+  <div class="i-meter-row">
+    <div class="i-meter-head"><span>Staff Workload Allocation</span><span id="synWorkloadTxt">80% High-Value Guest Care &bull; 20% Administrative</span></div>
+    <div class="i-meter"><div class="i-meter-bar" id="synBar" style="width:80%"></div></div>
+  </div>
+  <div class="how" id="synQuote" style="margin-top:10px">
+    <b>Guest Perspective &amp; Real-World Outcome:</b><br>
+    <span id="synQuoteTxt">"The digital room key let us bypass registration lines, and the lobby host warmly welcomed us with chilled lemongrass tea and personalized suggestions for our anniversary dinner. Perfect human warmth enabled by tech."</span>
+  </div>
+</div>
+
+<details open><summary>🤝 Human + AI Collaboration</summary>
+<ul>
+  <li>AI handles repetitive digital tasks: answering common questions (Wi-Fi, breakfast hours), managing keycard issuances, or logging maintenance requests.</li>
+  <li>Staff use the saved hours to engage guests in conversation, handle complex requests, and offer bespoke local recommendations.</li>
+</ul>
+<div class="how"><b>How &amp; Where It Works</b><br>Generative AI platforms parse incoming pre-arrival guest emails and draft personalized responses based on property management system (PMS) profiles. Front office managers review, add a personalized welcoming note, and send.</div>
+<div class="ex"><b>Current Industry Example</b><br><b>Hilton Hotels (Connected Room &amp; Digital Key)</b>: Automated digital check-in through the Hilton Honors app lets guests skip desk queues, enabling front office agents to spend meaningful time welcoming guests, serving drinks, and fulfilling special requests.</div></details>
+
+<details><summary>🎯 Human-Centered Technology Design</summary>
+<ul>
+  <li>Technology must adapt to guest comfort levels rather than forcing rigid technology adoption.</li>
+  <li>Designed for intuitive access across age groups and physical abilities, ensuring an emergency human fallback is always accessible.</li>
+</ul>
+<div class="how"><b>How &amp; Where It Works</b><br>Smart digital kiosks implement dual interfaces (simple visual touch buttons and natural voice interaction) backed by a "Call Host" button that immediately alerts nearby concierge staff via smart wristbands.</div>
+<div class="ex"><b>Current Industry Example</b><br><b>CitizenM Hotels</b>: Self-check-in kiosks take under 60 seconds to issue RFID keycards, while "CitizenM Ambassadors" stand alongside the kiosks in open lounges to assist guests, mix cocktails, and answer travel queries.</div></details>
+
+<details><summary>⚖️ Ethical Automation</summary>
+<ul>
+  <li>Automate tedious labor, never guest care or empathy. Retain human oversight for critical decisions.</li>
+  <li>Maintain total data transparency: notify guests when AI tools interact with them or analyze preferences.</li>
+  <li>Reinvest efficiency savings into staff training, upskilling programs, and higher wages.</li>
+</ul>
+<div class="warn"><b>Ethical Check:</b> Before deploying any automation technology, ask: <i>"Does this elevate both the guest experience and staff workflow, or is it strictly a cost-cutting measure?"</i></div></details>
+
+<details><summary>😊 Emotion-Aware AI (Sentiment Analysis)</summary>
+<ul>
+  <li>Natural Language Processing (NLP) tools analyze guest communications (chat messages, online reviews, messaging channels) to detect mood and frustration levels.</li>
+  <li>Triggers immediate real-time escalation alerts to management prior to guest check-out.</li>
+</ul>
+<div class="how"><b>How &amp; Where It Works</b><br>An NLP sentiment engine monitors guest WhatsApp messages sent to the hotel. Words like "third time", "disappointed", or "broken" elevate the priority level to <i>Urgent</i>, auto-notifying the duty manager's dashboard.</div>
+<div class="img-card">
+  <img src="images/unit4/emotion_ai_dashboard.jpg" alt="Duty Manager Emotion-Aware AI Sentiment Dashboard">
+  <div class="cap"><b>Figure 1.2: Emotion-Aware AI Management Platform</b> — Tablet dashboard monitoring live NLP guest sentiment, instant escalation flags for frustrated guests, and automated service recovery recommendations before checkout.</div>
+</div>
+
+<!-- Live NLP Sentiment Tester -->
+<div class="radar-box" id="nlpRadar">
+  <div class="radar-beam"></div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+    <span style="font-weight:700;font-size:.92rem;color:var(--a)">🧪 Try It: Live NLP Guest Sentiment Analyzer</span>
+    <span class="i-badge live" id="nlpLiveBadge">Active NLP Engine</span>
+  </div>
+  <p style="font-size:.84rem;color:var(--mute);margin:0 0 8px">Test sample guest messages below or type your own to simulate real-time sentiment scoring and automated service recovery protocols:</p>
+  <div class="i-btn-group">
+    <button class="i-btn" onclick="testNlp(0)">😤 Frustrated (AC Leaking)</button>
+    <button class="i-btn" onclick="testNlp(1)">😐 Neutral (Slow Queue)</button>
+    <button class="i-btn" onclick="testNlp(2)">😍 Delighted (Anniversary Surprise)</button>
+  </div>
+  <div style="display:flex;gap:6px;margin:8px 0">
+    <input type="text" id="nlpInput" style="flex:1;padding:8px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-family:inherit;font-size:.88rem" placeholder="Type a guest message or review...">
+    <button class="i-btn on" onclick="analyzeCustomNlp()">Analyze</button>
+  </div>
+  <div id="nlpOutput" style="padding:10px;border-radius:8px;background:var(--card);border:1px solid var(--line)">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+      <span style="font-weight:700;font-size:.9rem" id="nlpScoreLabel">Sentiment Score: -0.84 (Highly Frustrated)</span>
+      <span class="i-badge" id="nlpAlertBadge" style="background:var(--r2);color:var(--r)">🚨 Priority 1 Escalation</span>
+    </div>
+    <div class="i-meter" style="margin:6px 0"><div class="i-meter-bar danger" id="nlpMeter" style="width:16%"></div></div>
+    <div style="font-size:.84rem;color:var(--ink);margin-top:4px" id="nlpActionTxt"><b>Automated Service Recovery:</b> Duty Manager alert dispatched to Room 402 with complimentary fresh pastries and priority HVAC maintenance ticket.</div>
+  </div>
+</div>
+<div class="ex"><b>Current Industry Example</b><br><b>Marriott International</b>: Utilizes AI sentiment monitoring across guest feedback channels. If a guest posts a high-frustration message online or via app chat, service recovery workflows immediately trigger a personal phone call or room visit from the Guest Relations Manager.</div>
+<div class="bad"><b>Caution:</b> Facial recognition sentiment tracking in public areas can raise privacy concerns. Consent-based text and voice sentiment analytics are preferred.</div></details>
+
+<details><summary>🧘 Predictive Guest Wellness</summary>
+<ul>
+  <li>Data integration connects guest circadian preferences, travel schedules, and dietary restrictions to adjust room environments and dining recommendations proactively.</li>
+</ul>
+<div class="how"><b>How &amp; Where It Works</b><br>When a guest checks in after long-haul flight tracking confirms their arrival, smart room automation (IoT) automatically adjusts room temperature to optimal sleep conditions (18°C–20°C), dims lighting, and pre-orders herbal tea.</div>
+<div class="img-card">
+  <img src="images/unit4/smart_wellness_suite.jpg" alt="Predictive Guest Wellness Suite with Circadian Lighting & Sleep IoT">
+  <div class="cap"><b>Figure 1.3: Predictive Wellness Suite</b> — Biophilic guestroom featuring biodynamic circadian lighting, smart sleep-tracking mattress, and personalized recovery tea/spa suggestions based on traveler flight data.</div>
+</div>
+<div class="ex"><b>Current Industry Example</b><br><b>Six Senses Resorts &amp; Peninsula Hotels</b>: Integrated wellness suites use smart mattresses and light controls that track sleep cycles (with opt-in permission), pairing with spa programs to offer circadian alignment meals and bio-hacking recovery regimens.</div></details>
+</div>
+
+<!-- 2: ENERGY -->
+<div class="sec" data-t="2. Energy">
+<h2>AI &amp; Smart Energy Management</h2>
+<div class="def">Hotels operate continuous energy loads: HVAC systems, laundry, kitchens, lifts, and lighting. <b>Energy represents up to 15-20% of hotel operational expenses and is a primary driver of carbon emissions.</b> Smart technology optimizes energy use without compromising guest comfort.</div>
+
+<div class="img-card">
+  <img src="images/unit4/solar_renewable_hotel.jpg" alt="Hotel Rooftop Solar PV & Battery Energy Storage Microgrid">
+  <div class="cap"><b>Figure 2.1: Renewable Microgrid &amp; Battery Storage</b> — Commercial rooftop solar PV arrays paired with Battery Energy Storage Systems (BESS) and EV chargers for peak shaving and zero-carbon resilience.</div>
+</div>
+
+<details open><summary>🧠 AI Building Management Systems (BMS)</summary>
+<ul>
+  <li>IoT occupancy sensors (PIR and thermal imaging) detect guest presence in guestrooms and public areas.</li>
+  <li>AI algorithms calculate thermal inertia, external weather forecasts, and check-in schedules to adjust HVAC pre-cooling and heating efficiently.</li>
+</ul>
+<div class="how"><b>How &amp; Where It Works</b><br>When PMS marks a room as unassigned, the BMS puts HVAC in deep energy-save mode. When a guest checks in at the front desk, the PMS triggers the BMS to pre-cool the exact assigned room to 21°C before the guest enters the elevator.</div>
+<div class="img-card">
+  <img src="images/unit4/smart_bms_hvac.jpg" alt="Hotel Chief Engineer AI Building Management System BMS Tablet and Smart HVAC Room">
+  <div class="cap"><b>Figure 2.2: AI-Powered Building Management System (BMS)</b> — Telemetry interface tracking real-time room occupancy and pre-cooling schedules linked to PMS check-ins, cutting HVAC energy waste by up to 30%.</div>
+</div>
+<div class="ex"><b>Current Industry Example</b><br><b>InterContinental Hotels Group (IHG)</b>: Uses <i>Schneider Electric &amp; Telkonet BMS integrations</i> across hundreds of properties, lowering room HVAC consumption by up to 30% without guests ever encountering an uncomfortable room temperature.</div></details>
+
+<details><summary>⚡ Smart Grids &amp; Peak Shaving</summary>
+<div class="def"><b>Smart Grid Integration</b> = Interactive electrical management where the hotel automatically communicates with local power utilities to shift electricity loads during peak-rate windows.</div>
+<ul>
+  <li>Runs energy-intensive machinery (commercial laundries, water heating pumps, ice generators) during off-peak hours when power rates are low or zero-carbon.</li>
+  <li>Deploys commercial battery energy storage systems (BESS) during peak utility rate hours ("peak shaving").</li>
+</ul>
+<div class="how"><b>How &amp; Where It Works</b><br>Utility company APIs send dynamic pricing alerts to the hotel energy management software. When power rates spike during afternoon heatwaves, the hotel automatically switches water heaters to stored battery power for 2 hours.</div>
+<div class="ex"><b>Current Industry Example</b><br><b>MGM Resorts International (Las Vegas)</b>: Operates an 8.4-megawatt solar array on rooftop facilities paired with smart grid load-balancing to power guest facilities efficiently during peak summer heat.</div></details>
+
+<details><summary>☀️ Solar &amp; Renewable Energy Integration</summary>
+<ul>
+  <li>Rooftop solar photovoltaic (PV) arrays generate clean operational electricity.</li>
+  <li>Solar thermal panels heat domestic hot water for showers, kitchens, and laundry facilities.</li>
+  <li>AI weather-predictive software aligns battery storage charging cycles with forecasted cloud cover and sunshine.</li>
+</ul>
+<div class="ex"><b>Current Industry Example</b><br><b>Soneva Fushi (Maldives)</b>: Operates extensive solar-plus-storage microgrids that provide up to 50% of the island resort's total power requirements, reducing reliance on imported diesel generators.</div></details>
+
+<div class="sc"><svg viewBox="0 0 640 130" width="640" role="img" aria-label="Smart Energy Flow Architecture">
+<rect class="by" x="10" y="35" width="120" height="55" rx="8"/><text x="70" y="60" text-anchor="middle" font-size="12" font-weight="700">Solar PV &amp; Storage</text><text x="70" y="78" text-anchor="middle" font-size="10">Clean Generation</text>
+<rect class="bb" x="175" y="35" width="130" height="55" rx="8"/><text x="240" y="60" text-anchor="middle" font-size="12" font-weight="700">AI BMS Controller</text><text x="240" y="78" text-anchor="middle" font-size="10">Optimizes Distribution</text>
+<rect class="bx" x="350" y="10" width="130" height="45" rx="8"/><text x="415" y="38" text-anchor="middle" font-size="12">Guestrooms &amp; HVAC</text>
+<rect class="bx" x="350" y="72" width="130" height="45" rx="8"/><text x="415" y="100" text-anchor="middle" font-size="12">Laundry &amp; Heavy Load</text>
+<rect class="bg" x="520" y="35" width="110" height="55" rx="8"/><text x="575" y="60" text-anchor="middle" font-size="12" font-weight="700">Smart Grid</text><text x="575" y="78" text-anchor="middle" font-size="10">2-Way Energy Trade</text>
+<path class="ln" d="M130 62H175M305 62L350 32M305 62L350 95M480 32L520 55M480 95L520 70"/></svg></div>
+
+<!-- Interactive Smart Grid & Peak Shaving Simulator -->
+<div class="i-card" id="energySim">
+  <h3><span>⚡ Live Simulator: AI Smart Grid &amp; Peak Shaving Microgrid</span> <span class="i-badge live">Interactive</span></h3>
+  <p style="font-size:.86rem;color:var(--mute);margin:0 0 10px">Simulate how a 250-room hotel orchestrates rooftop solar PV, BESS battery storage, and AI BMS HVAC setback to cut high-tariff peak electricity charges:</p>
+  
+  <div style="margin-bottom:8px">
+    <label style="font-size:.84rem;font-weight:700">Time of Day &amp; Utility Tariff Window:</label>
+    <div class="i-btn-group">
+      <button class="i-btn" id="eTime0" onclick="setEnergyTime(0)">🌅 Morning (8 AM) &bull; ₹7.5/kWh</button>
+      <button class="i-btn on" id="eTime1" onclick="setEnergyTime(1)">☀️ Peak Afternoon (3 PM) &bull; ₹19.0/kWh</button>
+      <button class="i-btn" id="eTime2" onclick="setEnergyTime(2)">🌙 Night (11 PM) &bull; ₹5.2/kWh</button>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:14px;flex-wrap:wrap;margin:10px 0">
+    <label style="font-size:.84rem;display:flex;align-items:center;gap:6px;cursor:pointer">
+      <input type="checkbox" id="eBessChk" checked onchange="updateEnergySim()"> <b>BESS Battery Peak Shaving (Discharge 140 kW)</b>
+    </label>
+    <label style="font-size:.84rem;display:flex;align-items:center;gap:6px;cursor:pointer">
+      <input type="checkbox" id="eBmsChk" checked onchange="updateEnergySim()"> <b>AI BMS Pre-Cooling &amp; Occupancy Setback (-25% HVAC)</b>
+    </label>
+  </div>
+
+  <!-- Animated Live Flow Schematic -->
+  <div class="sc" style="background:var(--bg);border-radius:8px;border:1px solid var(--line);padding:8px 0">
+    <svg viewBox="0 0 640 100" width="640" style="margin:0 auto">
+      <rect class="by" x="15" y="25" width="130" height="50" rx="8"/>
+      <text x="80" y="47" text-anchor="middle" font-size="11" font-weight="700">☀️ Solar PV</text>
+      <text x="80" y="62" text-anchor="middle" font-size="10" id="svgSolarKw">160 kW</text>
+
+      <rect class="bg" x="180" y="25" width="130" height="50" rx="8"/>
+      <text x="245" y="47" text-anchor="middle" font-size="11" font-weight="700">🔋 BESS Storage</text>
+      <text x="245" y="62" text-anchor="middle" font-size="10" id="svgBessKw">140 kW (Discharge)</text>
+
+      <rect class="bx" x="350" y="10" width="130" height="40" rx="6"/>
+      <text x="415" y="34" text-anchor="middle" font-size="11" id="svgHvacKw">HVAC: 135 kW</text>
+
+      <rect class="bx" x="350" y="55" width="130" height="40" rx="6"/>
+      <text x="415" y="79" text-anchor="middle" font-size="11">Lighting/Base: 85 kW</text>
+
+      <rect class="bb" x="515" y="25" width="110" height="50" rx="8"/>
+      <text x="570" y="47" text-anchor="middle" font-size="11" font-weight="700">⚡ Smart Grid</text>
+      <text x="570" y="62" text-anchor="middle" font-size="10" id="svgGridKw">0 kW Drawn</text>
+
+      <path class="ln flow-line" id="flowSolar" d="M145 50H180" stroke="var(--y)"/>
+      <path class="ln flow-line" id="flowLoad" d="M310 50L350 30M310 50L350 75" stroke="var(--a)"/>
+      <path class="ln" id="flowGrid" d="M480 50H515" stroke="var(--mute)"/>
+    </svg>
+  </div>
+
+  <div class="i-grid" style="margin-top:10px">
+    <div class="i-box">
+      <div class="val" id="eTotalLoad">220 kW</div>
+      <div class="lbl">Hotel Power Demand</div>
+    </div>
+    <div class="i-box">
+      <div class="val" id="eGridDraw" style="color:var(--a)">0 kW</div>
+      <div class="lbl">Grid Power Drawn</div>
+    </div>
+    <div class="i-box">
+      <div class="val" id="eCostHr" style="color:var(--a)">₹0 / hr</div>
+      <div class="lbl">Hourly Grid Bill</div>
+    </div>
+    <div class="i-box">
+      <div class="val" id="eSavedHr" style="color:var(--a)">₹6,460 / hr</div>
+      <div class="lbl">Peak Cost Saved</div>
+    </div>
+  </div>
+  <div class="how" id="energyStatusTxt"><b>Grid Shaving Active:</b> Solar PV (160 kW) and Battery discharge (140 kW) fully cover the hotel load during peak 3 PM heatwave. The hotel avoids paying ₹19/kWh grid penalty rates entirely!</div>
+</div>
+</div>
+
+<!-- 3: WATER -->
+<div class="sec" data-t="3. Water">
+<h2>Smart Water Management Technologies</h2>
+<div class="def">Hotels use significant volumes of water daily across guest bathrooms, laundry systems, commercial kitchens, landscaping, and swimming pools. <b>Unchecked micro-leaks can waste hundreds of thousands of liters per year before detection.</b></div>
+
+<div class="img-card">
+  <img src="images/unit4/smart_water_bathroom.jpg" alt="Modern Luxury Eco-Bathroom with Aerated Low-Flow Showerhead & Smart Sensors">
+  <div class="cap"><b>Figure 3.1: Luxury Eco-Bathroom Fixtures</b> — Aerated rain showerheads delivering high pressure with under 6 L/min, digital flow telemetry displays, and touchless infrared sensor taps.</div>
+</div>
+
+<details open><summary>💧 AI Water Flow &amp; Leak Monitoring</summary>
+<ul>
+  <li>Ultrasonic smart water meters attached to primary supply pipes track flow dynamics, pressure differentials, and continuous usage patterns.</li>
+  <li>Machine learning algorithms identify anomalies (e.g., continuous micro-flows during low-occupancy nighttime hours).</li>
+</ul>
+<div class="how"><b>How &amp; Where It Works</b><br>Sub-meters on each floor stream flow data to a cloud dashboard. If Room 402 shows a continuous flow of 3 liters per minute for over 45 minutes at 2 AM, the AI classifies it as a running toilet or pipe burst and automatically shuts off the localized motorized isolation valve while sending a maintenance ticket.</div>
+<div class="img-card">
+  <img src="images/unit4/greywater_leak_detection.jpg" alt="Hotel On-Site Greywater Recycling Plant and Ultrasonic Flow Leak Detection">
+  <div class="cap"><b>Figure 3.2: Smart Water Monitoring &amp; Greywater Treatment</b> — Membrane Bioreactor (MBR) cylinders treating guest shower water for cooling towers, monitored by ultrasonic flow sensors and automated shutoff valves.</div>
+</div>
+<div class="ex"><b>Current Industry Example</b><br><b>Wynn Las Vegas</b>: Deployed <i>WaterHero &amp; HydroPoint smart monitoring</i> across massive resort properties, identifying underground pipe cracks instantly and saving millions of gallons annually.</div></details>
+
+<details><summary>🚿 Eco-Fixtures, Greywater Recycling &amp; Smart Irrigation</summary>
+<ul>
+  <li><b>Aerated Low-Flow Fixtures</b>: Mix air into water streams to deliver strong, luxury pressure while reducing consumption from 15 liters/min to under 6 liters/min.</li>
+  <li><b>Greywater Reclamation Systems</b>: Treat water captured from guest showers and sinks via membrane bioreactors (MBR) to flush toilets and feed cooling towers.</li>
+  <li><b>Evapotranspiration Smart Irrigation</b>: Connects landscape irrigation systems to weather satellite APIs and ground moisture sensors.</li>
+</ul>
+<div class="how"><b>How &amp; Where It Works</b><br>Soil moisture sensors located in hotel gardens communicate with the irrigation controller. If soil moisture levels are above 65% or local rainfall is predicted within 6 hours, scheduled lawn watering cycles automatically cancel.</div>
+<div class="ex"><b>Current Industry Example</b><br><b>Hyatt Regency Maui Resort</b>: Uses comprehensive greywater recycling for island golf course and landscape irrigation, alongside smart weather-adjusted sprinklers.</div></details>
+
+<table><tr><th>Traditional Water Management</th><th>Smart Water Management (Hospitality 5.0)</th></tr>
+<tr><td>Leaks detected via high monthly water bills weeks later</td><td>Leaks pinpointed within minutes by IoT acoustic/flow sensors</td></tr>
+<tr><td>Fixed landscape watering timers regardless of rain</td><td>AI-driven irrigation based on live weather &amp; soil moisture data</td></tr>
+<tr><td>Single-use potable water for all property applications</td><td>Greywater recycling for toilet flushing, landscape, and cooling towers</td></tr></table>
+
+<!-- Interactive Water Leak & Smart Valve Simulator -->
+<div class="i-card" id="waterSim">
+  <h3><span>💧 Live Simulator: AI Ultrasonic Leak Detection &amp; Smart Valve</span> <span class="i-badge live">Live Telemetry</span></h3>
+  <p style="font-size:.86rem;color:var(--mute);margin:0 0 10px">Select a guest wing water flow scenario to observe how AI ultrasonic sensors detect flow anomalies and trigger automated motorized shut-off valves:</p>
+  
+  <div class="i-btn-group">
+    <button class="i-btn on" id="wScen0" onclick="setWaterScenario(0)">🟢 Normal Shower (5.5 L/min &bull; 8 min)</button>
+    <button class="i-btn" id="wScen1" onclick="setWaterScenario(1)">🟡 Toilet Flapper Leak (3.5 L/min continuous @ 2 AM)</button>
+    <button class="i-btn" id="wScen2" onclick="setWaterScenario(2)">🔴 Pipe Burst (52.0 L/min sudden surge)</button>
+  </div>
+
+  <div class="i-grid" style="margin:12px 0">
+    <div class="i-box">
+      <div class="val" id="wFlowRate" style="color:var(--b)">5.5 L/m</div>
+      <div class="lbl">Ultrasonic Flow Rate</div>
+    </div>
+    <div class="i-box">
+      <div class="val" id="wDuration">8 mins</div>
+      <div class="lbl">Continuous Flow Time</div>
+    </div>
+    <div class="i-box">
+      <div class="val" id="wValveState" style="color:var(--a)">OPEN</div>
+      <div class="lbl">Motorized Valve</div>
+    </div>
+    <div class="i-box">
+      <div class="val" id="wLossVal" style="color:var(--a)">₹0</div>
+      <div class="lbl">Water Loss Cost</div>
+    </div>
+  </div>
+
+  <div class="i-meter-row">
+    <div class="i-meter-head"><span>Pipe Pressure &amp; Ultrasonic Frequency Anomaly</span><span id="wAcousticTxt">Normal (12 kHz &bull; Steady)</span></div>
+    <div class="i-meter"><div class="i-meter-bar blue" id="wMeter" style="width:25%"></div></div>
+  </div>
+
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:12px">
+    <div id="wAlertBox" style="font-size:.86rem;font-weight:600;color:var(--a)">✅ Status: Normal water consumption profile. No anomaly detected.</div>
+    <button class="i-btn" id="wValveBtn" style="border-color:var(--r);color:var(--r)" onclick="toggleWaterValve()">⚡ Actuate Smart Isolation Valve</button>
+  </div>
+</div>
+</div>
+
+<!-- 4: WASTE -->
+<div class="sec" data-t="4. Waste">
+<h2>Food Waste &amp; Circular Systems</h2>
+<div class="def">Food waste is a major operational loss in hotel kitchens. <b>Every kilogram of food discarded carries embedded costs: purchasing price, storage energy, preparation labor, water, and waste disposal fees.</b></div>
+
+<div class="img-card">
+  <img src="images/unit4/winnow_vision_ai.jpg" alt="Winnow Vision AI Commercial Kitchen Food Waste Tracking Station">
+  <div class="cap"><b>Figure 4.1: Winnow Vision AI Waste Tracking Station</b> — Overhead computer vision camera and digital floor scale identify discarded food in seconds, computing financial cost so chefs can adjust buffet prep sheets.</div>
+</div>
+
+<details open><summary>🍽️ Winnow Vision AI System</summary>
+<ul>
+  <li>A smart disposal station featuring a digital scale, high-resolution camera, and AI touch monitor placed in kitchen waste areas.</li>
+  <li>Computer vision models recognize food items tossed into the bin (e.g., scrambled eggs, croissants, cut melon) and calculate precise weight and monetary cost instantly.</li>
+</ul>
+<div class="how"><b>How &amp; Where It Works</b><br>When kitchen staff discard leftover buffet items, the camera captures an image, the scale reads the weight, and the AI categorizes the item in under 3 seconds. Daily analytics reports highlight waste categories: <i>"Scrambled egg over-production: $450 wasted this week."</i> Executive chefs adjust prep sheets accordingly.</div>
+<div class="ex"><b>Current Industry Example</b><br><b>IKEA Restaurants &amp; Accor Hotels (Sofitel/Novotel)</b>: Rolled out <i>Winnow AI</i> across hundreds of global hotel dining outlets, cutting kitchen food waste by up to 50% within the first 6–12 months of deployment.</div></details>
+
+<details><summary>📊 Predictive Demand &amp; Food Analytics</summary>
+<ul>
+  <li>Correlates historical PMS occupancy, guest demographic data, local event calendars, and weather forecasts to predict exact meal covers for dining rooms and buffets.</li>
+  <li>Optimizes ingredient purchase orders, reducing inventory spoilage in walk-in cold rooms.</li>
+</ul>
+<div class="ex"><b>Current Industry Example</b><br><b>Hilton Worldwide</b>: Implements <i>Leanpath food waste monitoring software</i> in banquet kitchens to accurately size buffet platters and track over-preparation trends.</div></details>
+
+<details><summary>♻️ Circular Economy Systems</summary>
+<div class="def"><b>Circular Economy</b> = A closed-loop production system that eliminates waste by designing items to be reused, remanufactured, or safely returned to nature (<b>Reduce, Reuse, Recycle, Regenerate</b>).</div>
+<ul>
+  <li><b>On-site Aerobic Digesters &amp; Composting</b>: Convert food waste into nutrient-rich compost for hotel gardens within 24 hours.</li>
+  <li><b>Closed-Loop Amenities</b>: Replace single-use mini plastic bottles with refillable ceramic wall pumps; recycle used soaps into sanitized new bars via NGOs like <i>Clean the World</i>.</li>
+  <li><b>Surplus Food Donation</b>: Automated platforms connect hotel kitchens with local food rescue organizations for safe redistribution.</li>
+</ul>
+<div class="img-card">
+  <img src="images/unit4/circular_economy_hotel.jpg" alt="Hotel Closed-Loop Circular Economy Hub with Composting and Glass Bottling">
+  <div class="cap"><b>Figure 4.2: Hotel Circular Economy Hub</b> — On-site aerobic composter nourishing kitchen herb gardens, automated reusable glass water bottling plant, and refillable ceramic amenities eliminating single-use plastics.</div>
+</div>
+<div class="ex"><b>Current Industry Example</b><br><b>Mandarin Oriental &amp; Four Seasons</b>: Eliminated single-use guestroom plastics portfolio-wide, utilizing closed-loop glass bottling plants for in-room water service.</div></details>
+
+<div class="sc"><svg viewBox="0 0 640 130" width="640" role="img" aria-label="Circular Economy Loop Diagram">
+<rect class="bg" x="10" y="40" width="110" height="50" rx="8"/><text x="65" y="70" text-anchor="middle" font-size="12">Smart Purchasing</text>
+<rect class="bx" x="165" y="40" width="110" height="50" rx="8"/><text x="220" y="70" text-anchor="middle" font-size="12">Precision Cooking</text>
+<rect class="by" x="320" y="40" width="110" height="50" rx="8"/><text x="375" y="70" text-anchor="middle" font-size="12">AI Waste Tracking</text>
+<rect class="bb" x="475" y="40" width="155" height="50" rx="8"/><text x="552" y="62" text-anchor="middle" font-size="12">Compost / Biogas /</text><text x="552" y="78" text-anchor="middle" font-size="12">Community Donation</text>
+<path class="ln" d="M120 65H165M275 65H320M430 65H475M552 90V118H65V90"/></svg></div>
+
+<!-- Interactive Winnow Vision AI Terminal & ROI Calculator -->
+<div class="i-card" id="winnowSim">
+  <h3><span>🍽️ Live Simulator: Winnow Vision AI Waste Station &amp; ROI Calculator</span> <span class="i-badge live">AI Computer Vision</span></h3>
+  <p style="font-size:.86rem;color:var(--mute);margin:0 0 10px">Simulate discarding a buffet tray to test Winnow's overhead computer vision recognition, scale telemetry, and automated chef kitchen prep sheets:</p>
+  
+  <div style="margin-bottom:8px">
+    <label style="font-size:.84rem;font-weight:700">Select Food Item Discarded into Bin:</label>
+    <div class="i-btn-group">
+      <button class="i-btn on" id="wFood0" onclick="scanFoodItem(0)">🍳 Scrambled Eggs</button>
+      <button class="i-btn" id="wFood1" onclick="scanFoodItem(1)">🥐 Bakery Croissants</button>
+      <button class="i-btn" id="wFood2" onclick="scanFoodItem(2)">🍉 Melon Salad Platters</button>
+      <button class="i-btn" id="wFood3" onclick="scanFoodItem(3)">🍗 Roasted Herb Chicken</button>
+      <button class="i-btn" id="wFood4" onclick="scanFoodItem(4)">🍚 Steamed Basmati &amp; Curry</button>
+    </div>
+  </div>
+
+  <!-- Simulated Scanner Terminal -->
+  <div class="radar-box" style="position:relative;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px;margin:8px 0">
+    <div class="radar-beam" id="scanLaser" style="background:linear-gradient(90deg,transparent,#10b981,#34d399,transparent);box-shadow:0 0 8px #10b981"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+      <span style="font-weight:700;font-size:.9rem" id="wItemTitle">📸 AI Detected: Buffet Scrambled Eggs (Overproduction)</span>
+      <span class="i-badge" id="wConfBadge" style="background:var(--a2);color:var(--a)">Confidence: 98.6%</span>
+    </div>
+
+    <div class="i-grid" style="margin:10px 0">
+      <div class="i-box">
+        <div class="val" id="wWeightVal">16.2 kg</div>
+        <div class="lbl">Discarded Weight</div>
+      </div>
+      <div class="i-box">
+        <div class="val" id="wCostVal" style="color:var(--r)">₹2,430</div>
+        <div class="lbl">Batch Monetary Loss</div>
+      </div>
+      <div class="i-box">
+        <div class="val" id="wCo2Val" style="color:var(--y)">51.8 kg</div>
+        <div class="lbl">Embedded CO2e Footprint</div>
+      </div>
+      <div class="i-box">
+        <div class="val" id="wShiftTotal" style="color:var(--ink)">₹14,250</div>
+        <div class="lbl">Shift Cumulative Waste</div>
+      </div>
+    </div>
+
+    <div class="how" id="wChefNote" style="margin-top:6px;font-size:.85rem">
+      <b>Executive Chef Actionable Analytics:</b><br>
+      <span id="wChefNoteTxt">"Over-production observed across 3 consecutive mornings. Recommendation: Downsize breakfast buffet pan replenishment from 5 kg hotel pans to 2 kg pans during the final 45 minutes of breakfast service."</span>
+    </div>
+  </div>
+
+  <h4 style="margin:14px 0 6px;font-size:.92rem;color:var(--ink)">Interactive Kitchen Financial &amp; Environmental ROI Calculator</h4>
+  <div class="calc" style="margin:0">
+    <label>Daily Kitchen Waste Volume (kg): <b id="kgVal">20</b> kg</label>
+    <input type="range" id="kg" min="5" max="120" value="20" step="5">
+    <label>Average Food Cost per kg: ₹<b id="costVal">150</b></label>
+    <input type="range" id="cost" min="50" max="400" value="150" step="10">
+    <label>Reduction Target with Winnow AI: <b id="pv">35</b>%</label>
+    <input type="range" id="pct" min="10" max="60" value="35">
+    <div class="res" id="out"></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:6px;margin-top:8px">
+      <div class="i-box"><div class="val" id="calcMeals" style="color:var(--a);font-size:1.1rem">7,300</div><div class="lbl">Meals Rescued / Year</div></div>
+      <div class="i-box"><div class="val" id="calcCo2" style="color:var(--b);font-size:1.1rem">8.2 Tons</div><div class="lbl">CO2e Emissions Prevented</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 5: CARBON -->
+<div class="sec" data-t="5. Carbon & ESG">
+<h2>Carbon Tracking &amp; ESG Reporting</h2>
+<div class="def"><b>Carbon Footprint</b> = The total greenhouse gas emissions (CO<sub>2</sub>e) generated directly and indirectly by hotel operations (electricity, natural gas, supply chain, food transport, laundry, and waste).</div>
+
+<div class="img-card diagram">
+  <img src="images/unit4/scope_1_2_3_carbon.jpg" alt="Hotel Greenhouse Gas Emissions Scopes 1, 2, and 3 Educational Diagram">
+  <div class="cap"><b>Figure 5.1: Hotel Carbon Footprint Breakdown (Scopes 1, 2, and 3)</b> — Visual classification of Direct emissions (Scope 1), Purchased grid electricity &amp; heating (Scope 2), and Upstream/Downstream supply chain &amp; guest travel (Scope 3).</div>
+</div>
+
+<details open><summary>📱 Automated Carbon Tracking Platforms</summary>
+<ul>
+  <li>SaaS platforms ingest utility meter readings, fuel invoices, supply chain invoices, and operational data to calculate Scope 1, Scope 2, and Scope 3 greenhouse gas emissions.</li>
+  <li>Provides guests with transparent carbon metrics for their stay or conference events on final checkout folios.</li>
+</ul>
+<div class="how"><b>How &amp; Where It Works</b><br>Software connects via API to smart power meters, municipal water inputs, and purchasing software. It converts utility usage into standardized CO<sub>2</sub> emission values ($kg CO_2e / occupied room$) automatically using regional grid carbon intensity factors.</div>
+<div class="ex"><b>Current Industry Example</b><br><b>Salesforce Net Zero Cloud &amp; Greenview Portal</b>: Used by international hotel groups to aggregate global property emissions data into audited executive dashboards.</div></details>
+
+<details><summary>📋 ESG Reporting &amp; Anti-Greenwashing</summary>
+<div class="def"><b>ESG Framework</b>: Operational evaluation matrix covering <b>E</b>nvironmental impact, <b>S</b>ocial responsibility, and <b>G</b>overnance transparency.</div>
+<table><tr><th>Pillar</th><th>Metric Focus</th><th>Real Hotel Operational Examples</th></tr>
+<tr><td><b>E</b> (Environmental)</td><td>Nature, Energy, Carbon</td><td>Solar usage %, greywater recycled, food waste reduced, zero single-use plastic</td></tr>
+<tr><td><b>S</b> (Social)</td><td>People &amp; Community</td><td>Fair staff wages, local sourcing, diversity hiring, community development funds</td></tr>
+<tr><td><b>G</b> (Governance)</td><td>Ethics &amp; Operations</td><td>Data privacy compliance (GDPR), anti-corruption audits, transparent vendor billing</td></tr></table>
+<ul>
+  <li>Corporate enterprise clients require verified ESG reports before signing lucrative corporate hotel room supply contracts.</li>
+  <li>Automated reporting prevents <b>Greenwashing</b> (making unverified environmental claims without data proof).</li>
+</ul>
+<div class="warn"><b>Regulatory Warning:</b> Vague sustainability claims ("Eco-friendly resort") without third-party metric verification risk significant financial penalties under global consumer protection regulations.</div>
+<div class="img-card">
+  <img src="images/unit4/hotel_esg_dashboard.jpg" alt="Corporate Hotel ESG Analytics and Sustainability Reporting Dashboard">
+  <div class="cap"><b>Figure 5.2: Corporate ESG Analytics Dashboard</b> — Executive platform tracking real-time carbon intensity per occupied room, renewable energy %, water savings, and verified audit certifications (LEED Platinum, Green Key).</div>
+</div></details>
+
+<!-- Interactive Hotel Carbon (Scope 1, 2, 3) & ESG Audit Simulator -->
+<div class="i-card" id="esgSim">
+  <h3><span>🌍 Live Simulator: Scope 1-2-3 Carbon Calculator &amp; ESG Audit</span> <span class="i-badge live">ESG Audit Tool</span></h3>
+  <p style="font-size:.86rem;color:var(--mute);margin:0 0 10px">Adjust hotel operational parameters to calculate carbon intensity per occupied room and evaluate eligibility for corporate travel procurement RFPs:</p>
+  
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:10px">
+    <div>
+      <label style="font-size:.82rem;font-weight:700">Hotel Room Count: <b id="esgRoomsVal">200</b> rooms</label>
+      <input type="range" id="esgRooms" min="50" max="600" value="200" step="25" oninput="calcEsgCarbon()">
+    </div>
+    <div>
+      <label style="font-size:.82rem;font-weight:700">Average Occupancy Rate: <b id="esgOccVal">75</b>%</label>
+      <input type="range" id="esgOcc" min="40" max="100" value="75" step="5" oninput="calcEsgCarbon()">
+    </div>
+    <div>
+      <label style="font-size:.82rem;font-weight:700">Renewable Energy / Solar Share: <b id="esgRenVal">45</b>%</label>
+      <input type="range" id="esgRen" min="0" max="100" value="45" step="5" oninput="calcEsgCarbon()">
+    </div>
+    <div>
+      <label style="font-size:.82rem;font-weight:700">Local Sourcing &amp; Diversion: <b id="esgDivVal">60</b>%</label>
+      <input type="range" id="esgDiv" min="10" max="95" value="60" step="5" oninput="calcEsgCarbon()">
+    </div>
+  </div>
+
+  <div class="i-grid" style="margin:10px 0">
+    <div class="i-box">
+      <div class="val" id="esgScope1" style="color:var(--y)">3.8 kg</div>
+      <div class="lbl">Scope 1 (Gas &amp; Direct)</div>
+    </div>
+    <div class="i-box">
+      <div class="val" id="esgScope2" style="color:var(--b)">6.2 kg</div>
+      <div class="lbl">Scope 2 (Purchased Power)</div>
+    </div>
+    <div class="i-box">
+      <div class="val" id="esgScope3" style="color:var(--mute)">4.5 kg</div>
+      <div class="lbl">Scope 3 (Supply Chain)</div>
+    </div>
+    <div class="i-box">
+      <div class="val" id="esgTotal" style="color:var(--a);font-size:1.35rem">14.5 kg</div>
+      <div class="lbl">Total kg CO2e / Room</div>
+    </div>
+  </div>
+
+  <div class="i-meter-row">
+    <div class="i-meter-head"><span>ESG Decarbonization Performance</span><span id="esgRatingBadge" class="i-badge" style="background:var(--a2);color:var(--a)">Rating: A (Global Top 10%)</span></div>
+    <div class="i-meter"><div class="i-meter-bar" id="esgMeter" style="width:78%"></div></div>
+  </div>
+
+  <div class="how" id="esgAuditVerdict" style="margin-top:10px">
+    <b>Corporate RFP Travel Audit Verdict:</b><br>
+    <span id="esgAuditVerdictTxt">"✅ <b>Approved for Global Corporate RFP Hotel Contracts.</b> Carbon intensity of 14.5 kg CO2e/room easily satisfies Fortune 500 sustainability thresholds (&lt;22 kg threshold)."</span>
+  </div>
+</div>
+</div>
+
+<!-- 6: QUIZ -->
+<div class="sec" data-t="6. Recap + Quiz">
+<h2>Module Executive Summary</h2>
+<table><tr><th>Core Technology</th><th>Key Takeaway &amp; Operational Benefit</th></tr>
+<tr><td><b>Evolution (1.0 to 5.0)</b></td><td>Moves from basic shelter (1.0) and chains (2.0) to OTAs (3.0), operational tech (4.0), and human-centric sustainability (5.0).</td></tr>
+<tr><td><b>Hospitality 5.0</b></td><td>Integrates technology to eliminate routine tasks, empowering staff to deliver high-empathy guest experiences.</td></tr>
+<tr><td><b>Smart Energy &amp; Grids</b></td><td>Combines IoT occupancy sensors, AI BMS, and solar battery systems to cut power bills and peak demand fees.</td></tr>
+<tr><td><b>Smart Water Tech</b></td><td>Employs ultrasonic leak detection and greywater recycling to preserve local water resources.</td></tr>
+<tr><td><b>AI Waste Analytics</b></td><td>Uses computer vision smart bins (Winnow) to track kitchen waste and reduce purchasing overhead.</td></tr>
+<tr><td><b>Carbon &amp; ESG Tools</b></td><td>Automates Scope 1-3 carbon tracking, ensuring audit-ready ESG reporting and preventing greenwashing.</td></tr></table>
+
+<h2>Knowledge Check</h2>
+<div id="quiz"></div>
+</div>
+</div>
+
+<!-- Image Lightbox Modal -->
+<div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <div class="lightbox-content">
+    <img id="lightboxImg" src="" alt="Enlarged visual">
+    <div class="lightbox-cap" id="lightboxCap"></div>
+  </div>
+</div>
+
+<script>
+// --- Tab Navigation ---
+var secs=[].slice.call(document.querySelectorAll('.sec')),tb=document.getElementById('tabs');
+function show(i){
+  secs.forEach(function(s,j){s.classList.toggle('on',i===j)});
+  [].slice.call(tb.children).forEach(function(b,j){b.classList.toggle('on',i===j)});
+  try{location.hash='t'+(i+1)}catch(e){}
+  window.scrollTo(0,0);
+}
+secs.forEach(function(s,i){
+  var b=document.createElement('button');
+  b.textContent=s.getAttribute('data-t');
+  b.onclick=function(){show(i)};
+  tb.appendChild(b);
+});
+var h=parseInt((location.hash||'').replace('#t',''),10);
+show(h>=1&&h<=secs.length?h-1:0);
+
+// --- Simulator 1: Hospitality 5.0 Synergy ---
+function setSynMode(m){
+  var b4=document.getElementById('btn4'), b5=document.getElementById('btn5');
+  var warmth=document.getElementById('synWarmth'), speed=document.getElementById('synSpeed'),
+      morale=document.getElementById('synMorale'), nps=document.getElementById('synNps'),
+      bar=document.getElementById('synBar'), workTxt=document.getElementById('synWorkloadTxt'),
+      quote=document.getElementById('synQuoteTxt');
+  if(!b4 || !b5) return;
+  if(m===4){
+    b4.className='i-btn on'; b5.className='i-btn';
+    warmth.textContent='24%'; warmth.style.color='var(--r)';
+    speed.textContent='91%'; speed.style.color='var(--ink)';
+    morale.textContent='35%'; morale.style.color='var(--r)';
+    nps.textContent='+14'; nps.style.color='var(--r)';
+    bar.style.width='25%'; bar.className='i-meter-bar danger';
+    workTxt.textContent='25% Guest Contact • 75% Data Entry & Kiosk Troubleshooting';
+    quote.textContent='"The automated check-in kiosk scanned my passport, but when our flight was delayed by 3 hours, there was nobody to ask if we needed water or could get a late dinner. Felt completely cold and mechanical."';
+  } else {
+    b5.className='i-btn on'; b4.className='i-btn';
+    warmth.textContent='96%'; warmth.style.color='var(--a)';
+    speed.textContent='97%'; speed.style.color='var(--ink)';
+    morale.textContent='92%'; morale.style.color='var(--a)';
+    nps.textContent='+76'; nps.style.color='var(--a)';
+    bar.style.width='80%'; bar.className='i-meter-bar';
+    workTxt.textContent='80% High-Value Guest Care • 20% Administrative';
+    quote.textContent='"The digital room key let us bypass registration lines, and the lobby host warmly welcomed us with chilled lemongrass tea and personalized suggestions for our anniversary dinner. Perfect human warmth enabled by tech."';
+  }
+}
+
+// --- Simulator 1B: Live Emotion NLP Guest Sentiment Scanner ---
+var nlpScenarios = [
+  { text: "Room 408 AC is leaking on the carpet, called 3 times and still nobody showed up!", score: -0.84, cat: "Highly Frustrated (Anger)", p: "🚨 Priority 1 Escalation", width: 16, action: "Immediate Duty Manager alert dispatched to Room 408 with complimentary fresh pastries and priority HVAC maintenance ticket." },
+  { text: "Check-in line took about 15 minutes, but the front desk agent was very polite and apologized.", score: 0.12, cat: "Neutral / Mild Inconvenience", p: "ℹ️ Level 3 Monitoring", width: 55, action: "PMS flagged for front office supervisor: Review afternoon lobby staffing during peak flight arrival waves." },
+  { text: "The lobby host remembered our anniversary and had chilled champagne waiting in our suite! Unbelievable care!", score: 0.96, cat: "Delighted (Brand Advocate)", p: "🌟 Loyalty Recognition", width: 96, action: "Auto-record guest preference profile; send personalized GM thank-you note and post-stay TripAdvisor invite." }
+];
+
+function testNlp(idx){
+  var sc = nlpScenarios[idx];
+  document.getElementById('nlpInput').value = sc.text;
+  applyNlp(sc);
+}
+
+function applyNlp(sc){
+  document.getElementById('nlpScoreLabel').textContent = 'Sentiment Score: ' + (sc.score>0?'+':'') + sc.score.toFixed(2) + ' (' + sc.cat + ')';
+  var badge = document.getElementById('nlpAlertBadge');
+  badge.textContent = sc.p;
+  badge.style.background = sc.score < -0.3 ? 'var(--r2)' : (sc.score > 0.4 ? 'var(--a2)' : 'var(--y2)');
+  badge.style.color = sc.score < -0.3 ? 'var(--r)' : (sc.score > 0.4 ? 'var(--a)' : 'var(--y)');
+  var meter = document.getElementById('nlpMeter');
+  meter.className = 'i-meter-bar ' + (sc.score < -0.3 ? 'danger' : (sc.score > 0.4 ? '' : 'warn'));
+  meter.style.width = sc.width + '%';
+  document.getElementById('nlpActionTxt').innerHTML = '<b>Automated Service Recovery:</b> ' + sc.action;
+}
+
+function analyzeCustomNlp(){
+  var val = (document.getElementById('nlpInput').value || '').toLowerCase();
+  if(!val){ return; }
+  var badWords = ['leak','dirty','broke','broken','rude','disappointed','horrible','slow','wait','angry','cold','hot','worst','waste'];
+  var goodWords = ['loved','amazing','great','sweet','kind','wonderful','excellent','fast','smooth','clean','beautiful','delicious','best'];
+  var neg = 0, pos = 0;
+  badWords.forEach(function(w){ if(val.indexOf(w)!==-1) neg++; });
+  goodWords.forEach(function(w){ if(val.indexOf(w)!==-1) pos++; });
+  var score = (pos - neg);
+  if(score > 1) score = 1; if(score < -1) score = -1;
+  var normScore = score * 0.8;
+  if(neg > 0 && pos === 0) normScore = -0.75;
+  if(pos > 0 && neg === 0) normScore = 0.85;
+  if(neg === 0 && pos === 0) normScore = 0.05;
+
+  var sc = {
+    score: normScore,
+    cat: normScore < -0.2 ? 'Frustrated / Dissatisfied' : (normScore > 0.3 ? 'Positive / Satisfied' : 'Neutral Feedback'),
+    p: normScore < -0.2 ? '🚨 Priority 1 Escalation' : (normScore > 0.3 ? '🌟 Guest Care Follow-up' : 'ℹ️ Standard Logging'),
+    width: Math.round((normScore + 1) * 50),
+    action: normScore < -0.2 ? 'Escalated to Duty Manager for immediate guestroom intervention before checkout.' : (normScore > 0.3 ? 'Add positive guest note to loyalty CRM profile.' : 'Logged into daily front office shift summary report.')
+  };
+  applyNlp(sc);
+}
+
+// --- Simulator 2: Smart Energy & Peak Shaving ---
+var eTimeIdx = 1;
+function setEnergyTime(t){
+  eTimeIdx = t;
+  [0,1,2].forEach(function(i){
+    var b = document.getElementById('eTime'+i);
+    if(b) b.className = (i===t)?'i-btn on':'i-btn';
+  });
+  updateEnergySim();
+}
+
+function updateEnergySim(){
+  var bessOn = document.getElementById('eBessChk').checked;
+  var bmsOn = document.getElementById('eBmsChk').checked;
+  
+  var solarKw = 0, tariff = 7.5, baseLoad = 220, hvacLoad = 180;
+  if(eTimeIdx === 0){ // Morning
+    tariff = 7.5; solarKw = 90; hvacLoad = 120;
+  } else if(eTimeIdx === 1){ // Peak Afternoon
+    tariff = 19.0; solarKw = 160; hvacLoad = 180;
+  } else { // Night
+    tariff = 5.2; solarKw = 0; hvacLoad = 80;
+  }
+
+  if(bmsOn){ hvacLoad = Math.round(hvacLoad * 0.75); } // 25% HVAC saving
+  var totalLoad = baseLoad + hvacLoad;
+  var bessKw = (bessOn && eTimeIdx === 1) ? 140 : ((bessOn && eTimeIdx === 0) ? 40 : 0);
+  
+  var cleanGen = solarKw + bessKw;
+  var gridKw = Math.max(0, totalLoad - cleanGen);
+  var costHr = Math.round(gridKw * tariff);
+  var unmanagedCost = Math.round((baseLoad + (bmsOn ? hvacLoad/0.75 : hvacLoad)) * tariff);
+  var savedHr = Math.max(0, unmanagedCost - costHr);
+
+  document.getElementById('svgSolarKw').textContent = solarKw + ' kW';
+  document.getElementById('svgBessKw').textContent = bessKw + ' kW' + (bessKw > 0 ? ' (Discharge)' : ' (Standby)');
+  document.getElementById('svgHvacKw').textContent = 'HVAC: ' + hvacLoad + ' kW' + (bmsOn ? ' (Eco)' : '');
+  document.getElementById('svgGridKw').textContent = gridKw + ' kW Drawn';
+  document.getElementById('eTotalLoad').textContent = totalLoad + ' kW';
+  document.getElementById('eGridDraw').textContent = gridKw + ' kW';
+  document.getElementById('eCostHr').textContent = '₹' + costHr.toLocaleString('en-IN') + ' / hr';
+  document.getElementById('eSavedHr').textContent = '₹' + savedHr.toLocaleString('en-IN') + ' / hr';
+
+  var flowSolar = document.getElementById('flowSolar');
+  var flowGrid = document.getElementById('flowGrid');
+  if(flowSolar) flowSolar.className = solarKw > 0 ? 'ln flow-line' : 'ln';
+  if(flowGrid) flowGrid.className = gridKw > 40 ? 'ln flow-line' : 'ln';
+
+  var statusTxt = document.getElementById('energyStatusTxt');
+  if(gridKw === 0){
+    statusTxt.innerHTML = '<b>Peak Shaving Active:</b> Solar PV (' + solarKw + ' kW) and Battery storage (' + bessKw + ' kW) completely eliminate grid power draw during high-rate hours. Tariff penalty avoided!';
+  } else if(bessOn || bmsOn){
+    statusTxt.innerHTML = '<b>Partial Peak Shaving:</b> Solar + BESS supplies ' + cleanGen + ' kW of clean energy, significantly offsetting ₹' + tariff + '/kWh grid tariffs.';
+  } else {
+    statusTxt.innerHTML = '<b>Unmanaged Grid Reliance:</b> Entire ' + totalLoad + ' kW demand drawn directly from commercial grid at peak tariff of ₹' + tariff + '/kWh. High utility penalty fees apply.';
+  }
+}
+
+// --- Simulator 3: AI Water Flow & Ultrasonic Leak Detection ---
+var wValveOpen = true;
+var wCurrScen = 0;
+var wScenarios = [
+  { rate: 5.5, dur: '8 mins', loss: 0, acoustic: 'Normal (12 kHz • Steady)', barW: 25, barClass: 'blue', alert: '✅ Status: Normal occupant shower. Usage profile within luxury threshold.', alertColor: 'var(--a)' },
+  { rate: 3.5, dur: '90 mins @ 2 AM', loss: 420, acoustic: 'Anomaly: Low-frequency hiss (4.2 kHz continuous)', barW: 65, barClass: 'warn', alert: '⚠️ ANOMALY DETECTED: Continuous 3.5 L/min flow detected during low-occupancy night hours in Room 402. Suspected toilet flapper leak.', alertColor: 'var(--y)' },
+  { rate: 52.0, dur: '3 mins', loss: 2450, acoustic: 'CRITICAL: High pressure drop & acoustic spike (28 kHz)', barW: 100, barClass: 'danger', alert: '🚨 EMERGENCY: Riser pipe burst detected on Floor 4! Pressure drop 4.2 bar. Immediate isolation required to prevent room flooding.', alertColor: 'var(--r)' }
+];
+
+function setWaterScenario(idx){
+  wCurrScen = idx;
+  wValveOpen = true;
+  [0,1,2].forEach(function(i){
+    var b = document.getElementById('wScen'+i);
+    if(b) b.className = (i===idx)?'i-btn on':'i-btn';
+  });
+  renderWaterSim();
+}
+
+function toggleWaterValve(){
+  wValveOpen = !wValveOpen;
+  renderWaterSim();
+}
+
+function renderWaterSim(){
+  var sc = wScenarios[wCurrScen];
+  var flow = wValveOpen ? sc.rate : 0;
+  var rateEl = document.getElementById('wFlowRate');
+  var valveEl = document.getElementById('wValveState');
+  var lossEl = document.getElementById('wLossVal');
+  var meterEl = document.getElementById('wMeter');
+  var alertEl = document.getElementById('wAlertBox');
+  var btnEl = document.getElementById('wValveBtn');
+
+  rateEl.textContent = flow.toFixed(1) + ' L/m';
+  document.getElementById('wDuration').textContent = sc.dur;
+  valveEl.textContent = wValveOpen ? 'OPEN' : 'LOCKED CLOSED';
+  valveEl.style.color = wValveOpen ? (flow > 10 ? 'var(--r)' : 'var(--a)') : 'var(--r)';
+  lossEl.textContent = wValveOpen ? '₹' + sc.loss : '₹0 (Mitigated)';
+  
+  document.getElementById('wAcousticTxt').textContent = wValveOpen ? sc.acoustic : 'Pipe Isolated • Zero Flow';
+  meterEl.className = 'i-meter-bar ' + (wValveOpen ? sc.barClass : 'blue');
+  meterEl.style.width = (wValveOpen ? sc.barW : 0) + '%';
+
+  if(!wValveOpen){
+    alertEl.innerHTML = '🛡️ <b>Motorized Valve Actuated:</b> Water flow successfully isolated at branch riser. Maintenance dispatch confirmed for Room 402.';
+    alertEl.style.color = 'var(--a)';
+    btnEl.textContent = '🔓 Reopen Smart Valve';
+    btnEl.style.color = 'var(--a)'; btnEl.style.borderColor = 'var(--a)';
+  } else {
+    alertEl.innerHTML = sc.alert;
+    alertEl.style.color = sc.alertColor;
+    btnEl.textContent = '⚡ Actuate Smart Isolation Valve';
+    btnEl.style.color = 'var(--r)'; btnEl.style.borderColor = 'var(--r)';
+  }
+}
+
+// --- Simulator 4: Winnow Vision AI Kitchen Terminal ---
+var foodItems = [
+  { name: "Buffet Scrambled Eggs (Overproduction)", conf: "98.6%", weight: 16.2, costPerKg: 150, co2Factor: 3.2, note: "Overproduction observed across 3 consecutive mornings. Downsize breakfast buffet pan replenishment from 5 kg hotel pans to 2 kg pans during final 45 minutes of service." },
+  { name: "Bakery Croissants & Danishes", conf: "99.1%", weight: 8.4, costPerKg: 220, co2Factor: 2.1, note: "Bake-off schedule surplus. Recommend switching from large batch baking at 6 AM to on-demand convection oven baking in 15-piece batches." },
+  { name: "Melon Salad & Fruit Platters", conf: "97.4%", weight: 11.0, costPerKg: 110, co2Factor: 1.4, note: "Prep trimmings and oxidation loss. Divert surplus melons into welcome fruit infusions and spa juices rather than discarding." },
+  { name: "Banquet Roasted Herb Chicken", conf: "96.8%", weight: 14.5, costPerKg: 280, co2Factor: 6.8, note: "Banquet over-catering discrepancy. Align banquet prep with live RSVP scan check-in data rather than initial contracted headcount." },
+  { name: "Steamed Basmati Rice & Dal Curry", conf: "98.2%", weight: 19.0, costPerKg: 85, co2Factor: 2.4, note: "End-of-buffet surplus. Coordinate instant redistribution to local community food rescue partner via automated cold-chain logistics." }
+];
+
+var currFoodIdx = 0;
+var shiftTotalLoss = 14250;
+
+function scanFoodItem(idx){
+  currFoodIdx = idx;
+  [0,1,2,3,4].forEach(function(i){
+    var b = document.getElementById('wFood'+i);
+    if(b) b.className = (i===idx)?'i-btn on':'i-btn';
+  });
+  
+  var laser = document.getElementById('scanLaser');
+  if(laser){
+    laser.style.animation = 'none';
+    laser.offsetHeight;
+    laser.style.animation = 'radarSweep 1.2s ease-in-out';
+  }
+
+  var item = foodItems[idx];
+  var batchCost = Math.round(item.weight * item.costPerKg);
+  var co2 = (item.weight * item.co2Factor).toFixed(1);
+  shiftTotalLoss += batchCost;
+
+  document.getElementById('wItemTitle').textContent = '📸 AI Detected: ' + item.name;
+  document.getElementById('wConfBadge').textContent = 'Confidence: ' + item.conf;
+  document.getElementById('wWeightVal').textContent = item.weight.toFixed(1) + ' kg';
+  document.getElementById('wCostVal').textContent = '₹' + batchCost.toLocaleString('en-IN');
+  document.getElementById('wCo2Val').textContent = co2 + ' kg';
+  document.getElementById('wShiftTotal').textContent = '₹' + shiftTotalLoss.toLocaleString('en-IN');
+  document.getElementById('wChefNoteTxt').textContent = item.note;
+}
+
+function calcFoodRoi(){
+  var k = +document.getElementById('kg').value || 0;
+  var c = +document.getElementById('cost').value || 0;
+  var p = +document.getElementById('pct').value || 35;
+
+  document.getElementById('kgVal').textContent = k;
+  document.getElementById('costVal').textContent = c;
+  document.getElementById('pv').textContent = p;
+
+  var annualWaste = k * c * 365;
+  var annualSaved = annualWaste * (p / 100);
+  var kgSaved = k * 365 * (p / 100);
+  var meals = Math.round(kgSaved / 0.45);
+  var co2Tons = (kgSaved * 2.8 / 1000).toFixed(1);
+
+  document.getElementById('out').innerHTML = 'Annual Food Waste Cost: <b>₹' + Math.round(annualWaste).toLocaleString('en-IN') + '</b> &bull; Projected Winnow Savings: <b style="color:var(--a)">₹' + Math.round(annualSaved).toLocaleString('en-IN') + ' / year</b>';
+  document.getElementById('calcMeals').textContent = meals.toLocaleString('en-IN');
+  document.getElementById('calcCo2').textContent = co2Tons + ' Tons';
+}
+['kg','cost','pct'].forEach(function(i){
+  var el = document.getElementById(i);
+  if(el) el.oninput = calcFoodRoi;
+});
+calcFoodRoi();
+
+// --- Simulator 5: Scope 1-2-3 Carbon & ESG Audit ---
+function calcEsgCarbon(){
+  var rooms = +document.getElementById('esgRooms').value || 200;
+  var occ = (+document.getElementById('esgOcc').value || 75) / 100;
+  var ren = (+document.getElementById('esgRen').value || 45) / 100;
+  var div = (+document.getElementById('esgDiv').value || 60) / 100;
+
+  document.getElementById('esgRoomsVal').textContent = rooms;
+  document.getElementById('esgOccVal').textContent = Math.round(occ * 100);
+  document.getElementById('esgRenVal').textContent = Math.round(ren * 100);
+  document.getElementById('esgDivVal').textContent = Math.round(div * 100);
+
+  var scope1 = 4.8 * (1 - div * 0.25);
+  var scope2 = 14.2 * (1 - ren * 0.85);
+  var scope3 = 8.5 * (1 - div * 0.45);
+
+  var total = scope1 + scope2 + scope3;
+  document.getElementById('esgScope1').textContent = scope1.toFixed(1) + ' kg';
+  document.getElementById('esgScope2').textContent = scope2.toFixed(1) + ' kg';
+  document.getElementById('esgScope3').textContent = scope3.toFixed(1) + ' kg';
+  document.getElementById('esgTotal').textContent = total.toFixed(1) + ' kg';
+
+  var ratingBadge = document.getElementById('esgRatingBadge');
+  var meter = document.getElementById('esgMeter');
+  var verdict = document.getElementById('esgAuditVerdictTxt');
+
+  if(total <= 12.0){
+    ratingBadge.textContent = 'Rating: A+ (Net Zero Leader)';
+    ratingBadge.style.background = 'var(--a2)'; ratingBadge.style.color = 'var(--a)';
+    meter.className = 'i-meter-bar'; meter.style.width = '95%';
+    verdict.innerHTML = '✅ <b>Tier 1 Preferred Hotel Partner for Global Enterprise RFPs.</b> Carbon emissions are 60% below regional hospitality baseline benchmarks.';
+  } else if(total <= 18.0){
+    ratingBadge.textContent = 'Rating: A (Audited Compliant)';
+    ratingBadge.style.background = 'var(--a2)'; ratingBadge.style.color = 'var(--a)';
+    meter.className = 'i-meter-bar'; meter.style.width = '75%';
+    verdict.innerHTML = '✅ <b>Approved for Corporate RFP Contracts.</b> Satisfies corporate carbon footprint thresholds (<22 kg CO2e/room).';
+  } else if(total <= 24.0){
+    ratingBadge.textContent = 'Rating: B (Satisfactory)';
+    ratingBadge.style.background = 'var(--y2)'; ratingBadge.style.color = 'var(--y)';
+    meter.className = 'i-meter-bar warn'; meter.style.width = '55%';
+    verdict.innerHTML = '⚠️ <b>Marginal Compliance.</b> Hotel meets basic criteria but risks losing corporate contracts to higher-rated eco-properties.';
+  } else {
+    ratingBadge.textContent = 'Rating: C / Vulnerable';
+    ratingBadge.style.background = 'var(--r2)'; ratingBadge.style.color = 'var(--r)';
+    meter.className = 'i-meter-bar danger'; meter.style.width = '30%';
+    verdict.innerHTML = '❌ <b>Disqualified from Major Corporate RFPs.</b> Carbon intensity exceeds corporate sustainability thresholds (>24 kg CO2e/room). Microgrid or renewable energy deployment required.';
+  }
+}
+calcEsgCarbon();
+
+// --- Image Lightbox Modal ---
+function initLightbox(){
+  var imgs = document.querySelectorAll('.img-card img');
+  var modal = document.getElementById('lightboxModal');
+  var modalImg = document.getElementById('lightboxImg');
+  var modalCap = document.getElementById('lightboxCap');
+  if(!modal || !modalImg) return;
+
+  imgs.forEach(function(img){
+    img.onclick = function(){
+      var cap = img.parentElement.querySelector('.cap');
+      modalImg.src = img.src;
+      modalCap.innerHTML = cap ? cap.innerHTML : img.alt;
+      modal.classList.add('open');
+    };
+  });
+}
+function closeLightbox(e){
+  if(e && e.target && e.target.tagName === 'IMG') return;
+  var modal = document.getElementById('lightboxModal');
+  if(modal) modal.classList.remove('open');
+}
+window.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closeLightbox();
+});
+initLightbox();
+
+// --- Reading Progress Bar ---
+window.addEventListener('scroll', function(){
+  var h = document.documentElement, b = document.body;
+  var st = 'scrollTop', sh = 'scrollHeight';
+  var percent = (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
+  var bar = document.getElementById('readProgress');
+  if(bar) bar.style.width = Math.min(100, Math.max(0, percent)) + '%';
+});
+
+// --- Module Quiz ---
+var Q=[
+["What characterized Hospitality 3.0 in the industry's evolution?",["Basic lodging during early industrialization","Rise of Online Travel Agencies (OTAs) like Expedia and Booking.com","Deploying IoT thermal sensors in guest rooms"],1,"Hospitality 3.0 was defined by the rise of OTAs and digital discovery for consumers."],
+["What is the fundamental philosophy of Hospitality 5.0?",["Replace all human staff with autonomous service robots","Deploy technology to handle routine tasks while empowering humans to deliver warmth and care","Eliminate desks and force all guests to use mobile app interfaces"],1,"Hospitality 5.0 balances technological automation with human empathy and environmental sustainability."],
+["An AI NLP system flags an angry guest message and alerts the Duty Manager to intervene personally. This is an example of:",["Emotion-aware AI paired with human service recovery","Smart Grid load balancing","Circular economy waste management"],0,"Technology identifies the emotional trigger, but human intervention delivers the hospitality."],
+["Running heavy commercial laundry machines during off-peak hours when power rates are low utilizes:",["Smart grid demand response & load shifting","Greenwashing reporting","Food analytics algorithms"],0,"Smart grids communicate dynamic power pricing, enabling hotels to schedule heavy loads during off-peak hours."],
+["How does the Winnow AI system reduce food waste in hotel kitchens?",["It automatically cooks guest meals based on order history","It uses a scale, camera, and AI computer vision to track and cost discarded food","It automatically orders ingredients from local farms without chef input"],1,"Winnow weighs and identifies discarded food, providing analytics so chefs can optimize prep amounts."],
+["Recycling greywater from guest showers to irrigate hotel gardens is an application of:",["Circular economy & resource recovery","Predictive guest wellness","Scope 3 carbon offset purchasing"],0,"Circular economy principles keep resources like water in productive use as long as possible."],
+["In hotel ESG reporting, what does the 'G' represent?",["Green energy deployment","Governance (ethics, data privacy, compliance, transparent practices)","Global footprint management"],1,"ESG stands for Environmental, Social, and Governance."]];
+
+var qd=document.getElementById('quiz');
+Q.forEach(function(q,n){
+  var d=document.createElement('div');
+  d.className='q';
+  var p=document.createElement('p');
+  p.textContent=(n+1)+'. '+q[0];
+  d.appendChild(p);
+  var f=document.createElement('div');
+  f.className='fb';
+  q[1].forEach(function(o,k){
+    var b=document.createElement('button');
+    b.textContent=o;
+    b.onclick=function(){
+      d.querySelectorAll('button').forEach(function(x){x.className=''});
+      b.className=(k===q[2])?'ok':'no';
+      f.style.display='block';
+      f.textContent=(k===q[2]?'Correct! ':'Incorrect. ')+q[3];
+    };
+    d.appendChild(b);
+  });
+  d.appendChild(f);
+  qd.appendChild(d);
+});
+try {
+  localStorage.setItem('lastModNum', 4);
+  localStorage.setItem('lastModName', 'Module 4: Hospitality 5.0 & Sustainable Tech');
+  localStorage.setItem('lastModUrl', 'Unit 4 Hospitality 5.0 & Sustainable Technologies.html');
+} catch(e){}
+</script>
+</body>
+</html>

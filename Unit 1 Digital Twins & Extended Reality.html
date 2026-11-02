@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Digital Twins & Extended Reality – Student Notes</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#f7f6f2;--card:#fff;--tx:#1d2330;--mu:#5b6475;--bd:#e2e0d8;--a:#2f6fed}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14171f;--card:#1d222d;--tx:#eceff5;--mu:#9aa3b5;--bd:#303747}}
+:root[data-theme="dark"]{--bg:#14171f;--card:#1d222d;--tx:#eceff5;--mu:#9aa3b5;--bd:#303747}
+html{scroll-padding-top:60px;height:auto}
+*,*:before,*:after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{padding:28px 18px 10px;max-width:900px;margin:auto}
+h1{font-size:1.7rem;margin:0 0 4px}h2{font-size:1.35rem;margin:34px 0 4px}
+.sub{color:var(--mu);margin:0}
+nav{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);border-bottom:1px solid var(--bd);z-index:5;display:flex;gap:6px;overflow-x:auto;padding:8px 18px}
+nav a{white-space:nowrap;text-decoration:none;color:var(--tx);border:1px solid var(--bd);background:var(--card);padding:5px 12px;border-radius:99px;font-size:.88rem}
+main{max-width:900px;margin:auto;padding:0 18px 60px}
+.box{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;margin:14px 0}
+.box h3{margin:0 0 8px;font-size:1.05rem}
+details{background:var(--card);border:1px solid var(--bd);border-left:5px solid var(--col,var(--a));border-radius:12px;margin:10px 0}
+summary{cursor:pointer;padding:13px 16px;font-weight:650;list-style:none;display:flex;justify-content:space-between;gap:8px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"＋";color:var(--mu)}details[open] summary:after{content:"−"}
+.in{padding:0 16px 14px}
+.badge{font-size:.72rem;font-weight:600;color:#fff;background:var(--col,var(--a));padding:2px 9px;border-radius:99px;margin-left:auto}
+ul{margin:6px 0;padding-left:20px}li{margin:3px 0}
+.ex,.rm{border-radius:10px;padding:9px 12px;margin:8px 0;font-size:.95rem}
+.ex{background:color-mix(in srgb,var(--col,var(--a)) 12%,transparent)}
+.rm{border:1px dashed var(--col,var(--a))}
+.bar{display:flex;align-items:center;gap:8px;margin:7px 0;font-size:.9rem}
+.bar span:first-child{width:135px;flex:none}
+.bar i{display:block;height:20px;border-radius:6px;width:0;background:var(--c1,var(--a));transition:width 1s}
+.bar b{font-weight:600;font-size:.8rem;color:var(--mu)}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:10px 0}
+.flow div{background:var(--card);border:2px solid var(--col,var(--a));border-radius:10px;padding:7px 10px;font-size:.85rem;text-align:center}
+.flow em{color:var(--mu);font-style:normal}
+.spec{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-radius:12px;overflow:hidden;margin:10px 0;color:#fff;font-size:.8rem;text-align:center}
+.spec div{padding:12px 6px}
+.slide{display:grid;grid-template-columns:130px 1fr 36px;gap:8px;align-items:center;font-size:.88rem;margin:4px 0}
+input[type=range]{width:100%}
+.res{font-size:1.05rem;font-weight:700;margin-top:8px}
+.q button{display:block;width:100%;text-align:left;margin:5px 0;padding:9px 12px;border-radius:9px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font:inherit;cursor:pointer}
+.q button.ok{background:#12a37f33;border-color:#12a37f}.q button.no{background:#d6495f33;border-color:#d6495f}
+svg{max-width:100%;height:auto;display:block;margin:auto}svg text{fill:var(--tx);font-family:inherit}
+.note{font-size:.8rem;color:var(--mu)}
+table{border-collapse:collapse;width:100%;font-size:.86rem}th,td{border:1px solid var(--bd);padding:6px 8px;text-align:left;vertical-align:top}th{background:var(--bg)}
+.tw{overflow-x:auto}
+</style></head><body>
+<header><h1>🏨 Digital Twins & Extended Reality</h1>
+<p class="sub">Module 1 · AI in Hospitality · Student Notes · Tap any card to open it 👆</p></header>
+<nav><a href="index.html" style="font-weight:700;color:var(--a);background:color-mix(in srgb,var(--a) 12%,transparent)">🏠 Portal</a><a href="#s0">Big Picture</a><a href="#s1">Digital Twins</a><a href="#s2">XR</a><a href="#s3">Applications</a><a href="#s4">Compare</a><a href="#s5">Quiz</a></nav>
+<main>
+
+<h2 id="s0">1. The Big Picture</h2>
+<div class="box"><h3>Two ideas, one goal</h3>
+<ul><li><b>Digital Twin</b> = a live <b>virtual copy</b> of a real hotel, room or process. We test ideas on the copy, not on real guests.</li>
+<li><b>Extended Reality (XR)</b> = the family name for <b>VR, AR and MR</b>. It lets us see and experience digital things as if they were real.</li>
+<li><b>Together:</b> the twin holds the data, XR lets people walk inside it and see it.</li>
+<li><b>Goal:</b> save money, avoid mistakes, train faster, and sell better.</li></ul></div>
+
+<h2 id="s1">2. Digital Twins</h2>
+<div class="box"><h3>🔄 How a Digital Twin works</h3>
+<div class="flow" style="--col:#2f6fed"><div>🏨 Real hotel</div><em>➜</em><div>📡 Sensors collect data</div><em>➜</em><div>💻 Digital twin updates live</div><em>➜</em><div>📊 Test & analyse</div><em>➜</em><div>✅ Better decisions</div><em>↺</em></div>
+<p class="note">The loop never stops: the real hotel keeps feeding the twin, and the twin keeps advising the hotel.</p></div>
+<div id="dt"></div>
+
+<div class="box"><h3>🧪 Try it: Guest Flow Simulation (Front Desk)</h3>
+<p>Imagine guests arriving for check-in at peak time. Change the numbers and see the queue. This is what a digital twin does <b>before</b> you change the real lobby.</p>
+<div class="slide"><span>👥 Guests/hour</span><input type="range" min="10" max="120" value="60" step="5" id="g"><b id="gv"></b></div>
+<div class="slide"><span>🛎️ Counters open</span><input type="range" min="1" max="6" value="3" id="c"><b id="cv"></b></div>
+<div class="slide"><span>⏱️ Guests/counter/hr</span><input type="range" min="10" max="30" value="20" step="2" id="s"><b id="sv"></b></div>
+<div class="bar"><span>Counter busy</span><i id="ub" style="width:0"></i><b id="ut"></b></div>
+<div class="bar"><span>Avg. wait</span><i id="wb" style="width:0"></i><b id="wt"></b></div>
+<div class="res" id="out"></div>
+<p class="note">Simple teaching model, not an exact calculation. Real twins use live data from cameras, key-card systems and PMS.</p></div>
+
+<h2 id="s2">3. Extended Reality (XR)</h2>
+<div class="box"><h3>🌗 The reality spectrum</h3>
+<div class="spec"><div style="background:#5b6475">🌍 Real world<br>No digital</div><div style="background:#2f6fed">📱 AR<br>Digital added on real</div><div style="background:#7a57d1">🕶️ MR<br>Digital & real interact</div><div style="background:#d6495f">🥽 VR<br>100% virtual</div></div>
+<p class="note">XR = VR + AR + MR together. Moving right, you see less of the real world and more of the digital one.</p></div>
+<div id="xr"></div>
+<div class="box tw"><h3>VR vs AR vs MR at a glance</h3>
+<table><tr><th></th><th>VR</th><th>AR</th><th>MR</th></tr>
+<tr><td>Real world visible?</td><td>❌ No</td><td>✅ Yes</td><td>✅ Yes</td></tr>
+<tr><td>Device</td><td>Headset (Meta Quest)</td><td>Phone / tablet</td><td>Smart glasses (HoloLens)</td></tr>
+<tr><td>Interaction</td><td>Inside virtual world</td><td>Overlay on screen</td><td>Touch virtual objects in real room</td></tr>
+<tr><td>Hotel example</td><td>Virtual room tour</td><td>Scan menu to see 3D dish</td><td>Design lobby with virtual furniture</td></tr></table></div>
+
+<h2 id="s3">4. Applications</h2>
+<div id="ap"></div>
+<div class="box"><h3>📊 Why hotels use it (illustrative impact)</h3>
+<div class="bar"><span>Faster staff training</span><i data-w="70" style="--c1:#12a37f"></i><b>70%</b></div>
+<div class="bar"><span>Less site-visit travel</span><i data-w="60" style="--c1:#2f6fed"></i><b>60%</b></div>
+<div class="bar"><span>More sales enquiries</span><i data-w="45" style="--c1:#e8912d"></i><b>45%</b></div>
+<div class="bar"><span>Fewer layout mistakes</span><i data-w="55" style="--c1:#7a57d1"></i><b>55%</b></div>
+<p class="note">Example numbers for comparison only, not official statistics.</p></div>
+
+<h2 id="s4">5. Compare Everything</h2>
+<div class="box tw"><table><tr><th>Topic</th><th>Simple meaning</th><th>Hotel example</th></tr>
+<tr><td>Digital Twin</td><td>Live virtual copy</td><td>Test a new lobby layout</td></tr>
+<tr><td>Operational Simulation</td><td>"What if" testing</td><td>What if 200 guests arrive at once?</td></tr>
+<tr><td>VR</td><td>Fully virtual</td><td>Tour a suite from another city</td></tr>
+<tr><td>AR</td><td>Digital on real</td><td>Phone shows room-service menu in 3D</td></tr>
+<tr><td>MR</td><td>Mix & interact</td><td>Staff practise with a virtual guest in the real lobby</td></tr>
+<tr><td>Destination Marketing</td><td>Sell the place, not just the room</td><td>VR beach tour before booking</td></tr></table></div>
+
+<h2 id="s5">6. Test Yourself 🎯</h2>
+<div class="box q" id="quiz"></div>
+<div class="box"><h3>✅ 5-Point Revision</h3><ul>
+<li>Digital Twin = live virtual copy that is fed real data.</li>
+<li>Simulation lets you test "what if" without risking real guests.</li>
+<li>VR = fully virtual, AR = digital over real, MR = both interact.</li>
+<li>Apps: sales demos, virtual site inspections, safe staff training.</li>
+<li>Destination marketing uses XR to make travellers feel the place before they travel.</li></ul></div>
+</main>
+<script>
+const T=[
+{id:'dt',col:'#2f6fed',items:[
+['Digital Twins in Hospitality','Concept','A digital twin is a <b>virtual model that mirrors the real hotel</b> and updates as the real one changes.',['Built from sensors, bookings and CCTV data','Mirrors rooms, energy, crowds, equipment','Shows what is happening <b>right now</b>','Can predict what will happen next'],'A twin shows which lifts are overloaded at checkout time and which rooms use too much electricity.','Singapore built a full digital twin of the whole city to plan traffic and buildings.','Twin = same hotel, but on screen.'],
+['Virtual Hotel Replicas','3D copy','A <b>3D virtual copy</b> of the property (rooms, lobby, restaurants) that you can explore on a screen or headset.',['Made from floor plans, photos or 3D scans','Guests or clients can walk through','Useful before the hotel is even built','Easy to change colours, furniture, layout'],'A new resort shows a virtual suite to wedding planners 6 months before opening.','Matterport 3D tours on hotel and real estate websites.','Replica = a copy you can walk inside.'],
+['Operational Simulation','Test "what if"','Running <b>virtual experiments</b> on the twin to see results without disturbing real operations.',['Test staff numbers, schedules, layouts','See results in minutes, not months','No cost, no risk to guests','Compare Plan A vs Plan B'],'Simulate a 300-guest group arriving at 2 PM. How many front desk staff are needed?','Airports simulate passenger rush before festivals.','Simulation = practise run for the hotel.'],
+['Guest Flow Optimization','Smooth movement','Using twin data to <b>reduce queues and crowding</b> as guests move through the hotel.',['Track busy places: lobby, lift, buffet','Find bottlenecks (where guests wait)','Move staff or add counters at the right time','Happier guests, less stress for staff'],'Breakfast buffet is crowded 8–9 AM. The twin suggests a second food station and timed table slots.','Theme parks use live crowd data to open extra gates.','Flow = guests moving without jams.']]},
+{id:'xr',col:'#7a57d1',items:[
+['Virtual Reality (VR)','Fully virtual','Headset blocks the real world and puts you <b>inside a fully digital world</b>.',['Needs headset + controllers','Feels like "being there"','Good for tours and safe practice','Real world is not visible'],'A guest in Delhi tours a Goa beach villa in VR before booking.','Meta Quest games, flight simulators for pilots.','VR = Very Real but Virtual.'],
+['Augmented Reality (AR)','Digital on real','Adds <b>digital objects on top of the real world</b> through a phone, tablet or glasses.',['No heavy headset needed','Works with your phone camera','Real world stays visible','Easiest and cheapest XR'],'Point your phone at the menu and see the dish in 3D on your table.','Pokémon GO, IKEA Place app, Snapchat filters.','AR = Adds to Reality.'],
+['Mixed Reality (MR)','Digital + real interact','Digital objects <b>sit in the real room and react to it and to you</b>.',['Uses smart glasses or headsets with cameras','You can touch and move virtual objects','Virtual things respect real walls and tables','Most advanced XR'],'Interior designer places a virtual sofa in the actual suite and walks around it to check space.','Microsoft HoloLens, Apple Vision Pro.','MR = Mixes and reacts.']]},
+{id:'ap',col:'#e8912d',items:[
+['Hotel Sales','Sell by showing','Sales teams use <b>VR, AR and 3D replicas</b> to show the property to clients who cannot visit.',['Virtual tours of rooms, ballrooms, restaurants','Show event set-ups (wedding, conference) in 3D','Clients decide faster, fewer visits needed','Sales team looks modern and professional'],'A corporate client chooses a banquet hall layout by viewing it in VR on a video call.','Marriott and Hilton use virtual tours for events.','Show, don\'t tell.'],
+['Virtual Site Inspections','Inspect from anywhere','Planners, owners and inspectors <b>check the property remotely</b> using the virtual replica.',['No travel cost or time','Check rooms, exits, kitchens, rooftops','Compare before and after renovation','Safe for risky areas'],'A head office in Mumbai approves a renovation by walking through the 3D replica of the Hyderabad hotel.','Construction firms use drone scans and 3D models.','Inspect without travel.'],
+['Staff Training','Practise safely','Staff learn using <b>realistic simulations</b> where mistakes cost nothing.',['Practise angry guest, fire drill, VIP check-in','Repeat as many times as needed','Learn faster and remember better','Same quality training for every staff member'],'A trainee front desk agent handles a virtual overbooking complaint in VR and gets feedback.','Walmart and airlines train staff in VR.','Practice without pressure.'],
+['Destination Marketing','Sell the place','Tourism boards and hotels use XR to <b>make travellers feel a destination</b> before they book.',['360° videos of beaches, forts, food streets','AR city guides show history on monuments','VR tourism "try before you travel"','Reaches faraway travellers, builds excitement'],'A hotel offers a VR tour of Charminar and Hyderabadi food streets on its website.','Dubai and Switzerland tourism VR campaigns.','Feel it, then book it.']]}];
+T.forEach(g=>{const el=document.getElementById(g.id);g.items.forEach(i=>{const d=document.createElement('details');d.style.setProperty('--col',g.col);
+d.innerHTML=`<summary>${i[0]}<span class="badge">${i[1]}</span></summary><div class="in"><p>${i[2]}</p><ul>${i[3].map(x=>`<li>${x}</li>`).join('')}</ul><div class="ex">🏨 <b>Hotel example:</b> ${i[4]}</div><div class="ex">🌍 <b>Real world:</b> ${i[5]}</div><div class="rm">💡 <b>Memory trick:</b> ${i[6]}</div></div>`;el.appendChild(d)})});
+const $=x=>document.getElementById(x);
+function sim(){const g=+$('g').value,c=+$('c').value,s=+$('s').value;$('gv').textContent=g;$('cv').textContent=c;$('sv').textContent=s;
+const u=g/(c*s);$('ub').style.width=Math.min(u,1)*100+'%';$('ub').style.setProperty('--c1',u>.9?'#d6495f':u>.7?'#e8912d':'#12a37f');$('ut').textContent=Math.round(u*100)+'%';
+let w,msg;if(u>=1){w=60;msg='🚨 Queue keeps growing! Open more counters or speed up check-in.'}else{w=Math.min(60,(u/(1-u))/s*60/ c*c);msg=w<5?'😊 Smooth flow. Guests barely wait.':w<15?'😐 Some waiting. Watch at peak hour.':'😟 Long waits. Add a counter or use mobile check-in.'}
+$('wb').style.width=Math.min(w/60,1)*100+'%';$('wb').style.setProperty('--c1',w<5?'#12a37f':w<15?'#e8912d':'#d6495f');$('wt').textContent=u>=1?'60+ min':w.toFixed(1)+' min';$('out').textContent=msg}
+['g','c','s'].forEach(i=>$(i).oninput=sim);sim();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.style.width=e.target.dataset.w+'%'}));document.querySelectorAll('i[data-w]').forEach(i=>io.observe(i));
+const Q=[['A live virtual copy of a real hotel is a…',['Digital Twin','Chatbot','Robot'],0],['Testing "what if 300 guests arrive?" on the twin is…',['Operational simulation','Destination marketing','AR'],0],['Which XR type blocks the real world completely?',['AR','VR','MR'],1],['Phone shows a 3D dish on your table. This is…',['VR','MR','AR'],2],['Virtual sofa you can walk around in the real suite is…',['MR','VR','Digital twin only'],0],['A head office checking a hotel from another city is…',['Virtual site inspection','Staff training','Guest flow'],0],['A VR tour of a beach before booking is…',['Destination marketing','Operational simulation','Digital twin'],0]];
+const qz=$('quiz');let sc=0,an=0;const res=document.createElement('div');res.className='res';
+Q.forEach((q,n)=>{const d=document.createElement('div');d.innerHTML=`<p><b>${n+1}. ${q[0]}</b></p>`;q[1].forEach((o,i)=>{const b=document.createElement('button');b.textContent=o;b.onclick=()=>{if(d.dataset.done)return;d.dataset.done=1;an++;if(i==q[2]){b.className='ok';sc++}else{b.className='no';d.querySelectorAll('button')[q[2]].className='ok'}res.textContent=`Score: ${sc}/${Q.length}${an==Q.length?(sc>=6?' 🏆 Excellent!':' 👍 Revise and try again'):''}`};d.appendChild(b)});qz.appendChild(d)});qz.appendChild(res);
+try{localStorage.setItem('lastModNum',1);localStorage.setItem('lastModName','Module 1: Digital Twins & XR');localStorage.setItem('lastModUrl','Unit 1 Digital Twins & Extended Reality.html');}catch(e){}
+</script></body></html>

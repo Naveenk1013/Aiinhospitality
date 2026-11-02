@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Service Robotics and Automation</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+:root{--bg:#F2F6F8;--card:#fff;--ink:#12263A;--mut:#53677A;--line:#D5DEE5;--teal:#0F8B8D;--brass:#B8821F;--coral:#D9482B;--tint:#E3F1F1;--ok:#1E8E4E;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1A26;--card:#162636;--ink:#E8EEF3;--mut:#9FB1C1;--line:#2B3F52;--teal:#3FC1C3;--brass:#E0AE55;--coral:#FF7A5C;--tint:#18363F;--ok:#4CC27F}}
+:root[data-theme="dark"]{--bg:#0E1A26;--card:#162636;--ink:#E8EEF3;--mut:#9FB1C1;--line:#2B3F52;--teal:#3FC1C3;--brass:#E0AE55;--coral:#FF7A5C;--tint:#18363F;--ok:#4CC27F}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Source Sans 3",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Trebuchet MS",sans-serif;line-height:1.15;margin:0 0 .5em}
+h1{font-size:2.1rem;font-weight:800}h2{font-size:1.45rem}h3{font-size:1.1rem}
+header{padding:28px 20px 12px;max-width:980px;margin:0 auto}header p{color:var(--mut);margin:0;max-width:64ch}
+nav{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5;border-bottom:1px solid var(--line)}
+nav div{max-width:980px;margin:0 auto;display:flex;gap:6px;padding:8px 20px;overflow-x:auto}
+button{font:inherit;color:inherit;cursor:pointer}
+.tab{border:1px solid var(--line);background:var(--card);padding:8px 14px;border-radius:20px;white-space:nowrap}
+.tab[aria-selected=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+button:focus-visible,input:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+main{max-width:980px;margin:0 auto;padding:20px}section{display:none}section.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:0 0 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}.grid .card{margin:0}
+ul{margin:.3em 0 .6em;padding-left:1.2em}li{margin:.25em 0}
+.hint{color:var(--mut);font-size:.92rem}
+.ex{border-left:4px solid var(--brass);padding:6px 12px;background:var(--tint);border-radius:0 6px 6px 0;margin:10px 0}
+svg{max-width:100%;height:auto;display:block}svg text{fill:var(--ink);font-family:inherit}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{border:1px solid var(--line);background:var(--card);padding:6px 12px;border-radius:8px}
+.chip[aria-pressed=true],.chip.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+.chip.go{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.q button.o{display:block;width:100%;text-align:left;border:1px solid var(--line);background:var(--card);padding:10px;border-radius:8px;margin:6px 0}
+.o.right{border-color:var(--ok);background:rgba(30,142,78,.15)}.o.wrong{border-color:var(--coral);background:rgba(217,72,43,.12)}
+.bar{height:18px;background:var(--line);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--teal);width:0}
+.say{background:var(--tint);border-radius:12px 12px 12px 2px;padding:10px 14px;margin:8px 0}
+.lg{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:6px}.lg li{border:1px solid var(--line);border-radius:8px;padding:6px 10px;background:var(--card);color:var(--mut);font-size:.95rem}.lg li.on{border-color:var(--teal);background:var(--tint);color:var(--ink);font-weight:600}.lg li.ok{color:var(--ink)}.lg li.ok::before{content:"\2713 ";color:var(--ok)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head><body>
+<header>
+<div style="margin-bottom:10px;font-size:.88rem"><a href="index.html" style="text-decoration:none;color:var(--teal);font-weight:700">← Course Portal</a> &bull; <span style="color:var(--mut)">IIHM SEM 5 &bull; AI in Hospitality</span></div>
+<h1>Service Robotics and Automation by Naveen Kumar</h1>
+<p>AI in Hospitality, Module 2. Tap, slide and play with each idea. Every robot is explained by the job it does for a guest or a team.</p></header>
+<nav><div role="tablist" id="tabs"></div></nav>
+<main>
+
+<section id="s0">
+<div class="card"><h2>What is a service robot?</h2>
+<ul><li>A machine that does <b>useful work for people</b> (not factory work), often near guests.</li>
+<li>It <b>senses</b> (cameras, sensors), <b>thinks</b> (AI, maps) and <b>acts</b> (moves, speaks, carries).</li>
+<li><b>Automation</b> is the wider idea: any system that does a task with little human effort, with or without a robot (self check-in kiosk, conveyor).</li>
+<li>Goal in hospitality: take over <b>repetitive, physical or dangerous</b> tasks so staff can spend time on warm, human service.</li></ul>
+<div class="ex"><b>Real example:</b> Henn na Hotel in Japan opened with robot staff at the front desk. Reports say it later scaled back some robots, because guests still needed human help for tricky requests. Lesson: robots work best when planned around real guest needs.</div></div>
+<div class="card"><h2>Where do robots fit?</h2>
+<svg viewBox="0 0 600 190" role="img" aria-label="Spectrum from routine tasks suited to robots to human-touch tasks suited to people"><defs><linearGradient id="g"><stop offset="0" stop-color="var(--teal)"/><stop offset="1" stop-color="var(--coral)"/></linearGradient></defs>
+<rect x="30" y="85" width="540" height="14" rx="7" fill="url(#g)"/><g id="spec"></g>
+<text x="30" y="182" font-size="13" font-weight="700">Routine, physical, repeatable</text><text x="570" y="182" font-size="13" font-weight="700" text-anchor="end">Emotional, complex, personal</text></svg>
+<p class="hint">Positions are illustrative teaching guides, not measurements.</p></div>
+<div class="grid"><div class="card"><h3>Benefits</h3><ul><li>Works 24/7 without tiredness</li><li>Consistent quality and speed</li><li>Contactless, hygienic service</li><li>Frees staff for guest relationships</li></ul></div>
+<div class="card"><h3>Challenges</h3><ul><li>High purchase and maintenance cost</li><li>Cannot handle unusual situations well</li><li>Guests may find it impersonal</li><li>Privacy, safety and job-impact concerns</li></ul></div></div>
+<div class="card" style="margin-top:16px"><h2>Activity: robot, human or together?</h2><div id="act"></div></div>
+</section>
+
+<section id="s1">
+<div class="card"><h2>Robots at the front office</h2>
+<ul><li><b>Reception robots</b> handle routine check-in and check-out: greet, scan ID, confirm the booking, take payment and issue a key.</li>
+<li><b>Concierge robots</b> answer common guest questions about the hotel and the city, in several languages, any time of day.</li>
+<li>Both connect to the hotel's <b>PMS</b> (property management system) and use <b>NLP</b> to understand speech.</li>
+<li>Goal: remove repetitive questions and paperwork so staff can handle special requests and personal service.</li></ul></div>
+
+<div class="grid">
+<div class="card"><h2>Reception robot: the dinosaur receptionists</h2>
+<ul><li><b>Where:</b> Henn na Hotel at Huis Ten Bosch, Nagasaki, Japan. Opened in 2015 and recognised by Guinness as the world's first robot-staffed hotel.</li>
+<li><b>What they looked like:</b> talking robot dinosaurs (velociraptors) plus a humanoid receptionist, speaking Japanese, English, Korean and Chinese.</li>
+<li><b>How check-in worked:</b> guests used a touch panel and the robot guided them through.</li>
+<li><b>What went wrong:</b> the dinosaurs could not copy passports, so a human had to step in. Reports said the robots created more work for staff. The hotel cut its robots from 243 to about 85 by January 2019.</li></ul></div>
+<div class="card"><h2>Concierge robot: Connie</h2>
+<ul><li><b>Where:</b> a pilot at the Hilton McLean in Virginia, USA, announced in March 2016.</li>
+<li><b>Who built it:</b> a NAO humanoid robot (Aldebaran), about 58 cm (23 in) tall, with IBM Watson speech and language services and WayBlazer travel knowledge. Named after Conrad Hilton.</li>
+<li><b>What it does:</b> answers questions about hotel services, restaurants and attractions. It cannot check guests in.</li>
+<li><b>Smart part:</b> it learns from guest conversations to improve its recommendations. IBM said it was meant to help concierges, not replace them.</li></ul></div></div>
+
+<div class="card" style="margin-top:16px"><h2>Try it: ask the concierge robot</h2><div class="row" id="cq"></div><div id="ca" class="say">Pick a question.</div>
+<p class="hint">Real robots understand free speech with NLP; this demo uses fixed answers.</p></div>
+
+<div class="card"><h2>Try it in 3D: a hotel lobby</h2>
+<p class="hint">Choose the robot the guest visits. For reception, turn on "ID will not scan" to see why a human must always be ready to help. The robots are drawn from simple shapes; Connie is enlarged so you can see it.</p>
+<div class="row" id="fmd"><span class="hint" style="align-self:center">Robot:</span><button class="chip on" data-m="rec">Reception robot</button><button class="chip" data-m="con">Concierge robot</button></div>
+<div class="row" id="fxr"><span class="hint" style="align-self:center">Option:</span><button class="chip" id="fxc" aria-pressed="false">ID will not scan</button></div>
+<div class="row" id="fq" style="display:none"><span class="hint" style="align-self:center">Guest asks:</span></div>
+<div id="f3d" style="position:relative;height:420px;border-radius:8px;overflow:hidden;background:linear-gradient(var(--tint),var(--line));touch-action:none"></div>
+<p class="say" id="fst" aria-live="polite">Press start.</p><ol class="lg" id="flg"></ol>
+<div class="row"><button class="chip go" id="fgo">Start</button><button class="chip" id="frs">Reset</button></div>
+<div class="row" id="fvw"><span class="hint" style="align-self:center">View:</span><button class="chip on" data-v="orbit">Orbit</button><button class="chip" data-v="top">Top</button><button class="chip" data-v="follow">Follow the guest</button><button class="chip" data-v="eye">Guest's eye</button></div>
+<div class="row" id="fsp"><span class="hint" style="align-self:center">Speed:</span><button class="chip on" data-s="1">1x</button><button class="chip" data-s="2">2x</button><button class="chip" data-s="3">3x</button></div>
+<h3>Where did the time go?</h3><svg viewBox="0 0 600 180" id="fch" role="img" aria-label="Bar chart of time per stage"></svg>
+<p class="hint" id="fcm">Run reception with and without the ID problem to compare.</p>
+<p class="hint">Times are simulated seconds for teaching, not real hotel data.</p></div>
+
+<div class="card"><h2>What the real hotels teach us</h2>
+<ul><li><b>Robots are good at:</b> repeatable questions, multiple languages, waiting at the desk at any hour, and drawing guest attention.</li>
+<li><b>Robots are weak at:</b> unusual requests, paperwork like copying passports, noisy lobbies, and showing empathy.</li>
+<li><b>Best practice:</b> a robot front line with a trained human always close by, and clear rules for when the robot hands over.</li>
+<li><b>Guest feedback at Henn na:</b> reviewers called it gimmicky and said it needed more human warmth. Technology works when it supports hospitality, not when it replaces it.</li></ul>
+<p class="hint">Sources: Matador Network, NPR, The Points Guy, Blooloop, Time, Computerworld, InformationWeek, The Robot Report. These are media reports, not independent tests.</p></div>
+</section>
+
+<section id="s2">
+<div class="grid">
+<div class="card"><h2>Cleaning robots</h2><ul><li><b>Vacuum and mopping:</b> map the floor and clean in lines.</li><li><b>UV disinfection:</b> light that kills germs in empty rooms.</li><li><b>Window and pool cleaners</b> for hard-to-reach areas.</li><li>Sensors avoid furniture and drops (stairs).</li></ul></div>
+<div class="card"><h2>Linen delivery robots</h2><ul><li>Carry towels, linen and amenities between laundry and floors.</li><li>Ride the lift by connecting to it over Wi-Fi.</li><li>Locked compartment opens for the right room or staff member.</li><li>Great for night deliveries.</li></ul><div class="ex">Example: Relay (see the 3D delivery below).</div></div></div>
+<div class="card" style="margin-top:16px"><h2>Meet Whiz, the carpet-cleaning robot</h2>
+<ul><li><b>Name:</b> Whiz, an autonomous commercial vacuum made by SoftBank Robotics.</li>
+<li><b>Job:</b> vacuums carpets in corridors, lobbies and event spaces, so housekeepers can do detailed work like dusting, linen changes and bathrooms.</li>
+<li><b>How it learns:</b> a staff member drives it once along the route (teach), then it repeats that route on its own and steers around obstacles.</li>
+<li><b>Memory and range:</b> the distributor reports it can store up to 600 routes and vacuum about 16,000 sq ft on one charge.</li>
+<li><b>Smart reporting:</b> cloud software (Whiz Connect, on the BrainOS platform) shows how often it ran and how much floor it covered.</li></ul>
+<h3>How Whiz works, step by step</h3><div id="st5"></div></div>
+
+<div class="card"><h2>Watch Whiz clean a hotel lounge in 3D</h2>
+<p class="hint">Drag to rotate the view. Tap the floor to drop a suitcase in Whiz's way, and tap it again to remove it. The model is a stylised look-alike, not an exact copy.</p>
+<div id="c3d" style="position:relative;height:380px;border-radius:8px;overflow:hidden;background:linear-gradient(var(--tint),var(--line));touch-action:none"></div>
+<div class="bar" aria-hidden="true" style="margin-top:10px"><i id="cov"></i></div>
+<p aria-live="polite"><b id="covt">0%</b> of the floor cleaned. <span id="cst">Press start.</span></p>
+<div class="row"><button class="chip go" id="cgo">Start cleaning</button><button class="chip" id="crs">Reset</button><button class="chip" id="csn" aria-pressed="false">Show sensors</button></div>
+<div class="row" id="cvw"><span class="hint" style="align-self:center">View:</span><button class="chip on" data-v="orbit">Orbit</button><button class="chip" data-v="top">Top</button><button class="chip" data-v="follow">Follow Whiz</button></div>
+<div class="row" id="csp"><span class="hint" style="align-self:center">Speed:</span><button class="chip" data-s="1">Slow</button><button class="chip on" data-s="1.8">Normal</button><button class="chip" data-s="3.2">Fast</button></div></div>
+
+<div class="card"><h2>Where is Whiz used in real hotels?</h2>
+<div class="grid">
+<div class="card"><h3>Sheraton Heathrow, London, UK</h3><ul><li>A 4-star hotel with long corridors (about 1.6 km to clean).</li><li>Chosen because it is quiet enough for daytime cleaning while guests sleep.</li><li>Management reported less dust in corridors and used Whiz's reports to see how much area it covered.</li></ul></div>
+<div class="card"><h3>Pullman Paris Montparnasse, France</h3><ul><li>Flagship 4-star hotel using Whiz for corridors and event spaces.</li><li>The hotel reported 855 hours of use and 268,000 square metres vacuumed.</li><li>Staff time moved to guest-focused tasks.</li></ul></div>
+<div class="card"><h3>Hilton Garden Inn, Gilroy, California, USA</h3><ul><li>Whiz took over 10+ hours a week of repetitive vacuuming.</li><li>The GM reported guest cleanliness scores rising from 82 to 90 percent.</li></ul>
+<svg viewBox="0 0 260 110" role="img" aria-label="Bar chart: guest cleanliness score 82 before Whiz and 90 after"><line x1="20" y1="90" x2="250" y2="90" stroke="var(--mut)"/><rect x="50" y="20" width="60" height="70" fill="var(--mut)" rx="3"/><rect x="150" y="12" width="60" height="78" fill="var(--teal)" rx="3"/><text x="80" y="15" text-anchor="middle" font-size="13" font-weight="700">82</text><text x="180" y="7" text-anchor="middle" font-size="13" font-weight="700">90</text><text x="80" y="104" text-anchor="middle" font-size="12">Before</text><text x="180" y="104" text-anchor="middle" font-size="12">With Whiz</text></svg></div></div>
+<p class="hint">Also reported: Garden City Hotel, Long Island, New York. Figures come from the hotels, SoftBank Robotics and RobotLAB, so they are vendor-reported results, not independent studies.</p></div>
+<div class="card"><h2>Meet Relay, the room-delivery robot</h2>
+<ul><li><b>Name:</b> Relay, built by Savioke (the company is now called Relay Robotics). Hotels often give their own robot a nickname, such as Botlr.</li>
+<li><b>Size:</b> about 92 cm (3 ft) tall, roughly 45 kg (100 lb), with a lockable compartment under a lid.</li>
+<li><b>Job:</b> carries towels, linen, toiletries and snacks to guest rooms so staff do not have to leave their posts.</li>
+<li><b>How it finds its way:</b> a map of the hotel, Wi-Fi, 3D cameras and sensors to avoid people and obstacles.</li>
+<li><b>Lift trick:</b> it calls and rides the lift on its own using wireless communication.</li>
+<li><b>Guest handover:</b> it calls the room phone, and the lid opens only when the guest opens the door. Then it asks for a star rating and heads back to base.</li></ul>
+<div class="ex"><b>Real lesson:</b> one hotel reported a guest dropping used, wet towels into the robot's compartment. Nobody had designed for that. Good service robots are tested around real guest behaviour.</div></div>
+
+<div class="card"><h2>Follow a delivery from laundry to Room 304 in 3D</h2>
+<p class="hint">Choose a room and items, then press start. Drag to rotate. Try "Robot's eye" to see the hotel as Relay sees it. In real hotels Relay is usually loaded at the front desk; this demo starts at the laundry so you can see the whole linen journey.</p>
+<div class="row" id="lrm"><span class="hint" style="align-self:center">Room:</span></div>
+<div class="row" id="lit"><span class="hint" style="align-self:center">Items:</span></div>
+<div class="row"><button class="chip" id="lcart" aria-pressed="false">Put a housekeeping cart in the corridor</button></div>
+<div id="l3d" style="position:relative;height:420px;border-radius:8px;overflow:hidden;background:linear-gradient(var(--tint),var(--line));touch-action:none"></div>
+<p class="say" id="lst" aria-live="polite">Press start to send the request.</p>
+<ol class="lg" id="llg"></ol>
+<div class="row"><button class="chip go" id="lgo">Start delivery</button><button class="chip" id="lrs">Reset</button></div>
+<div class="row" id="lvw"><span class="hint" style="align-self:center">View:</span><button class="chip on" data-v="orbit">Orbit</button><button class="chip" data-v="top">Top</button><button class="chip" data-v="follow">Follow Relay</button><button class="chip" data-v="robot">Robot's eye</button></div>
+<div class="row" id="lsp"><span class="hint" style="align-self:center">Speed:</span><button class="chip on" data-s="1">1x</button><button class="chip" data-s="2">2x</button><button class="chip" data-s="3">3x</button></div>
+<h3>Where did the time go?</h3>
+<svg viewBox="0 0 600 270" id="lch" role="img" aria-label="Bar chart of time spent in each delivery stage"></svg>
+<p class="hint">The chart fills in when a delivery finishes. Times are simulated seconds from this demo, not real hotel data.</p></div>
+
+<div class="card"><h2>Where is Relay used in real hotels?</h2>
+<div class="grid">
+<div class="card"><h3>Aloft Cupertino and Aloft Silicon Valley, USA</h3><ul><li>Early hotels where Savioke tested Relay, which delivered amenities such as towels and toothbrushes to rooms.</li><li>Staff loaded the robot at the front desk and it rode the lift to the guest's door.</li></ul></div>
+<div class="card"><h3>Shinagawa Prince Hotel N Tower, Tokyo, Japan</h3><ul><li>Has used a Relay delivery robot since 2017 for towels, toothbrushes and other amenities.</li><li>The robot calls the room phone on arrival, and the lid opens when the guest opens the door.</li></ul></div>
+<div class="card"><h3>How many robots per hotel?</h3><ul><li>The maker's CEO says most hotels using these robots have one or two.</li><li>Upscale hotels use them as a guest experience feature; budget hotels treat them as working team members.</li><li>The maker maps the building and works with lift service companies so rides run smoothly.</li></ul></div></div>
+<p class="hint">Sources: Hotel Dive, Communications of the ACM, Digital Trends and the Shinagawa Prince Hotel feature on Fun Japan. Descriptions are from the media and the maker, not independent tests.</p></div>
+
+</section>
+
+<section id="s3">
+<div class="card"><h2>Robots in food and beverage</h2>
+<ul><li><b>Robot waiters</b> carry dishes from kitchen to table and back.</li><li><b>Automated kitchens</b> use robot arms for repeatable tasks like frying.</li><li><b>Bartending robots</b> measure and mix drinks exactly, every time.</li>
+<li>Goal: remove long walks, heat and repetition so staff can focus on greeting, advising and hospitality.</li></ul></div>
+
+<div class="card"><h2>1. Robot waiter: meet BellaBot</h2>
+<ul><li><b>Name:</b> BellaBot, made by Pudu Robotics. A cat-faced robot with four trays in its slim body.</li>
+<li><b>How it works:</b> staff load plates and choose the table number on its screen. It drives there on a mapped route, speaks, and rotates its trays to the side so the guest can take the dish.</li>
+<li><b>Smart touches:</b> tray sensors and a light strip show when a dish is taken, it serves 3 to 4 tables per trip, and it has a birthday mode that sings and delivers cakes.</li>
+<li><b>Best use:</b> restaurants where the kitchen is far from the tables, or to remove dish-carrying so staff can talk to guests.</li></ul></div>
+<div class="card"><h2>See BellaBot serve a restaurant in 3D</h2>
+<p class="hint">Pick up to four tables. BellaBot loads one dish per tray and serves them in order. Try the child-in-the-aisle option, and the "Robot's eye" view.</p>
+<div class="row" id="wtb"><span class="hint" style="align-self:center">Tables:</span></div>
+<div class="row"><button class="chip" id="wkid" aria-pressed="false">A child runs across the aisle</button></div>
+<div id="w3d" style="position:relative;height:420px;border-radius:8px;overflow:hidden;background:linear-gradient(var(--tint),var(--line));touch-action:none"></div>
+<p class="say" id="wst" aria-live="polite">Press start.</p><ol class="lg" id="wlg"></ol>
+<div class="row"><button class="chip go" id="wgo">Start</button><button class="chip" id="wrs">Reset</button></div>
+<div class="row" id="wvw"><span class="hint" style="align-self:center">View:</span><button class="chip on" data-v="orbit">Orbit</button><button class="chip" data-v="top">Top</button><button class="chip" data-v="follow">Follow BellaBot</button><button class="chip" data-v="eye">Robot's eye</button></div>
+<div class="row" id="wsp"><span class="hint" style="align-self:center">Speed:</span><button class="chip on" data-s="1">1x</button><button class="chip" data-s="2">2x</button><button class="chip" data-s="3">3x</button></div>
+<h3>Where did the time go?</h3><svg viewBox="0 0 600 180" id="wch" role="img" aria-label="Bar chart of time per stage"></svg>
+<p class="hint">Times are simulated seconds, not real restaurant data.</p></div>
+<div class="card"><h2>Where is BellaBot used?</h2><div class="grid">
+<div class="card"><h3>Parkhotel, Eisenstadt, Austria</h3><ul><li>Reported as the first hotel in Burgenland to use these robots.</li><li>BellaBot and the smaller HolaBot deliver meals and take back dishes in two of its restaurants.</li></ul></div>
+<div class="card"><h3>Hotel Walhalla, Zurich, Switzerland</h3><ul><li>Its restaurant was the first in Zurich to use a service robot.</li><li>The hotel tested two BellaBots, then kept one to carry tableware and meals between kitchen and tables.</li></ul></div>
+<div class="card"><h3>Bella Italia, Center Parcs Whinfell Forest, UK</h3><ul><li>A trial site chosen because of the long distance from kitchen to tables.</li><li>The operator says robots take simple tasks so teams can focus on guests.</li></ul></div></div>
+<p class="hint">Sources: Pudu Robotics, Lucerne Business, The Caterer, QSR Media. These are company and trade-press reports, not independent tests.</p></div>
+
+<div class="card"><h2>2. Automated kitchen: meet Flippy 2</h2>
+<ul><li><b>Name:</b> Flippy 2, a robotic fry station from Miso Robotics.</li>
+<li><b>How it works:</b> a robot arm slides on an overhead rail, fills, lowers, lifts and empties fry baskets. Thermal-imaging cameras and AI vision identify the food in the basket.</li>
+<li><b>What it does:</b> takes over a whole fry station, so staff avoid the hottest, most repetitive job. The maker says it can handle about 60 baskets an hour.</li>
+<li><b>Human role:</b> staff still manage orders, seasoning, packing and quality.</li></ul></div>
+<div class="card"><h2>Run a robotic fry station in 3D</h2>
+<p class="hint">Choose the food and how many baskets to cook. Watch the arm pick up a basket, fill it, fry it, shake it and serve. The timer is compressed for the demo.</p>
+<div class="row" id="kit"><span class="hint" style="align-self:center">Food:</span></div><div class="row" id="kcn"><span class="hint" style="align-self:center">Orders:</span></div>
+<div id="k3d" style="position:relative;height:420px;border-radius:8px;overflow:hidden;background:linear-gradient(var(--tint),var(--line));touch-action:none"></div>
+<p class="say" id="kst" aria-live="polite">Press start.</p><ol class="lg" id="klg"></ol>
+<div class="row"><button class="chip go" id="kgo">Start</button><button class="chip" id="krs">Reset</button></div>
+<div class="row" id="kvw"><span class="hint" style="align-self:center">View:</span><button class="chip on" data-v="orbit">Orbit</button><button class="chip" data-v="top">Top</button><button class="chip" data-v="follow">Follow the arm</button><button class="chip" data-v="eye">Arm's eye</button></div>
+<div class="row" id="ksp"><span class="hint" style="align-self:center">Speed:</span><button class="chip on" data-s="1">1x</button><button class="chip" data-s="2">2x</button><button class="chip" data-s="3">3x</button></div>
+<h3>Where did the time go?</h3><svg viewBox="0 0 600 260" id="kch" role="img" aria-label="Bar chart of time per stage"></svg>
+<p class="hint">Times are simulated seconds, not real kitchen data.</p></div>
+<div class="card"><h2>Where is Flippy used?</h2><div class="grid">
+<div class="card"><h3>White Castle, Chicago area and beyond, USA</h3><ul><li>Pilot began in September 2020 at a Chicago-area restaurant, upgraded to Flippy 2 in November 2021.</li><li>The chain announced a rollout to 100 locations; a spokesperson later said the rollout was being phased in.</li></ul></div>
+<div class="card"><h3>CaliBurger, Pasadena, California, USA</h3><ul><li>The first Flippy started work here in March 2018, flipping burger patties.</li></ul></div>
+<div class="card"><h3>Dodger Stadium, Los Angeles, USA</h3><ul><li>Flippy prepared chicken tenders and tater tots for fans.</li></ul></div></div>
+<p class="hint">Sources: Miso Robotics filings, The Robot Report, Chain Store Age, TODAY, DeepLearning.AI. These are mostly fast-food and stadium examples; hotels use similar cooking automation.</p></div>
+
+<div class="card"><h2>3. Bartending robot: meet the Bionic Bar</h2>
+<ul><li><b>Name:</b> Bionic Bar, built by Makr Shakr (Italy). Two robotic arms, with 30 or more spirits and mixers hanging upside down overhead.</li>
+<li><b>How it works:</b> the guest orders on a tablet, often swiping a room key. One arm measures, shakes, stirs or muddles. The other pours and serves.</li>
+<li><b>Style:</b> the arms' movements were modelled on a dancer, so watching them is part of the show.</li>
+<li><b>Speed:</b> early versions were described as making about 120 drinks an hour; a newer ship version is reported at up to 250.</li>
+<li><b>Human role:</b> live bartenders still work elsewhere on board. The robot is both a guest experience and a way to make drinks consistently.</li></ul></div>
+<div class="card"><h2>Watch a robot make your cocktail in 3D</h2>
+<p class="hint">Pick a cocktail. The mixer arm collects each measure under the right bottle, shakes, and pours into the glass held by the server arm. The tracker shows the pour live.</p>
+<div class="row" id="brc"><span class="hint" style="align-self:center">Cocktail:</span></div>
+<div id="b3d" style="position:relative;height:420px;border-radius:8px;overflow:hidden;background:linear-gradient(var(--tint),var(--line));touch-action:none"></div>
+<p class="say" id="bst" aria-live="polite">Press start.</p>
+<svg viewBox="0 0 460 110" id="brec" role="img" aria-label="Live recipe tracker showing millilitres poured"></svg>
+<ol class="lg" id="blg"></ol>
+<div class="row"><button class="chip go" id="bgo">Start</button><button class="chip" id="brs">Reset</button></div>
+<div class="row" id="bvw"><span class="hint" style="align-self:center">View:</span><button class="chip on" data-v="orbit">Orbit</button><button class="chip" data-v="top">Top</button><button class="chip" data-v="follow">Follow the mixer arm</button><button class="chip" data-v="eye">Arm's eye</button></div>
+<div class="row" id="bsp"><span class="hint" style="align-self:center">Speed:</span><button class="chip on" data-s="1">1x</button><button class="chip" data-s="2">2x</button><button class="chip" data-s="3">3x</button></div>
+<h3>Where did the time go?</h3><svg viewBox="0 0 600 210" id="bch" role="img" aria-label="Bar chart of time per stage"></svg>
+<p class="hint">Times are simulated seconds. Recipes are standard-style measures for teaching.</p></div>
+<div class="card"><h2>Where is the Bionic Bar used?</h2><div class="grid">
+<div class="card"><h3>Royal Caribbean cruise ships</h3><ul><li>Installed on several ships, including Anthem of the Seas, Quantum of the Seas, Harmony of the Seas and Wonder of the Seas.</li><li>Cruise ships work like floating hotels, so this is a hospitality example of a guest-facing bar robot.</li></ul></div>
+<div class="card"><h3>Las Vegas Strip, USA</h3><ul><li>The maker has reported a unit in a Las Vegas venue as well as on cruise ships.</li></ul></div></div>
+<p class="hint">Sources: Makr Shakr, Communications of the ACM, Smart Meetings, Dezeen. Drink-per-hour figures are maker or press claims.</p></div>
+
+<div class="card"><h2>Why precise pouring matters</h2><div class="row" id="dr"></div>
+<svg viewBox="0 0 400 70" id="gl" role="img" aria-label="Stacked bar of drink ingredients in millilitres"></svg><div id="dl" class="hint"></div>
+<h3 style="margin-top:14px">Human pour vs robot pour</h3>
+<div class="row"><button class="chip go" id="pour">Make 6 drinks</button></div>
+<svg viewBox="0 0 400 130" id="cons" role="img" aria-label="Dot chart: robot drinks all match the target volume while human pours vary"></svg>
+<p class="hint">Illustrative: humans vary a little each time, which changes taste and cost.</p></div>
+</section>
+
+<section id="s4">
+<div class="card"><h2>Robotics and automation in travel</h2>
+<ul><li><b>Smart airports</b> use biometrics, kiosks, AI cameras and robots to move passengers with fewer queues and fewer paper checks.</li>
+<li><b>Autonomous baggage systems</b> tag every bag, track it, and move it with machines instead of people lifting and sorting.</li>
+<li>Why hospitality students care: airports, airlines, hotels and cruise lines share the same guest journey. Smooth travel starts the guest experience before arrival.</li></ul></div>
+
+<div class="card"><h2>1. Smart airport: meet Digi Yatra</h2>
+<ul><li><b>Name:</b> Digi Yatra, India's facial-recognition system for paperless, contactless airport entry.</li>
+<li><b>How it works:</b> the passenger enrols on the app (ID check, selfie, boarding pass). At the entry e-gate, security area and boarding gate, a camera matches the face to the booking and opens the gate.</li>
+<li><b>Voluntary:</b> passengers can still use the normal process. Privacy and consent are a big part of this topic.</li>
+<li><b>Benefit shown in the Delhi trial:</b> entering the terminal took about 5 seconds instead of up to 20.</li>
+<li><b>Other smart airport tools:</b> self check-in kiosks, self bag drop, queue-length cameras, guide robots and cleaning robots.</li></ul></div>
+<div class="card"><h2>Walk through a smart airport in 3D</h2>
+<p class="hint">Choose a mode and press start. Compare how long Digi Yatra and the traditional process take. Try the "Passenger's eye" view.</p>
+<div class="row" id="amd"><span class="hint" style="align-self:center">Mode:</span><button class="chip on" data-m="1">Digi Yatra (face)</button><button class="chip" data-m="0">Traditional (paper and ID)</button></div>
+<div id="a3d" style="position:relative;height:420px;border-radius:8px;overflow:hidden;background:linear-gradient(var(--tint),var(--line));touch-action:none"></div>
+<p class="say" id="ast" aria-live="polite">Press start.</p><ol class="lg" id="alg"></ol>
+<div class="row"><button class="chip go" id="ago">Start</button><button class="chip" id="ars">Reset</button></div>
+<div class="row" id="avw"><span class="hint" style="align-self:center">View:</span><button class="chip on" data-v="orbit">Orbit</button><button class="chip" data-v="top">Top</button><button class="chip" data-v="follow">Follow passenger</button><button class="chip" data-v="eye">Passenger's eye</button></div>
+<div class="row" id="asp"><span class="hint" style="align-self:center">Speed:</span><button class="chip on" data-s="1">1x</button><button class="chip" data-s="2">2x</button><button class="chip" data-s="3">3x</button></div>
+<h3>Where did the time go?</h3><svg viewBox="0 0 600 180" id="ach" role="img" aria-label="Bar chart of time per stage"></svg>
+<p class="hint" id="acm">Run both modes to compare totals.</p>
+<p class="hint">Times are simulated seconds for teaching, not measured airport data.</p></div>
+<div class="card"><h2>Where is it used?</h2><div class="grid">
+<div class="card"><h3>Rajiv Gandhi International Airport, Hyderabad, India</h3><ul><li>One of the first airports to trial facial recognition for boarding. Trials started in July 2019 with equipment from NEC.</li><li>Passengers enrolled at counters, then used face scans at the entry gate, security hold area and boarding gate.</li></ul></div>
+<div class="card"><h3>Delhi, Varanasi and Bengaluru, India</h3><ul><li>The national Digi Yatra service launched at these airports in December 2022, with Hyderabad, Kolkata, Pune and Vijayawada to follow.</li><li>It is run by the Digi Yatra Foundation, owned by the Airports Authority of India and several major airports.</li></ul></div></div>
+<p class="hint">Sources: Outlook Traveller, Live From A Lounge, Business Standard, Civilsdaily. Details are from news reports; check the current Digi Yatra rules before quoting them.</p></div>
+
+<div class="card"><h2>2. Autonomous baggage: meet FLEET</h2>
+<ul><li><b>Name:</b> FLEET, an autonomous baggage vehicle system from Vanderlande (Netherlands).</li>
+<li><b>How it works:</b> each small vehicle carries one bag and chooses the best route. It replaces fixed conveyors and sorters.</li>
+<li><b>Why airports like it:</b> flexible if something breaks, easy to grow, and the maker says it can use up to 50 percent less energy than traditional systems.</li>
+<li><b>Tags:</b> every bag has a barcode or RFID tag so the system always knows where it is and which flight it needs.</li></ul></div>
+<div class="card"><h2>Send bags through an autonomous baggage system in 3D</h2>
+<p class="hint">Choose the system and the number of bags. Turn on "Something breaks" to see how a fleet reacts compared with a fixed conveyor.</p>
+<div class="row" id="gmd"><span class="hint" style="align-self:center">System:</span><button class="chip on" data-m="1">Autonomous vehicles</button><button class="chip" data-m="0">Fixed conveyor</button></div>
+<div class="row" id="gbn"><span class="hint" style="align-self:center">Bags:</span><button class="chip" data-n="1">1</button><button class="chip on" data-n="3">3</button><button class="chip" data-n="6">6</button><button class="chip" id="gbk" aria-pressed="false">Something breaks</button></div>
+<div id="g3d" style="position:relative;height:420px;border-radius:8px;overflow:hidden;background:linear-gradient(var(--tint),var(--line));touch-action:none"></div>
+<p class="say" id="gst" aria-live="polite">Press start.</p><ol class="lg" id="glg"></ol>
+<div class="row"><button class="chip go" id="ggo">Start</button><button class="chip" id="grs">Reset</button></div>
+<div class="row" id="gvw"><span class="hint" style="align-self:center">View:</span><button class="chip on" data-v="orbit">Orbit</button><button class="chip" data-v="top">Top</button><button class="chip" data-v="follow">Follow the bag</button><button class="chip" data-v="eye">Vehicle's eye</button></div>
+<div class="row" id="gsp"><span class="hint" style="align-self:center">Speed:</span><button class="chip on" data-s="1">1x</button><button class="chip" data-s="2">2x</button><button class="chip" data-s="3">3x</button></div>
+<h3>Where did the time go?</h3><svg viewBox="0 0 600 150" id="gch" role="img" aria-label="Bar chart of time per stage"></svg>
+<p class="hint" id="gcm">Turn on "Something breaks" and run both systems to compare how each one copes.</p>
+<p class="hint">Times are simulated seconds, not real airport data.</p></div>
+<div class="card"><h2>Where is FLEET used?</h2><div class="grid">
+<div class="card"><h3>Rotterdam The Hague Airport, Netherlands</h3><ul><li>Reported as the first airport to use autonomous vehicles to move individual bags instead of belts and conveyors.</li></ul></div>
+<div class="card"><h3>Dallas Fort Worth Airport, USA</h3><ul><li>A pilot in the Terminal D recheck area for transfer passengers, using self bag drop units.</li><li>Reported capacity of about 450 bags an hour.</li></ul></div>
+<div class="card"><h3>Hong Kong International Airport</h3><ul><li>Vanderlande signed a partnership to trial autonomous baggage vehicles there.</li></ul></div></div>
+<p class="hint">Sources: Airport Technology, International Airport Review, CBS News and the maker's press release. Performance figures are maker or press claims.</p></div>
+</section>
+
+<section id="s5"><div class="card q" id="quiz"></div></section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const $=s=>document.querySelector(s),H=(e,h)=>e.innerHTML=h;
+const T=["Overview","Front office","Housekeeping","Food and beverage","Travel","Quiz"];
+H($("#tabs"),T.map((t,i)=>`<button class="tab" role="tab" data-i="${i}">${t}</button>`).join(""));
+function show(i){document.querySelectorAll("section").forEach((s,k)=>s.classList.toggle("on",k==i));document.querySelectorAll(".tab").forEach((b,k)=>b.setAttribute("aria-selected",k==i));scrollTo(0,0)}
+$("#tabs").onclick=e=>{if(e.target.dataset.i)show(+e.target.dataset.i)};show(0);
+
+/* spectrum */
+const sp=[["Linen delivery",.06],["Baggage",.17],["Floor cleaning",.28],["Bartending",.44],["Robot waiter",.55],["Check-in",.66],["Concierge",.8],["Complaints",.95]];
+H($("#spec"),sp.map((s,i)=>{const x=30+s[1]*540,y=[40,62,20][i%3];return`<line x1="${x}" y1="${y+6}" x2="${x}" y2="92" stroke="var(--mut)"/><circle cx="${x}" cy="92" r="5" fill="var(--card)" stroke="var(--ink)" stroke-width="2"/><text x="${x}" y="${y+2}" font-size="12" text-anchor="middle">${s[0]}</text>`}).join(""));
+
+/* activity */
+const A=[["Deliver extra towels to Room 412 at 2 am","Robot","A routine, physical errand that is perfect for a delivery robot."],["A guest is upset about a wrong bill","Human","Anger needs empathy and authority to fix. A person must lead."],["Guest wants local sightseeing tips at midnight","Together","The concierge robot answers common questions; a human handles special requests later."],["Vacuum the corridor on floor 5","Robot","Repetitive floor work suits a cleaning robot."],["Welcome a VIP guest arriving at the hotel","Human","Personal welcome builds the relationship; robots can support in the background."]];
+let ai=0;function act(){if(ai>=A.length){H($("#act"),`<p>Done! Rule of thumb: robots for routine work, humans for emotion and exceptions, and often both together.</p><button class="chip go" id="ar">Play again</button>`);$("#ar").onclick=()=>{ai=0;act()};return}
+const a=A[ai];H($("#act"),`<p><b>${a[0]}</b></p><div class="row">${["Robot","Human","Together"].map(o=>`<button class="chip" data-o="${o}">${o}</button>`).join("")}</div><div id="af"></div>`);
+document.querySelectorAll("[data-o]").forEach(b=>b.onclick=()=>{const ok=b.dataset.o==a[1];document.querySelectorAll("[data-o]").forEach(x=>x.disabled=true);b.classList.add("on");H($("#af"),`<div class="say">${ok?"Yes. ":"Best answer: "+a[1]+". "}${a[2]} <button class="chip go" id="an">Next</button></div>`);$("#an").onclick=()=>{ai++;act()}})}act();
+
+/* concierge */
+const C={"Where is the spa?":"The spa is on level 2. Take the lift, turn left, and follow the blue signs. I can show the map on my screen.","Best local food?":"Try the regional thali at the old-town restaurant 10 minutes away. Shall I ask the desk to book a table?","Late check-out?":"I cannot approve that myself. I am calling the front desk team to help you now.","What is the Wi-Fi password?":"Your Wi-Fi password is printed on your key card sleeve. I can also send it to your phone."};
+H($("#cq"),Object.keys(C).map(k=>`<button class="chip">${k}</button>`).join(""));
+$("#cq").onclick=e=>{if(e.target.classList.contains("chip")){document.querySelectorAll("#cq .chip").forEach(c=>c.classList.remove("on"));e.target.classList.add("on");H($("#ca"),"🤖 "+C[e.target.textContent])}};
+
+/* generic stepper */
+function stepper(id,S){const el=$(id);let i=0;function r(){H(el,`<div class="row">${S.map((s,k)=>`<button class="chip ${k==i?"on":""}" data-k="${k}">${k+1}. ${s[0]}</button>`).join("")}</div><div class="bar" aria-hidden="true"><i style="width:${(i+1)/S.length*100}%"></i></div><div class="ex">${S[i][1]}</div><div class="row"><button class="chip" data-k="${Math.max(0,i-1)}">Back</button><button class="chip go" data-k="${Math.min(S.length-1,i+1)}">Next</button></div>`)}
+el.onclick=e=>{const b=e.target.closest("[data-k]");if(b){i=+b.dataset.k;r()}};r()}
+
+/* Whiz steps */
+stepper("#st5",[["Teach","A staff member pushes or drives Whiz along the route once, for example a lobby loop."],["Save","Whiz stores the route and can keep many routes, such as corridor, lobby and ballroom."],["Clean","Staff press start. Whiz repeats the route alone, sensing people and objects and steering around them."],["Report","Cloud reports show run time and area covered, so managers can check that cleaning happened."]]);
+
+/* 3D cleaning robot */
+(function(){
+const W=12,N=8,CS=64,box=$("#c3d");let R;
+try{R=new THREE.WebGLRenderer({antialias:true,alpha:true})}catch(e){H(box,'<p class="hint" style="padding:16px">3D needs WebGL. Please open this page in a recent browser.</p>');return}
+R.setPixelRatio(Math.min(devicePixelRatio||1,2));box.appendChild(R.domElement);
+const sc=new THREE.Scene(),cam=new THREE.PerspectiveCamera(42,1,.1,100);
+sc.add(new THREE.HemisphereLight(0xffffff,0x8899aa,.95));const dl=new THREE.DirectionalLight(0xffffff,.6);dl.position.set(5,10,7);sc.add(dl);
+const wx=c=>c-W/2+.5,wz=r=>r-N/2+.5,M=c=>new THREE.MeshLambertMaterial({color:c});
+/* floor texture: dusty carpet that Whiz wipes clean */
+const cv=document.createElement("canvas");cv.width=W*CS;cv.height=N*CS;const g=cv.getContext("2d"),tex=new THREE.CanvasTexture(cv);
+function floor(){g.fillStyle="#6c8794";g.fillRect(0,0,cv.width,cv.height);for(let i=0;i<1400;i++){g.fillStyle=i%3?"#b9a98a":"#a08f72";g.fillRect(Math.random()*cv.width,Math.random()*cv.height,2+Math.random()*3,2+Math.random()*3)}tex.needsUpdate=true}
+const fl=new THREE.Mesh(new THREE.PlaneGeometry(W,N),new THREE.MeshLambertMaterial({map:tex}));fl.rotation.x=-Math.PI/2;sc.add(fl);
+[[0,.5,-N/2-.06,W+.24,1,.12],[-W/2-.06,.5,0,.12,1,N]].forEach(w=>{const m=new THREE.Mesh(new THREE.BoxGeometry(w[3],w[4],w[5]),M(0xe6edf1));m.position.set(w[0],w[1],w[2]);sc.add(m)});
+/* furniture (cells) */
+const occ=[],vis=[];for(let r=0;r<N;r++){occ.push(Array(W).fill(0));vis.push(Array(W).fill(0))}
+const F=[[0,0,3,1,.9,0x7a5230],[4,1,3,1,.5,0x2f7f86],[5,3,1,1,.35,0xc9a66b],[8,3,1,1,.55,0xb8821f],[10,1,1,1,.9,0x2e8b57],[3,4,1,1,1.3,0x9aa7b0],[10,5,1,2,.6,0xd6b04c],[7,6,3,1,.5,0x2f7f86]];
+F.forEach(f=>{const m=new THREE.Mesh(new THREE.BoxGeometry(f[2]-.1,f[4],f[3]-.1),M(f[5]));m.position.set(wx(f[0])+(f[2]-1)/2,f[4]/2,wz(f[1])+(f[3]-1)/2);sc.add(m);for(let y=f[1];y<f[1]+f[3];y++)for(let x=f[0];x<f[0]+f[2];x++)occ[y][x]=1});
+const drops={};
+/* robot model */
+const rb=new THREE.Group(),add=(geo,mat,x,y,z)=>{const m=new THREE.Mesh(geo,mat);m.position.set(x,y,z);rb.add(m);return m};
+add(new THREE.BoxGeometry(.8,.3,.62),M(0xf4f6f8),0,.2,0);add(new THREE.BoxGeometry(.84,.16,.08),M(0x26323d),0,.14,.33);
+add(new THREE.CylinderGeometry(.25,.31,.28,24),M(0xffffff),0,.48,0);add(new THREE.CylinderGeometry(.13,.13,.08,20),new THREE.MeshBasicMaterial({color:0x3fc1c3}),0,.7,0);
+add(new THREE.BoxGeometry(.5,.04,.03),new THREE.MeshBasicMaterial({color:0x3fc1c3}),0,.32,.32);
+add(new THREE.BoxGeometry(.04,.5,.04),M(0x26323d),-.25,.5,-.3);add(new THREE.BoxGeometry(.04,.5,.04),M(0x26323d),.25,.5,-.3);add(new THREE.BoxGeometry(.54,.04,.04),M(0x26323d),0,.76,-.3);
+sc.add(rb);
+const ring=new THREE.Mesh(new THREE.RingGeometry(1.0,1.12,48),new THREE.MeshBasicMaterial({color:0x3fc1c3,transparent:true,opacity:.7,side:THREE.DoubleSide}));ring.rotation.x=-Math.PI/2;ring.position.y=.04;ring.visible=false;sc.add(ring);
+/* state */
+let cell,pos,ang,route,run,sens=false,sp=1.8,t0,done,msg;
+function reset(){floor();for(let r=0;r<N;r++)vis[r].fill(0);cell=[0,7];pos={x:wx(0),z:wz(7)};ang=0;route=[];run=false;done=false;t0=0;vis[7][0]=1;$("#cgo").textContent="Start cleaning";msg="Press start.";ui()}
+function free(c,r){return c>=0&&r>=0&&c<W&&r<N&&!occ[r][c]}
+function nextT(){for(let r=0;r<N;r++){const cs=[...Array(W).keys()];if(r%2)cs.reverse();for(const c of cs)if(free(c,r)&&!vis[r][c])return[c,r]}return null}
+function bfs(a,b){const q=[a],pv={};pv[a]=1;while(q.length){const c=q.shift();if(c[0]==b[0]&&c[1]==b[1]){const p=[];let k=c;while(k!=a){p.unshift(k);k=pv[k]}return p}[[1,0],[-1,0],[0,1],[0,-1]].forEach(d=>{const n=[c[0]+d[0],c[1]+d[1]];if(free(n[0],n[1])&&!pv[n]){pv[n]=c;q.push(n)}})}return null}
+function cover(){let a=0,b=0;for(let r=0;r<N;r++)for(let c=0;c<W;c++)if(!occ[r][c]){a++;if(vis[r][c])b++}return a?Math.round(b/a*100):100}
+function ui(){const p=cover();$("#cov").style.width=p+"%";$("#covt").textContent=p+"%";$("#cst").textContent=msg}
+function near(){for(let r=0;r<N;r++)for(let c=0;c<W;c++)if(occ[r][c]&&Math.hypot(wx(c)-pos.x,wz(r)-pos.z)<1.5)return true;return false}
+function step(dt){if(!run)return;t0+=dt;
+if(!route.length){const t=nextT();if(!t){run=false;done=true;msg="Finished in "+t0.toFixed(0)+" seconds. All reachable floor is clean.";$("#cgo").textContent="Clean again";ui();return}route=bfs(cell,t);if(!route){vis[t[1]][t[0]]=1;route=[];return}}
+if(route.some(c=>occ[c[1]][c[0]])){route=[];return}
+const tg=route[0],dx=wx(tg[0])-pos.x,dz=wz(tg[1])-pos.z,d=Math.hypot(dx,dz),s=sp*dt,ta=Math.atan2(dx,dz);let da=ta-ang;da=Math.atan2(Math.sin(da),Math.cos(da));ang+=da*Math.min(1,dt*10);
+if(d<=s){pos.x=wx(tg[0]);pos.z=wz(tg[1]);cell=tg;route.shift();vis[cell[1]][cell[0]]=1;ui()}else{pos.x+=dx/d*s;pos.z+=dz/d*s}
+g.fillStyle="#8db4c2";g.beginPath();g.arc((pos.x+W/2)*CS,(pos.z+N/2)*CS,27,0,7);g.fill();tex.needsUpdate=true;
+msg=near()?"Obstacle detected. Whiz steers around it.":"Cleaning along its taught route.";if(Math.round(t0*5)%5==0)$("#cst").textContent=msg}
+/* camera */
+const s={th:.5,ph:1.0,r:17,x:0,z:0},gl={th:.5,ph:1.0,r:17,x:0,z:0};let view="orbit";
+function camU(){if(view=="follow"){gl.x=pos.x;gl.z=pos.z;gl.r=7}for(const k in s)s[k]+=(gl[k]-s[k])*.12;cam.position.set(s.x+s.r*Math.sin(s.ph)*Math.sin(s.th),s.r*Math.cos(s.ph),s.z+s.r*Math.sin(s.ph)*Math.cos(s.th));cam.lookAt(s.x,0,s.z)}
+$("#cvw").onclick=e=>{const v=e.target.dataset.v;if(!v)return;view=v;document.querySelectorAll("#cvw .chip").forEach(c=>c.classList.toggle("on",c.dataset.v==v));if(v=="orbit")Object.assign(gl,{ph:1.0,r:17,x:0,z:0});if(v=="top")Object.assign(gl,{ph:.12,th:0,r:17,x:0,z:0});if(v=="follow")Object.assign(gl,{ph:1.05,r:7})};
+let dn=null,mv=0;const cd=R.domElement;
+cd.onpointerdown=e=>{dn=[e.clientX,e.clientY];mv=0;cd.setPointerCapture(e.pointerId)};
+cd.onpointermove=e=>{if(!dn)return;const dx=e.clientX-dn[0],dy=e.clientY-dn[1];mv+=Math.abs(dx)+Math.abs(dy);dn=[e.clientX,e.clientY];gl.th-=dx*.008;gl.ph=Math.max(.12,Math.min(1.45,gl.ph-dy*.008))};
+const rc=new THREE.Raycaster();
+cd.onpointerup=e=>{dn=null;if(mv>6)return;const b=cd.getBoundingClientRect();rc.setFromCamera(new THREE.Vector2((e.clientX-b.left)/b.width*2-1,-((e.clientY-b.top)/b.height)*2+1),cam);const h=rc.intersectObject(fl)[0];if(!h)return;
+const c=Math.floor(h.point.x+W/2),r=Math.floor(h.point.z+N/2),k=c+","+r;
+if(drops[k]){sc.remove(drops[k]);delete drops[k];occ[r][c]=0;return}
+if(!free(c,r)||(c==cell[0]&&r==cell[1]))return;
+const m=new THREE.Mesh(new THREE.BoxGeometry(.6,.45,.4),M(0xd9482b));m.position.set(wx(c),.23,wz(r));sc.add(m);drops[k]=m;occ[r][c]=1;route=[]};
+/* controls */
+$("#cgo").onclick=()=>{if(done){reset()}run=!run;$("#cgo").textContent=run?"Pause":"Resume";if(!run)msg="Paused."};
+$("#crs").onclick=()=>{for(const k in drops){sc.remove(drops[k]);const p=k.split(",");occ[+p[1]][+p[0]]=0;delete drops[k]}reset()};
+$("#csn").onclick=e=>{sens=!sens;ring.visible=sens;e.target.setAttribute("aria-pressed",sens)};
+$("#csp").onclick=e=>{const v=e.target.dataset.s;if(!v)return;sp=+v;document.querySelectorAll("#csp .chip").forEach(c=>c.classList.toggle("on",c.dataset.s==v))};
+let lw=0,last=performance.now();
+function loop(n){requestAnimationFrame(loop);const dt=Math.min(.05,(n-last)/1000);last=n;if(!box.offsetParent)return;const w=box.clientWidth;if(w!=lw){lw=w;R.setSize(w,380);cam.aspect=w/380;cam.updateProjectionMatrix()}
+step(dt);rb.position.set(pos.x,0,pos.z);rb.rotation.y=ang;ring.position.set(pos.x,.04,pos.z);ring.material.color.set(near()?0xd9482b:0x3fc1c3);ring.scale.setScalar(1+.06*Math.sin(n/200));camU();R.render(sc,cam)}
+reset();Object.assign(s,gl);requestAnimationFrame(loop);
+})();
+
+/* Relay 3D linen delivery */
+(function(){
+const box=$("#l3d");let R;
+try{R=new THREE.WebGLRenderer({antialias:true,alpha:true})}catch(e){H(box,'<p class="hint" style="padding:16px">3D needs WebGL. Please open this page in a recent browser.</p>');return}
+R.setPixelRatio(Math.min(devicePixelRatio||1,2));R.shadowMap.enabled=true;R.shadowMap.type=THREE.PCFSoftShadowMap;R.outputEncoding=THREE.sRGBEncoding;R.toneMapping=THREE.ACESFilmicToneMapping;R.toneMappingExposure=1.1;box.appendChild(R.domElement);
+const sc=new THREE.Scene(),cam=new THREE.PerspectiveCamera(40,1,.1,150),HT=420,Y=4.4;
+/* helpers */
+const S=(c,r,m,o)=>new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:r==null?.7:r,metalness:m||0},o||{}));
+const E=(c,i)=>new THREE.MeshStandardMaterial({color:0x111111,emissive:c,emissiveIntensity:i||1});
+const bx=(w,h,d,m,x,y,z,p,nc)=>{const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m);o.position.set(x,y,z);o.castShadow=!nc;o.receiveShadow=true;(p||sc).add(o);return o};
+const cy=(a,b,h,m,x,y,z,p,sg)=>{const o=new THREE.Mesh(new THREE.CylinderGeometry(a,b,h,sg||24),m);o.position.set(x,y,z);o.castShadow=true;o.receiveShadow=true;(p||sc).add(o);return o};
+const sph=(r,m,x,y,z,p,sx,sy,sz)=>{const o=new THREE.Mesh(new THREE.SphereGeometry(r,20,14),m);o.position.set(x,y,z);o.scale.set(sx||1,sy||1,sz||1);o.castShadow=true;(p||sc).add(o);return o};
+const pl=(w,h,m,x,y,z,rx,p)=>{const o=new THREE.Mesh(new THREE.PlaneGeometry(w,h),m);o.position.set(x,y,z);o.rotation.x=rx||0;o.receiveShadow=true;(p||sc).add(o);return o};
+function tx(w,h,f,rx,ry){const c=document.createElement("canvas");c.width=w;c.height=h;f(c.getContext("2d"),w,h);const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;t.anisotropy=8;if(rx){t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(rx,ry)}return t}
+const FM=t=>new THREE.MeshStandardMaterial({map:t,roughness:.9});
+const lab=(w,h,txt,bg,fg,fs)=>tx(w,h,(g,W,Hh)=>{g.fillStyle=bg;g.fillRect(0,0,W,Hh);g.fillStyle=fg;g.font="bold "+fs+"px sans-serif";g.textAlign="center";g.textBaseline="middle";g.fillText(txt,W/2,Hh/2+2)});
+/* lights */
+sc.add(new THREE.HemisphereLight(0xdfe9f2,0x7a6a5a,.6));
+const sun=new THREE.DirectionalLight(0xfff3e0,.95);sun.position.set(9,20,15);sun.target.position.set(1.5,3,-1.5);sc.add(sun,sun.target);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);const sh=sun.shadow.camera;sh.left=-17;sh.right=17;sh.top=14;sh.bottom=-14;sh.near=1;sh.far=60;sun.shadow.bias=-.0004;
+[[3,Y+2.6,.5,0xffd9a8,.7],[10,Y+2.6,.5,0xffd9a8,.7],[-6.5,3,0,0xd8ecff,.7]].forEach(l=>{const p=new THREE.PointLight(l[3],l[4],11);p.position.set(l[0],l[1],l[2]);sc.add(p)});
+/* textures */
+const carpetT=tx(256,256,(g,w,h)=>{g.fillStyle="#5a2733";g.fillRect(0,0,w,h);g.strokeStyle="#c19a4a";g.lineWidth=3;for(let i=0;i<2;i++)for(let j=0;j<2;j++){const x=i*128+64,y=j*128+64;g.beginPath();g.moveTo(x,y-50);g.lineTo(x+50,y);g.lineTo(x,y+50);g.lineTo(x-50,y);g.closePath();g.fillStyle="#7a3645";g.fill();g.stroke();g.beginPath();g.arc(x,y,8,0,7);g.fillStyle="#c19a4a";g.fill()}for(let k=0;k<3000;k++){g.fillStyle="rgba(0,0,0,.08)";g.fillRect(Math.random()*w,Math.random()*h,1,1)}},9.5,2.7);
+const woodT=tx(256,256,(g,w,h)=>{for(let i=0;i<8;i++){g.fillStyle=["#b58b5c","#a87d50","#bd9467","#a47a4e"][i%4];g.fillRect(0,i*32,w,32);g.fillStyle="rgba(0,0,0,.25)";g.fillRect(0,i*32,w,2);for(let k=0;k<20;k++){g.fillStyle="rgba(60,30,10,.12)";g.fillRect(Math.random()*w,i*32+Math.random()*30,30+Math.random()*60,1)}}},10,3);
+const epoxyT=tx(256,256,(g,w,h)=>{g.fillStyle="#9aa6ad";g.fillRect(0,0,w,h);g.strokeStyle="rgba(0,0,0,.18)";g.lineWidth=2;g.strokeRect(0,0,w,h)},8,6);
+/* building shell */
+const steel=S(0xaeb6bc,.35,.85),wall=S(0xe6ebee,.9),warm=S(0xf0e3d0,.9),concrete=S(0x8a949c,.9);
+bx(8,.3,6.4,concrete,-5.5,-.15,0);bx(14.3,.3,8.1,concrete,5.65,Y-.15,-2.45);
+for(let x=0;x<=12;x+=4)[1.3,-5.5].forEach(z=>bx(.35,Y-.3,.35,concrete,x,(Y-.3)/2,z));
+pl(8,6.4,FM(epoxyT),-5.5,.005,0,-Math.PI/2);pl(14.3,4.1,FM(carpetT),5.65,Y+.005,-.45,-Math.PI/2);pl(12,4,FM(woodT),6.8,Y+.005,-4.5,-Math.PI/2);
+/* laundry */
+bx(6.4,3.4,.2,wall,-6.7,1.7,-3.2);bx(.2,3.4,6.4,wall,-9.6,1.7,0);
+pl(2.6,.5,new THREE.MeshBasicMaterial({map:lab(256,50,"LAUNDRY","#12263a","#ffffff",34)}),-6.5,2.7,-3.09);
+const app=S(0xe9edf0,.35,.1),glass=S(0x1c2a36,.1,.3,{transparent:true,opacity:.88});
+function mach(x,col){bx(1,1,.9,app,x,.5,-2.5);const r=new THREE.Mesh(new THREE.TorusGeometry(.3,.045,12,32),S(0x9aa5ad,.3,.8));r.position.set(x,.52,-2.04);r.castShadow=true;sc.add(r);const g=new THREE.Mesh(new THREE.CircleGeometry(.27,28),glass);g.position.set(x,.52,-2.045);sc.add(g);bx(.8,.14,.05,S(0x26323d,.4,.3),x,.9,-2.04);bx(.1,.06,.03,E(col,1.2),x+.25,.9,-2.01,sc,1)}
+[-8.7,-7.6,-6.5].forEach(x=>mach(x,0x3fc1c3));[-5.3,-4.2].forEach(x=>mach(x,0xffb347));
+const towel=[0xf4f4f0,0xcfe3d4,0xe8d9bf,0xb9d3e6];
+function stack(x,y,z,p,n,c){for(let i=0;i<n;i++)bx(.5,.09,.34,S(i%2?towel[c]:0xffffff,.95),x,y+.045+i*.09,z,p||sc)}
+bx(2,.06,.9,steel,-8.2,.9,1.3);[[-9.1,.95],[-7.3,.95],[-9.1,1.65],[-7.3,1.65]].forEach(l=>cy(.04,.04,.9,steel,l[0],.45,l[1],sc,10));
+stack(-8.8,.93,1.3,sc,3,0);stack(-8.2,.93,1.3,sc,4,1);stack(-7.6,.93,1.3,sc,2,2);
+[.5,1.2,1.9].forEach((y,i)=>{bx(.5,.04,2.2,S(0x9a7448,.8),-9.3,y,-.8);stack(-9.3,y+.02,-1.5,sc,3,i);stack(-9.3,y+.02,-.8,sc,2,(i+1)%4);stack(-9.3,y+.02,-.1,sc,3,(i+2)%4)});
+bx(.05,2,2.2,S(0x7a6040,.8),-9.5,1,-.8);
+const cart=new THREE.Group();cart.position.set(-7.5,0,2.3);sc.add(cart);bx(.9,.05,.6,steel,0,.3,0,cart);bx(.9,.05,.6,steel,0,.85,0,cart);[[-.4,-.25],[.4,-.25],[-.4,.25],[.4,.25]].forEach(p=>{bx(.04,.6,.04,steel,p[0],.58,p[1],cart);cy(.06,.06,.04,S(0x222222,.6),p[0],.06,p[1],cart,12).rotation.z=Math.PI/2});stack(-.15,.33,0,cart,3,3);stack(.15,.88,0,cart,3,0);
+pl(1.5,1.5,new THREE.MeshBasicMaterial({map:tx(128,128,(g,w,h)=>{g.fillStyle="rgba(240,180,0,.9)";g.fillRect(0,0,w,h);g.fillStyle="#5c6a73";g.fillRect(8,8,w-16,h-16);g.fillStyle="#fff";g.font="bold 24px sans-serif";g.textAlign="center";g.fillText("LOAD BAY",w/2,h/2+8)}),transparent:true}),-6.6,.015,1,-Math.PI/2);
+/* people */
+function person(shirt,pants,hair){const p=new THREE.Group(),skin=S(0xd9a98a,.8);[-.09,.09].forEach(x=>cy(.07,.06,.8,S(pants,.8),x,.4,0,p,12));cy(.17,.15,.62,S(shirt,.85),0,1.12,0,p,16);sph(.11,skin,0,1.57,0,p);sph(.118,S(hair,.9),0,1.61,-.015,p,1,.75,1);[-.04,.04].forEach(x=>sph(.014,S(0x111111),x,1.57,.103,p));cy(.05,.05,.1,skin,0,1.43,0,p,10);cy(.045,.04,.6,S(shirt,.85),-.22,1.1,0,p,10);const ap=new THREE.Group();ap.position.set(.22,1.38,0);p.add(ap);cy(.045,.04,.6,S(shirt,.85),0,-.3,0,ap,10);p.userData.arm=ap;return p}
+const staff=person(0x0f8b8d,0x26323d,0x2b1d14);staff.position.set(-7.4,0,1);staff.rotation.y=Math.PI/2;sc.add(staff);
+const guest=person(0xd9482b,0x3a4a5c,0x6b4423);guest.visible=false;sc.add(guest);
+/* lift */
+const car=new THREE.Group();car.position.set(-2.5,0,0);sc.add(car);
+bx(2,.1,2.4,S(0x4a5359,.5,.6),0,-.05,0,car);bx(2,2.5,.08,steel,0,1.25,-1.16,car);cy(.02,.02,1.6,steel,0,1,-1.1,car,8).rotation.z=Math.PI/2;
+const lp=new THREE.PointLight(0xfff0d8,.8,6);lp.position.set(0,2.2,0);car.add(lp);
+const L={};[-1,1].forEach(s=>{[.9,-.9].forEach(z=>bx(.08,2.5,.6,steel,s*.96,1.25,z,car));bx(.08,.4,1.2,steel,s*.96,2.3,0,car);L[s]=[bx(.05,2.1,.6,S(0xc3cacf,.3,.9),s*.96,1.05,.3,car),bx(.05,2.1,.6,S(0xc3cacf,.3,.9),s*.96,1.05,-.3,car)]});
+function leaf(s,o){L[s][0].position.z=.3+.6*o;L[s][1].position.z=-(.3+.6*o)}
+const ic=document.createElement("canvas");ic.width=128;ic.height=64;const ig=ic.getContext("2d"),it=new THREE.CanvasTexture(ic);let il="",ly=0;
+function ind(){const n=Math.round(car.position.y/Y*3),mv=Math.abs(car.position.y-ly)>.002,t=(mv?(car.position.y>ly?"▲ ":"▼ "):"")+(n?n:"B");ly=car.position.y;if(t==il)return;il=t;ig.fillStyle="#050505";ig.fillRect(0,0,128,64);ig.fillStyle="#ff6a3d";ig.font="bold 44px sans-serif";ig.textAlign="center";ig.textBaseline="middle";ig.fillText(t,64,34);it.needsUpdate=true}
+pl(.5,.25,new THREE.MeshBasicMaterial({map:it}),0,2.2,-1.115,0,car);
+pl(.24,.55,new THREE.MeshBasicMaterial({map:tx(64,128,(g,w,h)=>{g.fillStyle="#222";g.fillRect(0,0,w,h);for(let i=0;i<4;i++){g.beginPath();g.arc(32,20+i*28,9,0,7);g.fillStyle=i==3?"#ffb347":"#c8d0d6";g.fill()}})}),.7,1.2,-1.115,0,car);
+[-3.62,-1.38].forEach(x=>[-1.3,1.3].forEach(z=>bx(.12,7.8,.12,S(0x57616a,.6,.5),x,3.9,z)));
+/* corridor and rooms */
+const XR=[1.8,3.8,5.8,7.8,9.8,11.8],RN=["301","302","303","304","305","306"],XE=12.8;let ri=3;
+const cuts=[-1.5].concat(...XR.map(x=>[x-.45,x+.45])).concat([XE]);
+for(let i=0;i<cuts.length;i+=2)bx(cuts[i+1]-cuts[i],3,.2,warm,(cuts[i]+cuts[i+1])/2,Y+1.5,-2.4);
+XR.forEach(x=>bx(.9,.9,.2,warm,x,Y+2.55,-2.4));
+bx(.2,3,8.1,warm,XE+.1,Y+1.5,-2.45);bx(12,3,.15,warm,6.8,Y+1.5,-6.5);
+bx(14.3,.12,.03,S(0x4a3a2c,.7),5.65,Y+.06,-2.285,sc,1);
+for(let i=0;i<=6;i++)bx(.1,3,4,warm,.8+i*2,Y+1.5,-4.5);
+const dr=[];
+XR.forEach((x,i)=>{const g=new THREE.Group();g.position.set(x-.45,Y,-2.4);sc.add(g);bx(.9,2.1,.05,S(0x6b4a35,.55),.45,1.05,0,g);pl(.18,.09,new THREE.MeshBasicMaterial({map:lab(128,64,RN[i],"#c19a4a","#2a1a10",44)}),.45,1.55,.03,0,g);cy(.015,.015,.14,S(0xd4b85a,.3,.9),.8,1,.06,g,8).rotation.z=Math.PI/2;dr.push(g);
+bx(.12,.3,.08,E(0xffd9a0,1.4),x+1,Y+1.9,-2.27,sc,1);
+bx(1.4,.35,1.9,S(0x6b4a35,.6),x,Y+.175,-5.5);bx(1.3,.2,1.8,S(0xf6f4ef,.9),x,Y+.45,-5.5);bx(1.32,.07,1.1,S(i%2?0x2f7f86:0xb8821f,.9),x,Y+.58,-5.2);[-.33,.33].forEach(p=>bx(.5,.12,.3,S(0xffffff,.95),x+p,Y+.6,-6.2));bx(1.5,.9,.08,S(0x5a3d2b,.6),x,Y+.7,-6.4);bx(.4,.45,.4,S(0x6b4a35,.6),x+.95,Y+.225,-6.2);cy(.07,.1,.18,E(0xfff0c8,1.2),x+.95,Y+.55,-6.2,sc,12);pl(.9,.9,E(0xbfe3ff,.7),x,Y+1.7,-6.41,0)});
+bx(.35,.22,.05,E(0x22cc66,1.3),-.7,Y+2.5,-2.28,sc,1);cy(.08,.08,.5,S(0xc0392b,.5),.2,Y+.55,-2.1,sc,14);
+/* corridor cart */
+const hk=new THREE.Group();hk.position.set(4.6,Y,-.6);hk.visible=false;sc.add(hk);bx(1.1,.06,.6,steel,0,.3,0,hk);bx(1.1,.06,.6,steel,0,.85,0,hk);[[-.5,-.25],[.5,-.25],[-.5,.25],[.5,.25]].forEach(p=>{bx(.04,.6,.04,steel,p[0],.58,p[1],hk);cy(.06,.06,.04,S(0x222222,.6),p[0],.06,p[1],hk,12).rotation.z=Math.PI/2});stack(-.3,.33,0,hk,4,1);stack(.1,.33,0,hk,3,0);bx(.3,.2,.3,S(0x2f7f86,.7),.35,.95,0,hk);sph(.22,S(0x222a30,.8),.5,.4,.15,hk,1,1.2,1);
+/* robot */
+const rb=new THREE.Group();sc.add(rb);const white=S(0xf2f4f6,.3,.05),dark=S(0x1d2329,.45,.3);
+cy(.26,.26,.1,dark,0,.1,0,rb,32);cy(.22,.24,.7,white,0,.5,0,rb,32);
+const led=new THREE.Mesh(new THREE.TorusGeometry(.265,.012,8,48),new THREE.MeshStandardMaterial({color:0x111111,emissive:0x3fc1c3,emissiveIntensity:1.6}));led.rotation.x=Math.PI/2;led.position.y=.16;rb.add(led);
+bx(.27,.18,.03,S(0x050608,.15,.5),0,.66,.222,rb,1);
+const eyes=[-.06,.06].map(x=>{const e=new THREE.Mesh(new THREE.CircleGeometry(.03,20),E(0x6ff0f2,2));e.position.set(x,.68,.239);rb.add(e);return e});
+const mo=new THREE.Mesh(new THREE.TorusGeometry(.035,.006,8,16,Math.PI),E(0x6ff0f2,2));mo.position.set(0,.65,.239);mo.rotation.z=Math.PI;rb.add(mo);
+cy(.03,.03,.04,E(0x88ccff,1.5),0,.79,.19,rb,12).rotation.x=Math.PI/2;
+const lid=new THREE.Group();lid.position.set(0,.85,-.2);rb.add(lid);cy(.235,.225,.1,white,0,.05,.2,lid,32);bx(.08,.025,.03,dark,0,.11,.38,lid,1);
+const items=new THREE.Group();items.position.y=.86;rb.add(items);
+const IT=["Towels","Bed linen","Toiletries","Pillow"],sel=[1,0,1,0];
+function buildItems(){while(items.children.length)items.remove(items.children[0]);let k=0;sel.forEach((s,i)=>{if(!s)return;const x=(k%2?.1:-.1),z=(k>1?.1:-.08);k++;const g=new THREE.Group();g.position.set(x,0,z);items.add(g);
+if(i==0){for(let j=0;j<3;j++)bx(.17,.025,.13,S(j%2?0xcfe3d4:0xffffff,.95),0,.013+j*.025,0,g,1)}
+if(i==1){bx(.18,.06,.14,S(0xcfe0f2,.9),0,.03,0,g,1);bx(.19,.012,.15,S(0x2f7f86,.9),0,.04,0,g,1)}
+if(i==2){cy(.025,.025,.09,S(0xb8821f,.4),-.04,.045,0,g,10);cy(.02,.02,.08,S(0x2f7f86,.4),.03,.04,.03,g,10);bx(.06,.03,.04,S(0xffffff,.6),.02,.015,-.04,g,1)}
+if(i==3){sph(.1,S(0xffffff,.95),0,.03,0,g,1,.38,.8)}})}
+items.visible=false;
+function setLed(c){led.material.emissive.setHex(c)}
+function spr(txt,bg,fg){const c=document.createElement("canvas");c.width=512;c.height=96;const g=c.getContext("2d");g.fillStyle=bg;g.beginPath();g.moveTo(24,0);g.lineTo(488,0);g.quadraticCurveTo(512,0,512,24);g.lineTo(512,72);g.quadraticCurveTo(512,96,488,96);g.lineTo(24,96);g.quadraticCurveTo(0,96,0,72);g.lineTo(0,24);g.quadraticCurveTo(0,0,24,0);g.fill();g.fillStyle=fg;g.font="bold 46px sans-serif";g.textAlign="center";g.textBaseline="middle";g.fillText(txt,256,50);const s=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(c),transparent:true,depthTest:false}));s.scale.set(1.9,.36,1);s.visible=false;sc.add(s);return s}
+const callS=spr("Calling the room phone...","rgba(18,38,58,.9)","#ffffff"),starS=spr("★★★★★  5 stars!","rgba(255,255,255,.95)","#b8821f");
+const rg=new THREE.Mesh(new THREE.RingGeometry(.2,.24,40),new THREE.MeshBasicMaterial({color:0x3fc1c3,transparent:true,side:THREE.DoubleSide}));rg.rotation.x=-Math.PI/2;rg.visible=false;sc.add(rg);
+/* script engine */
+const PH=["Order received","Load items","Go to lift","Ride lift up","Drive to room","Call the room","Hand over","Get feedback","Return to base"];
+let DT=0,SPD=1,gen=null,run=false,fin=false,T=0,ps=[],cartOn=false,view="orbit";
+const ease=p=>p*p*(3-2*p),wrapA=a=>Math.atan2(Math.sin(a),Math.cos(a));
+function* tw(d,f,lin){let t=0;while(t<d){t+=DT;const p=Math.min(1,t/d);f(lin?p:ease(p));yield}f(1)}
+function* wait(d){let t=0;while(t<d){t+=DT;yield}}
+function* turn(a){const a0=rb.rotation.y,df=wrapA(a-a0);yield* tw(Math.max(.2,Math.abs(df)/2.4),p=>{rb.rotation.y=a0+df*p})}
+function* drive(pts,v){v=v||1.5;for(const q of pts){const x0=rb.position.x,z0=rb.position.z,dx=q[0]-x0,dz=q[1]-z0,d=Math.hypot(dx,dz);if(d<.02)continue;yield* turn(Math.atan2(dx,dz));yield* tw(d/v,p=>{rb.position.x=x0+dx*p;rb.position.z=z0+dz*p},1)}}
+function* door(s,o){yield* tw(.9,p=>leaf(s,o?p:1-p))}
+function* corr(tx2){const x=rb.position.x,dir=Math.sign(tx2-x);if(cartOn&&((dir>0&&x<3.5&&tx2>5.2)||(dir<0&&x>5.5&&tx2<3.5))){const a=dir>0?3.4:5.6,b=dir>0?5.6:3.4;yield* drive([[a,-.6]]);setLed(0xffb347);say("Obstacle detected ahead. Relay stops, checks its sensors and plans a detour.");yield* wait(1.4);yield* drive([[a+dir*.3,.7],[b-dir*.3,.7],[b,-.6]]);setLed(0x3fc1c3);say("Past the cart. Back on route.")}yield* drive([[tx2,-.6]])}
+function say(t){$("#lst").textContent=t}
+const lg=$("#llg");H(lg,PH.map(p=>"<li>"+p+"</li>").join(""));
+function ph(i,m){if(i>=0)ps[i]=T;[...lg.children].forEach((li,k)=>li.className=i<0?"":k<i||i>=PH.length?"ok":k==i?"on":"");if(m)say(m)}
+function* script(){const rm=RN[ri],x=XR[ri];
+ph(0,"Front desk sends the request: deliver to Room "+rm+".");yield* wait(1.2);
+ph(1,"Staff load the items. Relay's lid opens, then closes and locks.");
+yield* tw(.8,p=>staff.userData.arm.rotation.x=-1.2*p);yield* tw(.8,p=>lid.rotation.x=-1.6*p);buildItems();items.visible=true;yield* wait(.7);
+yield* tw(.6,p=>staff.userData.arm.rotation.x=-1.2*(1-p));yield* tw(.8,p=>lid.rotation.x=-1.6*(1-p));
+ph(2,"Relay follows its map to the service lift, using 3D cameras to avoid people.");
+yield* drive([[-4.7,.3]]);yield* door(-1,1);yield* drive([[-2.5,0]]);yield* turn(Math.PI/2);yield* door(-1,0);
+ph(3,"Relay talks to the lift over Wi-Fi and rides up to floor 3.");
+yield* tw(5.5,p=>{car.position.y=Y*p;rb.position.y=Y*p;ind()},1);ind();
+yield* door(1,1);
+ph(4,"Relay drives down the corridor to Room "+rm+".");
+yield* drive([[-.4,-.6]]);yield* door(1,0);yield* corr(x);yield* drive([[x,-1.55]]);yield* turn(Math.PI);
+ph(5,"Relay rings the phone in Room "+rm+" to tell the guest it has arrived.");
+rg.visible=true;callS.visible=true;yield* tw(2.4,p=>{const q=(p*3)%1;rg.scale.setScalar(1+q*4);rg.material.opacity=.8*(1-q)},1);rg.visible=false;callS.visible=false;
+ph(6,"The guest opens the door, so Relay's lid unlocks. The guest takes the items.");
+guest.visible=true;guest.position.set(x,Y,-4.3);guest.rotation.y=0;yield* tw(1.1,p=>dr[ri].rotation.y=1.4*p);setLed(0x4cc27f);yield* tw(1.3,p=>guest.position.z=-4.3+1.85*p);
+yield* tw(.8,p=>lid.rotation.x=-1.6*p);yield* tw(.7,p=>guest.userData.arm.rotation.x=-1.3*p);
+yield* tw(1,p=>{items.position.set(0,.86+.3*p,.55*p);items.scale.setScalar(1-.85*p)});items.visible=false;items.position.set(0,.86,0);items.scale.setScalar(1);yield* tw(.5,p=>guest.userData.arm.rotation.x=-1.3*(1-p));
+ph(7,"Relay asks for a rating. Five stars! Then the lid closes and the guest closes the door.");
+starS.visible=true;eyes.forEach(e=>e.scale.y=.35);yield* tw(1.8,p=>{rb.rotation.y=Math.PI+Math.sin(p*16)*.22*(1-p)},1);yield* tw(.8,p=>lid.rotation.x=-1.6*(1-p));yield* wait(.6);starS.visible=false;eyes.forEach(e=>e.scale.y=1);
+yield* tw(1,p=>guest.position.z=-2.45-1.85*p);yield* tw(1,p=>dr[ri].rotation.y=1.4*(1-p));guest.visible=false;setLed(0x3fc1c3);
+ph(8,"Relay heads back to the lift and returns to base, ready for the next call.");
+yield* corr(.2);yield* door(1,1);yield* drive([[-2.5,0]]);yield* turn(-Math.PI/2);yield* door(1,0);
+yield* tw(5.5,p=>{car.position.y=Y*(1-p);rb.position.y=Y*(1-p);ind()},1);ind();
+yield* door(-1,1);yield* drive([[-4.7,0]]);yield* door(-1,0);yield* drive([[-6.6,1]]);yield* turn(0);
+ph(9,"Delivery complete in "+T.toFixed(0)+" simulated seconds. Relay waits at base.");chart()}
+function chart(){let h="";const d=PH.map((p,i)=>(i<8?ps[i+1]:T)-ps[i]),m=Math.max(...d);d.forEach((v,i)=>{h+=`<text x="0" y="${24+i*28}" font-size="14">${PH[i]}</text><rect x="150" y="${10+i*28}" width="${v/m*380}" height="18" rx="3" fill="${i==3||i==8?"var(--brass)":"var(--teal)"}"/><text x="${156+v/m*380}" y="${24+i*28}" font-size="13">${v.toFixed(0)} s</text>`});H($("#lch"),h)}
+/* camera */
+const s={th:.25,ph:.95,r:27,x:1.5,y:3,z:-1.5},gl=Object.assign({},s);let rFit=27;
+function fit(w){const a=w/HT;rFit=Math.max(24,27/(2*Math.tan(Math.PI*20/180)*a));if(view=="orbit")gl.r=rFit}
+function camU(){const n=view=="robot";if(cam.fov!=(n?58:40)){cam.fov=n?58:40;cam.updateProjectionMatrix()}
+if(n){const f=[Math.sin(rb.rotation.y),Math.cos(rb.rotation.y)];cam.position.set(rb.position.x+f[0]*.34,rb.position.y+.85,rb.position.z+f[1]*.34);cam.lookAt(rb.position.x+f[0]*5,rb.position.y+.7,rb.position.z+f[1]*5);return}
+if(view=="follow"){gl.x=rb.position.x;gl.y=rb.position.y+.6;gl.z=rb.position.z;gl.r=7}
+for(const k in s)s[k]+=(gl[k]-s[k])*.1;cam.position.set(s.x+s.r*Math.sin(s.ph)*Math.sin(s.th),s.y+s.r*Math.cos(s.ph),s.z+s.r*Math.sin(s.ph)*Math.cos(s.th));cam.lookAt(s.x,s.y,s.z)}
+$("#lvw").onclick=e=>{const v=e.target.dataset.v;if(!v)return;view=v;document.querySelectorAll("#lvw .chip").forEach(c=>c.classList.toggle("on",c.dataset.v==v));if(v=="orbit")Object.assign(gl,{th:.25,ph:.95,r:rFit,x:1.5,y:3,z:-1.5});if(v=="top")Object.assign(gl,{th:0,ph:.14,r:rFit,x:1.5,y:3,z:-1.5});if(v=="follow")Object.assign(gl,{ph:1.1,th:.3})};
+let dn=null;const cd=R.domElement;
+cd.onpointerdown=e=>{dn=[e.clientX,e.clientY];cd.setPointerCapture(e.pointerId)};cd.onpointerup=()=>{dn=null};
+cd.onpointermove=e=>{if(!dn||view=="robot")return;const dx=e.clientX-dn[0],dy=e.clientY-dn[1];dn=[e.clientX,e.clientY];gl.th-=dx*.008;gl.ph=Math.max(.12,Math.min(1.5,gl.ph-dy*.008))};
+/* controls */
+function reset(){gen=script();run=false;fin=false;T=0;ps=[];DT=0;rb.position.set(-6.6,0,1);rb.rotation.y=0;lid.rotation.x=0;items.visible=false;items.scale.setScalar(1);items.position.set(0,.86,0);eyes.forEach(e=>e.scale.y=1);staff.userData.arm.rotation.x=0;guest.visible=false;guest.userData.arm.rotation.x=0;dr.forEach(d=>d.rotation.y=0);car.position.y=0;ly=0;il="";ind();leaf(-1,0);leaf(1,0);hk.visible=cartOn;starS.visible=false;callS.visible=false;rg.visible=false;setLed(0x3fc1c3);ph(-1);$("#lgo").textContent="Start delivery";say("Press start to send the request.");H($("#lch"),'<text x="0" y="30" font-size="14" fill="var(--mut)">Finish a delivery to see the chart.</text>')}
+H($("#lrm"),$("#lrm").innerHTML+RN.map((r,i)=>`<button class="chip ${i==ri?"on":""}" data-r="${i}">${r}</button>`).join(""));
+H($("#lit"),$("#lit").innerHTML+IT.map((t,i)=>`<button class="chip ${sel[i]?"on":""}" data-i="${i}" aria-pressed="${!!sel[i]}">${t}</button>`).join(""));
+$("#lrm").onclick=e=>{const r=e.target.dataset.r;if(r==null)return;ri=+r;document.querySelectorAll("#lrm .chip").forEach(c=>c.classList.toggle("on",c.dataset.r==r));reset()};
+$("#lit").onclick=e=>{const i=e.target.dataset.i;if(i==null)return;sel[i]=sel[i]?0:1;if(!sel.some(x=>x))sel[0]=1;document.querySelectorAll("#lit .chip").forEach((c,k)=>{c.classList.toggle("on",!!sel[k]);c.setAttribute("aria-pressed",!!sel[k])});reset()};
+$("#lcart").onclick=e=>{cartOn=!cartOn;e.target.setAttribute("aria-pressed",cartOn);e.target.classList.toggle("on",cartOn);reset()};
+$("#lgo").onclick=()=>{if(fin)reset();run=!run;$("#lgo").textContent=run?"Pause":"Resume"};
+$("#lrs").onclick=reset;
+$("#lsp").onclick=e=>{const v=e.target.dataset.s;if(!v)return;SPD=+v;document.querySelectorAll("#lsp .chip").forEach(c=>c.classList.toggle("on",c.dataset.s==v))};
+/* loop */
+let lw=0,last=performance.now();
+function loop(n){requestAnimationFrame(loop);const dt=Math.min(.05,(n-last)/1000);last=n;if(!box.offsetParent)return;const w=box.clientWidth;if(w!=lw){lw=w;R.setSize(w,HT);cam.aspect=w/HT;cam.updateProjectionMatrix();fit(w)}
+if(run&&gen){DT=dt*SPD;T+=DT;if(gen.next().done){run=false;fin=true;$("#lgo").textContent="Run again"}}else DT=0;
+led.material.emissiveIntensity=1.4+.4*Math.sin(n/300);
+callS.position.set(rb.position.x,rb.position.y+1.5,rb.position.z);starS.position.copy(callS.position);rg.position.set(rb.position.x,rb.position.y+.97,rb.position.z);
+camU();R.render(sc,cam)}
+reset();Object.assign(s,gl);requestAnimationFrame(loop);
+})();
+
+/* shared 3D toolkit for the food and beverage scenes */
+function mk3(id,HT,cfg){
+const box=$("#"+id+"3d"),q=k=>$("#"+id+k);let R;
+try{R=new THREE.WebGLRenderer({antialias:true,alpha:true})}catch(e){H(box,'<p class="hint" style="padding:16px">3D needs WebGL. Please open this page in a recent browser.</p>');return null}
+R.setPixelRatio(Math.min(devicePixelRatio||1,2));R.shadowMap.enabled=true;R.shadowMap.type=THREE.PCFSoftShadowMap;R.outputEncoding=THREE.sRGBEncoding;R.toneMapping=THREE.ACESFilmicToneMapping;R.toneMappingExposure=1.1;box.appendChild(R.domElement);
+const sc=new THREE.Scene(),cam=new THREE.PerspectiveCamera(40,1,.1,150),C=cfg.cam;
+sc.add(new THREE.HemisphereLight(0xdfe9f2,0x7a6a5a,.65));
+const sun=new THREE.DirectionalLight(0xfff3e0,.9);sun.position.set(cfg.sun[0],cfg.sun[1],cfg.sun[2]);sun.target.position.set(C.t[0],C.t[1],C.t[2]);sc.add(sun);sc.add(sun.target);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);const sh=sun.shadow.camera;sh.left=cfg.sh[0];sh.right=cfg.sh[1];sh.top=cfg.sh[2];sh.bottom=cfg.sh[3];sh.near=1;sh.far=70;sun.shadow.bias=-.0004;
+const o={sc,cam,R,box,DT:0,T:0,run:false,fin:false,spd:1,view:"orbit",HT};
+o.S=(c,r,m,x)=>new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:r==null?.7:r,metalness:m||0},x||{}));
+o.E=(c,i)=>new THREE.MeshStandardMaterial({color:0x111111,emissive:c,emissiveIntensity:i||1});
+const S=o.S,E=o.E;
+o.bx=(w,h,d,m,x,y,z,p,nc)=>{const k=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m);k.position.set(x,y,z);k.castShadow=!nc;k.receiveShadow=true;(p||sc).add(k);return k};
+o.cy=(a,b,h,m,x,y,z,p,sg)=>{const k=new THREE.Mesh(new THREE.CylinderGeometry(a,b,h,sg||24),m);k.position.set(x,y,z);k.castShadow=true;k.receiveShadow=true;(p||sc).add(k);return k};
+o.sph=(r,m,x,y,z,p,sx,sy,sz)=>{const k=new THREE.Mesh(new THREE.SphereGeometry(r,20,14),m);k.position.set(x,y,z);k.scale.set(sx||1,sy||1,sz||1);k.castShadow=true;(p||sc).add(k);return k};
+o.pl=(w,h,m,x,y,z,rx,p)=>{const k=new THREE.Mesh(new THREE.PlaneGeometry(w,h),m);k.position.set(x,y,z);k.rotation.x=rx||0;k.receiveShadow=true;(p||sc).add(k);return k};
+o.tx=(w,h,f,rx,ry)=>{const c=document.createElement("canvas");c.width=w;c.height=h;f(c.getContext("2d"),w,h);const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;t.anisotropy=8;if(rx){t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(rx,ry)}return t};
+o.FM=t=>new THREE.MeshStandardMaterial({map:t,roughness:.9});
+o.lab=(w,h,txt,bg,fg,fs)=>o.tx(w,h,(g,W,Hh)=>{g.fillStyle=bg;g.fillRect(0,0,W,Hh);g.fillStyle=fg;g.font="bold "+fs+"px sans-serif";g.textAlign="center";g.textBaseline="middle";g.fillText(txt,W/2,Hh/2+2)});
+o.cv=(w,h)=>{const c=document.createElement("canvas");c.width=w;c.height=h;const g=c.getContext("2d"),t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;return{g:g,t:t,w:w,h:h}};
+const bx=o.bx,cy=o.cy,sph=o.sph;
+o.person=(shirt,pants,hair,seated)=>{const p=new THREE.Group(),skin=S(0xd9a98a,.8),sy=seated?.5:.8,ty=seated?.81:1.12,hy=seated?1.26:1.57;
+if(seated){[-.09,.09].forEach(x=>{cy(.07,.065,.42,S(pants,.8),x,.5,.21,p,12).rotation.x=Math.PI/2;cy(.06,.055,.46,S(pants,.8),x,.25,.42,p,12)})}else[-.09,.09].forEach(x=>cy(.07,.06,.8,S(pants,.8),x,.4,0,p,12));
+cy(.17,.15,.62,S(shirt,.85),0,ty,0,p,16);sph(.11,skin,0,hy,0,p);sph(.118,S(hair,.9),0,hy+.04,-.015,p,1,.75,1);[-.04,.04].forEach(x=>sph(.014,S(0x111111),x,hy,.103,p));cy(.05,.05,.1,skin,0,hy-.14,0,p,10);cy(.045,.04,.6,S(shirt,.85),-.22,ty,0,p,10);
+const ap=new THREE.Group();ap.position.set(.22,ty+.26,0);p.add(ap);cy(.045,.04,.6,S(shirt,.85),0,-.3,0,ap,10);p.userData.arm=ap;sc.add(p);return p};
+o.bubble=()=>{const c=document.createElement("canvas");c.width=512;c.height=96;const g=c.getContext("2d"),t=new THREE.CanvasTexture(c),s=new THREE.Sprite(new THREE.SpriteMaterial({map:t,transparent:true,depthTest:false}));s.scale.set(2.1,.39,1);s.visible=false;sc.add(s);let l="";
+s.say=(txt,bg,fg)=>{if(txt==l)return;l=txt;g.clearRect(0,0,512,96);g.fillStyle=bg||"rgba(18,38,58,.92)";g.beginPath();g.moveTo(24,0);g.lineTo(488,0);g.quadraticCurveTo(512,0,512,24);g.lineTo(512,72);g.quadraticCurveTo(512,96,488,96);g.lineTo(24,96);g.quadraticCurveTo(0,96,0,72);g.lineTo(0,24);g.quadraticCurveTo(0,0,24,0);g.fill();g.fillStyle=fg||"#fff";g.textAlign="center";g.textBaseline="middle";let fs=38;g.font="bold "+fs+"px sans-serif";while(g.measureText(txt).width>470&&fs>26){fs-=2;g.font="bold "+fs+"px sans-serif"}if(g.measureText(txt).width>470){const m=txt.lastIndexOf(" ",Math.ceil(txt.length/2)+3),a1=m>0?txt.slice(0,m):txt,a2=m>0?txt.slice(m+1):"";fs=28;g.font="bold "+fs+"px sans-serif";g.fillText(a1,256,32);g.fillText(a2,256,68)}else g.fillText(txt,256,50);t.needsUpdate=true};return s};
+/* two-link robot arm with yaw, shoulder, elbow and a downward-pointing gripper */
+o.arm=(L1,L2,TL,mat,w)=>{const root=new THREE.Group(),shd=new THREE.Group(),el=new THREE.Group(),wr=new THREE.Group(),dk=S(0x20262c,.5,.4);root.add(shd);
+const a=new THREE.Mesh(new THREE.BoxGeometry(w,w*1.2,L1),mat);a.position.z=L1/2;a.castShadow=true;shd.add(a);sph(w*.85,mat,0,0,0,shd);
+el.position.z=L1;shd.add(el);const b=new THREE.Mesh(new THREE.BoxGeometry(w*.85,w,L2),mat);b.position.z=L2/2;b.castShadow=true;el.add(b);sph(w*.75,dk,0,0,0,el);
+wr.position.z=L2;el.add(wr);cy(w*.4,w*.4,TL*.45,dk,0,0,TL*.22,wr,12).rotation.x=Math.PI/2;bx(w*1.4,w*.5,.06,mat,0,0,TL*.5,wr,1);
+const f=[-1,1].map(s=>bx(.025,.05,TL*.45,dk,s*.05,0,TL*.76,wr,1));const tip=new THREE.Group();tip.position.z=TL;tip.rotation.x=-Math.PI/2;wr.add(tip);
+const v=new THREE.Vector3(),ar={root:root,tip:tip,grip:op=>{f[0].position.x=-(.03+.05*op);f[1].position.x=.03+.05*op},
+set:(x,y,z)=>{root.updateWorldMatrix(true,false);root.getWorldPosition(v);const dx=x-v.x,dz=z-v.z,dy=y+TL-v.y,r=Math.hypot(dx,dz);let d=Math.hypot(r,dy);d=Math.min(Math.max(d,Math.abs(L1-L2)+.03),L1+L2-.01);
+const cl=n=>Math.min(1,Math.max(-1,n)),t1=Math.atan2(dy,r)+Math.acos(cl((L1*L1+d*d-L2*L2)/(2*L1*d))),e=Math.acos(cl((L1*L1+L2*L2-d*d)/(2*L1*L2))),t2=t1-(Math.PI-e);
+root.rotation.y=Math.atan2(dx,dz);shd.rotation.x=-t1;el.rotation.x=-(t2-t1);wr.rotation.x=Math.PI/2+t2}};ar.grip(1);return ar};
+/* generators */
+const ease=p=>p*p*(3-2*p),wrapA=a=>Math.atan2(Math.sin(a),Math.cos(a));o.ease=ease;
+o.tw=function*(d,f,lin){let t=0;while(t<d){t+=o.DT;const p=Math.min(1,t/d);f(lin?p:ease(p));yield}f(1)};
+o.wait=function*(d){let t=0;while(t<d){t+=o.DT;yield}};
+o.turn=function*(k,a){const a0=k.rotation.y,df=wrapA(a-a0);yield* o.tw(Math.max(.2,Math.abs(df)/2.4),p=>{k.rotation.y=a0+df*p})};
+o.drive=function*(k,pts,v){v=v||1.5;for(const p of pts){const x0=k.position.x,z0=k.position.z,dx=p[0]-x0,dz=p[1]-z0,d=Math.hypot(dx,dz);if(d<.02)continue;yield* o.turn(k,Math.atan2(dx,dz));yield* o.tw(d/v,u=>{k.position.x=x0+dx*u;k.position.z=z0+dz*u},1)}};
+/* checklist, status and chart */
+const lg=q("lg"),vis=new Set();let cur=-1,t0=0,acc=[];o.names=[];
+o.setNames=n=>{o.names=n;H(lg,n.map(p=>"<li>"+p+"</li>").join(""))};
+o.ph=(i,m)=>{if(cur>=0)acc[cur]=(acc[cur]||0)+o.T-t0;cur=i;t0=o.T;vis.add(i);[...lg.children].forEach((li,k)=>li.className=k==i?"on":vis.has(k)?"ok":"");if(m)o.say(m)};
+o.say=m=>{q("st").textContent=m};
+o.finish=()=>{if(cur>=0)acc[cur]=(acc[cur]||0)+o.T-t0;cur=-1;[...lg.children].forEach(li=>li.className="ok");return acc};
+o.bars=(labels,vals,unit)=>{const m=Math.max.apply(null,vals.concat([.001]));let h="";vals.forEach((v,i)=>{h+=`<text x="0" y="${24+i*28}" font-size="14">${labels[i]}</text><rect x="165" y="${10+i*28}" width="${Math.max(2,v/m*350)}" height="18" rx="3" fill="${i%2?"var(--brass)":"var(--teal)"}"/><text x="${171+v/m*350}" y="${24+i*28}" font-size="13">${typeof v=="number"&&v%1?v.toFixed(0):v} ${unit}</text>`});const sv=q("ch");sv.setAttribute("viewBox","0 0 600 "+(labels.length*28+8));H(sv,h)};
+o.clearChart=()=>{H(q("ch"),'<text x="0" y="24" font-size="14" fill="var(--mut)">Finish a run to see the chart.</text>')};
+/* camera */
+const s={th:C.th,ph:C.ph,r:C.r,x:C.t[0],y:C.t[1],z:C.t[2]},gl=Object.assign({},s);let rFit=C.r;
+function fit(w){const a=w/HT;rFit=Math.max(C.r*.85,C.span/(2*Math.tan(Math.PI*20/180)*a));if(o.view=="orbit")gl.r=rFit}
+function setView(v){o.view=v;document.querySelectorAll("#"+id+"vw .chip").forEach(c=>c.classList.toggle("on",c.dataset.v==v));if(v=="orbit")Object.assign(gl,{th:C.th,ph:C.ph,r:rFit,x:C.t[0],y:C.t[1],z:C.t[2]});if(v=="top")Object.assign(gl,{th:0,ph:.14,r:rFit,x:C.t[0],y:C.t[1],z:C.t[2]});if(v=="follow")Object.assign(gl,{ph:1.1,th:.3,r:o.fr||6})}
+function camU(){const eye=o.view=="eye"&&o.eye,nf=eye?58:40;if(cam.fov!=nf){cam.fov=nf;cam.updateProjectionMatrix()}
+if(eye){const e=o.eye();cam.position.set(e.p[0],e.p[1],e.p[2]);cam.lookAt(e.l[0],e.l[1],e.l[2]);return}
+if(o.view=="follow"&&o.follow){const f=o.follow();gl.x=f[0];gl.y=f[1];gl.z=f[2]}
+for(const k in s)s[k]+=(gl[k]-s[k])*.1;cam.position.set(s.x+s.r*Math.sin(s.ph)*Math.sin(s.th),s.y+s.r*Math.cos(s.ph),s.z+s.r*Math.sin(s.ph)*Math.cos(s.th));cam.lookAt(s.x,s.y,s.z)}
+let dn=null;const cd=R.domElement;cd.onpointerdown=e=>{dn=[e.clientX,e.clientY];cd.setPointerCapture(e.pointerId)};cd.onpointerup=()=>{dn=null};
+cd.onpointermove=e=>{if(!dn||o.view=="eye")return;gl.th-=(e.clientX-dn[0])*.008;gl.ph=Math.max(.12,Math.min(1.5,gl.ph-(e.clientY-dn[1])*.008));dn=[e.clientX,e.clientY]};
+q("vw").onclick=e=>{if(e.target.dataset.v)setView(e.target.dataset.v)};
+q("sp").onclick=e=>{const v=e.target.dataset.s;if(!v)return;o.spd=+v;document.querySelectorAll("#"+id+"sp .chip").forEach(c=>c.classList.toggle("on",c.dataset.s==v))};
+o.reset=()=>{o.gen=o.script();o.run=false;o.fin=false;o.T=0;o.DT=0;cur=-1;acc=[];vis.clear();[...lg.children].forEach(li=>li.className="");q("go").textContent="Start";o.clearChart();o.init&&o.init()};
+q("go").onclick=()=>{if(o.fin)o.reset();o.run=!o.run;q("go").textContent=o.run?"Pause":"Resume"};q("rs").onclick=()=>o.reset();
+let lw=0,last=performance.now();
+function loop(n){requestAnimationFrame(loop);const dt=Math.min(.05,(n-last)/1000);last=n;if(!box.offsetParent)return;const w=box.clientWidth;if(w!=lw){lw=w;R.setSize(w,HT);cam.aspect=w/HT;cam.updateProjectionMatrix();fit(w)}
+if(o.run&&o.gen){o.DT=dt*o.spd;o.T+=o.DT;if(o.gen.next().done){o.run=false;o.fin=true;q("go").textContent="Run again"}}else o.DT=0;
+o.frame&&o.frame(n,dt);camU();R.render(sc,cam)}
+o.begin=()=>{o.reset();Object.assign(s,gl);requestAnimationFrame(loop)};
+return o}
+/* stream helper: a thin liquid column between two points */
+function mkStream(o,col){const m=new THREE.Mesh(new THREE.CylinderGeometry(.012,.012,1,8),new THREE.MeshStandardMaterial({color:col,roughness:.2,transparent:true,opacity:.85}));m.visible=false;o.sc.add(m);const u=new THREE.Vector3(0,1,0),d=new THREE.Vector3();
+m.go=(a,b,c)=>{if(c!=null)m.material.color.setHex(c);d.set(b.x-a.x,b.y-a.y,b.z-a.z);const L=d.length();m.position.set((a.x+b.x)/2,(a.y+b.y)/2,(a.z+b.z)/2);m.scale.set(1,Math.max(.001,L),1);m.quaternion.setFromUnitVectors(u,d.normalize());m.visible=true};return m}
+/* BellaBot robot waiter */
+(function(){
+const o=mk3("w",420,{sun:[8,18,12],sh:[-15,15,11,-11],cam:{th:.12,ph:.98,r:24,t:[0,.6,0],span:21}});if(!o)return;
+const {S,E,bx,cy,sph,pl,tx,FM,sc}=o,wallM=S(0xece6dc,.9),steel=S(0xc9ced2,.35,.7),wood=S(0x9a7448,.6),dk=S(0x20262c,.5,.3);
+const woodT=tx(256,256,(g,w,h)=>{for(let i=0;i<8;i++){g.fillStyle=["#a9814f","#9d7546","#b38a58","#98703f"][i%4];g.fillRect(0,i*32,w,32);g.fillStyle="rgba(0,0,0,.25)";g.fillRect(0,i*32,w,2);for(let k=0;k<18;k++){g.fillStyle="rgba(60,30,10,.12)";g.fillRect(Math.random()*w,i*32+Math.random()*30,30+Math.random()*60,1)}}},9,5.6);
+const tileT=tx(128,128,(g,w,h)=>{g.fillStyle="#d8dde0";g.fillRect(0,0,w,h);g.strokeStyle="#9aa3a9";g.lineWidth=3;g.strokeRect(0,0,w,h)},6,16);
+pl(19,11.4,FM(woodT),0,0,0,-Math.PI/2);pl(4.2,11.4,FM(tileT),-7.5,.01,0,-Math.PI/2);
+bx(19,3.2,.2,wallM,0,1.6,-5.8);bx(.2,3.2,11.6,wallM,-9.6,1.6,0);
+[-2.5,2.5,7].forEach(x=>{bx(2.5,1.8,.08,S(0x5a4632,.6),x,1.8,-5.68);pl(2.3,1.6,E(0xcfe8ff,.9),x,1.8,-5.62,0);bx(.05,1.6,.04,S(0x5a4632,.6),x,1.8,-5.6,sc,1);bx(2.3,.05,.04,S(0x5a4632,.6),x,1.8,-5.6,sc,1)});
+/* kitchen */
+bx(.9,1.05,6.6,steel,-5.55,.525,0);bx(1,.06,6.6,wood,-5.55,1.08,0);[-3,3].forEach(z=>bx(.06,1,.06,steel,-5.3,1.65,z,sc,1));bx(.5,.08,6.6,E(0xff8a3d,1.3),-5.45,2.15,0,sc,1);
+bx(2.6,.95,.9,steel,-8.3,.475,-4.9);bx(2.8,.5,1.1,steel,-8.3,2.5,-5);[-.8,0,.8].forEach(x=>{cy(.18,.18,.04,dk,-8.3+x,.97,-4.9,sc,16);cy(.16,.14,.14,steel,-8.3+x,1.07,-4.9,sc,16)});
+bx(1.3,.9,2.4,steel,-8.4,.45,3.5);bx(1.1,2.1,.9,S(0xdfe4e8,.35,.6),-9.0,1.05,-2);bx(.4,.06,.5,S(0xeeeeee,.8),-8.4,.93,3.2);
+const kd=o.cv(256,160);o.pl(2.2,1.4,new THREE.MeshBasicMaterial({map:kd.t}),-9.45,1.9,2.4,0,sc).rotation.y=Math.PI/2;
+function kds(lines,hot){const g=kd.g;g.fillStyle="#0b1620";g.fillRect(0,0,256,160);g.fillStyle="#3fc1c3";g.font="bold 20px sans-serif";g.fillText("KITCHEN ORDERS",12,28);g.font="bold 22px sans-serif";lines.forEach((l,i)=>{g.fillStyle=hot?"#ffb347":"#4cc27f";g.fillText(l,12,62+i*28)});kd.t.needsUpdate=true}
+const chef1=o.person(0xf6f6f6,0x333333,0x2b1d14);chef1.position.set(-6.4,0,.6);chef1.rotation.y=Math.PI/2;const chef2=o.person(0xf6f6f6,0x333333,0x4a3020);chef2.position.set(-7.4,0,-1.6);chef2.rotation.y=Math.PI/2;
+/* tables, chairs, guests, decor */
+const TP=[[-1.5,-3.3],[2.2,-3.3],[5.8,-3.3],[-1.5,3.3],[2.2,3.3],[5.8,3.3]],gcol=[0x2f7f86,0xb8821f,0xd9482b,0x6a4c93,0x3a7d44,0x1d5fa8],guests=[];
+TP.forEach((t,i)=>{const x=t[0],z=t[1];cy(.7,.7,.05,wood,x,.76,z,sc,32);cy(.07,.07,.72,dk,x,.38,z,sc,12);cy(.35,.4,.04,dk,x,.02,z,sc,24);cy(.012,.012,1.4,dk,x,2.5,z,sc,6);cy(.1,.38,.32,S(0x2a2a2a,.7),x,1.65,z,sc,24);sph(.09,E(0xffdf9e,2.2),x,1.52,z,sc,1,1,1);
+cy(.06,.06,.012,S(0xffffff,.3),x-.25,.8,z+.1,sc,18);cy(.035,.03,.1,S(0xdfeeff,.1,.1,{transparent:true,opacity:.5}),x+.3,.84,z-.15,sc,14);
+[-1,1].forEach(sd=>{const cx=x+sd*.95,ch=new THREE.Group();ch.position.set(cx,0,z);ch.rotation.y=sd<0?Math.PI/2:-Math.PI/2;sc.add(ch);bx(.46,.05,.46,S(0x5a4632,.6),0,.45,0,ch);[-.2,.2].forEach(a=>[-.2,.2].forEach(b=>bx(.04,.44,.04,S(0x5a4632,.6),a,.22,b,ch,1)));bx(.46,.5,.04,S(0x5a4632,.6),0,.72,-.22,ch);
+const p=o.person(gcol[(i+(sd>0?2:0))%6],[0x3a4a5c,0x2b2f36][i%2],[0x2b1d14,0x6b4423,0x111111][(i+sd+1)%3],true);p.position.set(cx,0,z);p.rotation.y=ch.rotation.y;guests.push(p)})});
+[[-8.6,5],[8.4,5],[8.4,-5]].forEach(p=>{cy(.28,.22,.5,S(0xb06a4a,.8),p[0],.25,p[1],sc,16);[0,1,2,3,4].forEach(k=>sph(.28,S(0x2e8b57,.8),p[0]+Math.sin(k*1.9)*.2,.8+k*.14,p[1]+Math.cos(k*1.9)*.2,sc,1,1.2,1))});
+[[-3,0xffdf9e],[4,0xffdf9e]].forEach(l=>{const p=new THREE.PointLight(l[1],.5,14);p.position.set(l[0],2.6,0);sc.add(p)});
+/* dishes */
+function dish(k){const g=new THREE.Group();cy(.13,.11,.02,S(0xffffff,.25),0,.01,0,g,24);
+if(k%3==0){sph(.08,S(0xf0d68a,.8),0,.06,0,g,1,.6,1);sph(.05,S(0xc0392b,.7),0,.1,0,g,1,.6,1)}
+if(k%3==1){cy(.07,.07,.025,S(0xd9b779,.8),0,.035,0,g,20);cy(.065,.065,.025,S(0x5a2f1d,.8),0,.06,0,g,20);cy(.07,.07,.02,S(0x6aa84f,.8),0,.08,0,g,20);cy(.07,.07,.03,S(0xd9b779,.8),0,.105,0,g,20)}
+if(k%3==2){[0,1,2,3,4,5].forEach(a=>sph(.035,S(a%2?0x6aa84f:0xc0392b,.8),Math.sin(a*1.1)*.05,.05+a%2*.02,Math.cos(a*1.1)*.05,g))}
+g.visible=false;sc.add(g);return g}
+/* BellaBot */
+const rb=new THREE.Group();sc.add(rb);const TY=[.32,.52,.72,.92],leds=[],pink=S(0xff9fb8,.5),white=S(0xf4f4f6,.3,.05);
+cy(.3,.32,.12,dk,0,.08,0,rb,32);cy(.09,.1,1,white,0,.6,0,rb,20);
+TY.forEach(y=>{cy(.27,.27,.02,white,0,y,0,rb,40);const l=new THREE.Mesh(new THREE.TorusGeometry(.27,.011,8,48),new THREE.MeshStandardMaterial({color:0x111111,emissive:0x333333,emissiveIntensity:1.6}));l.rotation.x=Math.PI/2;l.position.y=y;rb.add(l);leds.push(l)});
+sph(.24,white,0,1.2,0,rb,1,.88,1);bx(.3,.2,.04,S(0x050608,.15,.5),0,1.2,.215,rb,1);
+const eyes=[-.07,.07].map(x=>{const e=new THREE.Mesh(new THREE.CircleGeometry(.032,20),E(0x6ff0f2,2));e.position.set(x,1.22,.238);rb.add(e);return e});
+[-.11,.11].forEach(x=>{const c=new THREE.Mesh(new THREE.CircleGeometry(.02,16),E(0xff7a9a,1.5));c.position.set(x,1.16,.238);rb.add(c);const e=new THREE.Mesh(new THREE.ConeGeometry(.07,.14,4),pink);e.position.set(x*1.5,1.42,0);e.castShadow=true;rb.add(e)});
+const mo=new THREE.Mesh(new THREE.TorusGeometry(.03,.006,8,16,Math.PI),E(0x6ff0f2,2));mo.position.set(0,1.18,.238);mo.rotation.z=Math.PI;rb.add(mo);
+const bub=o.bubble(),kid=o.person(0x1d5fa8,0xd9482b,0x111111);kid.scale.setScalar(.62);kid.visible=false;
+function setLed(c){leds.forEach(l=>{if(l.userData.on)l.material.emissive.setHex(c)})}
+function tray(k){const a=rb.rotation.y,r=.15;return{x:rb.position.x+Math.sin(a)*r,y:TY[k]+.03,z:rb.position.z+Math.cos(a)*r}}
+/* state */
+const sel=new Set([1,4]);let kidOn=false,ds=[];
+function init(){kid.userData.done=false;rb.position.set(-4.6,0,0);rb.rotation.y=0;leds.forEach(l=>{l.userData.on=false;l.material.emissive.setHex(0x333333)});ds.forEach(d=>sc.remove(d.g));ds=[];bub.visible=false;kid.visible=false;kid.position.set(-.6,0,3.8);chef1.userData.arm.rotation.x=0;eyes.forEach(e=>e.scale.y=1);guests.forEach(g=>g.userData.arm.rotation.x=0);kds(["Waiting for","orders..."],false);o.say("Pick tables, then press start. Try the child-in-the-aisle option.")}
+o.init=init;o.follow=()=>[rb.position.x,.8,rb.position.z];o.fr=6.5;
+o.eye=()=>{const a=rb.rotation.y,f=[Math.sin(a),Math.cos(a)];return{p:[rb.position.x+f[0]*.3,1.2,rb.position.z+f[1]*.3],l:[rb.position.x+f[0]*6,.9,rb.position.z+f[1]*6]}};
+o.frame=n=>{ds.forEach(d=>{if(d.on){const t=tray(d.k);d.g.position.set(t.x,t.y,t.z)}});bub.position.set(rb.position.x,2.1,rb.position.z);leds.forEach(l=>{if(l.userData.on)l.material.emissiveIntensity=1.4+.5*Math.sin(n/250)})};
+o.setNames(["Order placed","Chefs plate","Load trays","Drive to table","Serve guests","Return to kitchen"]);
+o.script=function*(){const ts=[...sel].sort((a,b)=>TP[a][0]-TP[b][0]||TP[a][1]-TP[b][1]);
+o.ph(0,"Guests at "+ts.map(t=>"table "+(t+1)).join(" and ")+" order. The kitchen screen lights up.");kds(ts.map(t=>"Table "+(t+1)),true);yield* o.wait(1.4);
+o.ph(1,"The chefs cook and plate each dish on the pass.");ds=ts.map((t,i)=>{const g=dish(i+t);g.position.set(-5.55,1.14,-1.4+i*.9);g.visible=true;return{g:g,k:i,on:false,t:t}});
+yield* o.tw(.8,p=>chef1.userData.arm.rotation.x=-1.2*p);yield* o.wait(1.2);
+o.ph(2,"Staff slide each dish onto its own tray and tap the table number on the screen.");
+for(const d of ds){const a=d.g.position.clone(),r0=tray(d.k);yield* o.tw(.8,p=>d.g.position.set(a.x+(r0.x-a.x)*p,a.y+(r0.y-a.y)*p+Math.sin(p*Math.PI)*.2,a.z+(r0.z-a.z)*p));d.on=true;leds[d.k].userData.on=true;leds[d.k].material.emissive.setHex(0x3fc1c3)}
+yield* o.tw(.6,p=>chef1.userData.arm.rotation.x=-1.2*(1-p));kds(["Dishes on","BellaBot"],false);
+for(const d of ds){const t=d.t,tp=TP[t],sz=tp[1]<0?-1.6:1.6;
+o.ph(3,"BellaBot drives to table "+(t+1)+", sensing people and chairs.");
+if(kidOn&&kid.visible===false&&!kid.userData.done){yield* o.drive(rb,[[-2.4,0]]);kid.userData.done=true;kid.visible=true;setLed(0xffb347);bub.visible=true;bub.say("Excuse me, please!","rgba(255,179,71,.95)","#12263a");o.say("A child runs across the aisle. BellaBot stops and waits.");yield* o.drive(kid,[[-.6,-3.6]],2.2);kid.visible=false;yield* o.wait(.5);bub.visible=false;setLed(0x3fc1c3);o.say("Aisle clear. BellaBot carries on.")}
+yield* o.drive(rb,[[tp[0],0],[tp[0],sz]]);yield* o.turn(rb,tp[1]<0?Math.PI:0);
+o.ph(4,"Table "+(t+1)+": BellaBot turns its trays to the guest and speaks. The guest takes the dish.");
+bub.visible=true;bub.say("Your dish has arrived. Please take it.");setLed(0x4cc27f);
+const gs=guests.filter((g,gi)=>Math.floor(gi/2)==t),gg=gs[0];yield* o.tw(.7,p=>gg.userData.arm.rotation.x=-1.3*p);
+const a=d.g.position.clone(),tg={x:tp[0]+.05,y:.8,z:tp[1]-.1*(tp[1]<0?-1:1)};d.on=false;yield* o.tw(1,p=>d.g.position.set(a.x+(tg.x-a.x)*p,a.y+(tg.y-a.y)*p+Math.sin(p*Math.PI)*.25,a.z+(tg.z-a.z)*p));
+leds[d.k].userData.on=false;leds[d.k].material.emissive.setHex(0x333333);leds[d.k].material.emissiveIntensity=1.6;eyes.forEach(e=>e.scale.y=.4);yield* o.tw(.6,p=>gg.userData.arm.rotation.x=-1.3*(1-p));yield* o.wait(.6);eyes.forEach(e=>e.scale.y=1);bub.visible=false;setLed(0x3fc1c3);
+yield* o.drive(rb,[[tp[0],0]])}
+o.ph(5,"All trays are empty. BellaBot returns to the pass for the next order.");yield* o.drive(rb,[[-4.6,0]]);yield* o.turn(rb,0);
+o.say("Delivery complete in "+o.T.toFixed(0)+" simulated seconds.");const a=o.finish();o.bars(o.names,a.map(v=>v||0),"s")};
+/* controls */
+H($("#wtb"),$("#wtb").innerHTML+TP.map((t,i)=>`<button class="chip ${sel.has(i)?"on":""}" data-t="${i}" aria-pressed="${sel.has(i)}">Table ${i+1}</button>`).join(""));
+$("#wtb").onclick=e=>{const t0=e.target.dataset.t;if(t0==null)return;const t=+t0;if(sel.has(t)){if(sel.size>1)sel.delete(t)}else if(sel.size<4)sel.add(t);document.querySelectorAll("#wtb .chip").forEach((c,k)=>{c.classList.toggle("on",sel.has(k));c.setAttribute("aria-pressed",sel.has(k))});kid.userData.done=false;o.reset()};
+$("#wkid").onclick=e=>{kidOn=!kidOn;e.target.setAttribute("aria-pressed",kidOn);e.target.classList.toggle("on",kidOn);kid.userData.done=false;o.reset()};
+o.begin()})();
+/* Flippy 2 style robotic fry station */
+(function(){
+const o=mk3("k",420,{sun:[7,16,12],sh:[-11,11,9,-6],cam:{th:.12,ph:1.12,r:15,t:[.3,1.5,0],span:13}});if(!o)return;
+const {S,E,bx,cy,sph,pl,tx,FM,sc}=o,steel=S(0xc9ced2,.32,.8),wallM=S(0xe4e9ec,.9),dk=S(0x20262c,.5,.35),wht=S(0xf4f6f8,.3,.1);
+const tileT=tx(128,128,(g,w,h)=>{g.fillStyle="#cfd5d9";g.fillRect(0,0,w,h);g.strokeStyle="#8f989e";g.lineWidth=3;g.strokeRect(0,0,w,h)},12,6);
+pl(15,8,FM(tileT),.3,0,0,-Math.PI/2);bx(15,4.2,.2,wallM,.3,2.1,-2.6);bx(.2,4.2,8,wallM,-7.3,2.1,0);
+const sub=tx(256,128,(g,w,h)=>{g.fillStyle="#f3efe6";g.fillRect(0,0,w,h);g.strokeStyle="#c7c0ad";g.lineWidth=2;for(let x=0;x<w;x+=32)g.strokeRect(x,0,32,h/2),g.strokeRect(x+16,h/2,32,h/2)});pl(14.6,2,FM(sub),.3,1.9,-2.49,0);
+/* counter line */
+bx(13,.95,1.1,steel,.3,.475,-1.4);bx(13,.05,1.15,S(0xdde2e5,.3,.7),.3,.97,-1.4);
+/* fryer */
+const FX=.2,oil=S(0xd9a62c,.12,0,{transparent:true,opacity:.9});bx(1.5,.95,1.05,steel,FX,.475,-1.4,sc);bx(1.2,.04,.8,dk,FX,.97,-1.4,sc,1);const oilM=bx(1.1,.03,.7,oil,FX,.96,-1.4,sc,1);bx(.5,.35,.08,E(0xff6a3d,1.2),FX-.4,.7,-.84,sc,1);bx(.12,.12,.04,E(0x4cc27f,1.3),FX+.5,.7,-.84,sc,1);
+/* ingredient bins */
+const bins=[["Fries",0xf0d36b],["Onion rings",0xd8a24a],["Chicken tenders",0xb97a3e]];let item=0;
+bx(1.3,.7,.9,S(0x5a6770,.6,.4),-3.3,.35+.0,-1.4);bx(1.2,.5,.8,S(0x2b3a44,.7),-3.3,1.0,-1.4,sc,1);const binTop=bx(1.1,.04,.7,S(bins[0][1],.8),-3.3,1.27,-1.4,sc,1);
+/* basket rack */
+bx(1.6,.08,.3,steel,-1.5,1.55,-1.9);[-.7,.7].forEach(x=>bx(.06,.6,.06,steel,-1.5+x,1.25,-2.2,sc,1));bx(1.6,.08,.3,steel,-1.5,1.55,-2.2);
+/* hot-hold */
+bx(1.8,.18,.9,steel,3.2,1.06,-1.4);bx(1.6,.05,.75,S(0xaeb6bc,.3,.8),3.2,1.17,-1.4,sc,1);bx(1.7,.08,.1,E(0xff4a1c,1.2),3.2,2.1,-1.45,sc,1);[-.8,.8].forEach(x=>bx(.05,1,.05,steel,3.2+x,1.6,-1.8,sc,1));bx(1.8,.05,.5,S(0x333,.6),3.2,2.12,-1.55,sc,1).visible=false;
+const holdG=new THREE.Group();sc.add(holdG);
+/* packer and cartons */
+const packer=o.person(0xd9482b,0x26323d,0x2b1d14);packer.position.set(5.2,0,-.2);packer.rotation.y=-Math.PI/2;bx(.3,.22,.2,S(0xd9482b,.7),4.8,1.1,-1.4);bx(.3,.22,.2,S(0xf4f4f4,.7),4.5,1.1,-1.4);
+/* rail, carriage and arm */
+bx(10.5,.16,.22,steel,-.3,3.35,-1.6);[-5.5,5].forEach(x=>bx(.12,3.3,.12,steel,x,1.7,-1.9));
+const car=new THREE.Group();car.position.set(0,3.2,-1.6);sc.add(car);bx(.7,.3,.5,wht,0,.0,0,car);bx(.3,.2,.3,dk,0,.25,0,car,1);cy(.06,.06,.08,E(0x6ff0f2,1.6),.0,-.18,.25,car,12).rotation.x=Math.PI/2;
+const arm=o.arm(1.0,1.05,.3,wht,.14);arm.root.position.set(0,-.2,0);car.add(arm.root);
+/* basket */
+function mkBasket(){const g=new THREE.Group(),wm=new THREE.MeshStandardMaterial({color:0x9aa5ad,metalness:.9,roughness:.3,wireframe:true}),b=new THREE.Mesh(new THREE.BoxGeometry(.42,.2,.3,5,3,4),wm);b.position.y=-.2;b.castShadow=true;g.add(b);bx(.42,.01,.3,S(0x667078,.4,.8),0,-.3,0,g,1);cy(.012,.012,.3,dk,0,-.05,0,g,8);cy(.02,.02,.16,dk,0,.1,0,g,8).rotation.z=Math.PI/2;g.userData.food=new THREE.Group();g.add(g.userData.food);return g}
+const bk=mkBasket();sc.add(bk);const RK=[-1.5,1.45,-2.05];
+function foodPiece(k){const c=bins[item][1],m=S(c,.7);let p;if(item==0){p=new THREE.Mesh(new THREE.BoxGeometry(.03,.15,.03),m)}else if(item==1){p=new THREE.Mesh(new THREE.TorusGeometry(.045,.016,8,16),m)}else{p=new THREE.Mesh(new THREE.BoxGeometry(.11,.04,.055),m)}p.castShadow=true;return p}
+function fillFood(g,n){while(g.children.length)g.remove(g.children[0]);for(let i=0;i<n;i++){const p=foodPiece(i);p.position.set((Math.random()-.5)*.34,-.17+Math.random()*.1,(Math.random()-.5)*.22);p.rotation.set(Math.random()*3,Math.random()*3,Math.random()*3);g.add(p)}}
+const bub=[...Array(12)].map(()=>{const b=sph(.018,S(0xffffff,.1,0,{transparent:true,opacity:.7}),0,0,0,sc);b.visible=false;return b});
+const cam1=o.bubble();
+const kd=o.cv(256,160);const kds=o.pl(1.9,1.2,new THREE.MeshBasicMaterial({map:kd.t}),-.9,2.6,-2.45,0,sc);
+function screen(l1,l2,col){const g=kd.g;g.fillStyle="#0b1620";g.fillRect(0,0,256,160);g.fillStyle="#3fc1c3";g.font="bold 20px sans-serif";g.fillText("FRY STATION",12,28);g.fillStyle=col||"#4cc27f";g.font="bold 24px sans-serif";g.fillText(l1,12,70);g.font="bold 20px sans-serif";g.fillStyle="#fff";g.fillText(l2,12,108);kd.t.needsUpdate=true}
+/* state */
+let nOrd=3,tp={x:0,y:2,z:-1.4},done=0,cooking=false,held=null,heldN=0;
+function aim(x,y,z){tp.x=x;tp.y=y;tp.z=z;car.position.x=Math.max(-4.9,Math.min(4.3,x-.55));arm.set(x,y,z)}
+function* mv(x,y,z,d){const a={x:tp.x,y:tp.y,z:tp.z};yield* o.tw(d,p=>aim(a.x+(x-a.x)*p,a.y+(y-a.y)*p,a.z+(z-a.z)*p))}
+function init(){bk.parent!==sc&&sc.attach(bk);bk.position.set(RK[0],RK[1],RK[2]);bk.rotation.set(0,0,0);fillFood(bk.userData.food,0);arm.grip(1);aim(-.5,2.2,-1.4);while(holdG.children.length)holdG.remove(holdG.children[0]);done=0;cooking=false;bub.forEach(b=>b.visible=false);oilM.material.color.setHex(0xd9a62c);binTop.material.color.setHex(bins[item][1]);cam1.visible=false;screen("Waiting for","orders...");q3()}
+function q3(){o.say("Choose food and number of baskets, then press start.")}
+o.init=init;o.follow=()=>[tp.x,1.6,-1.4];o.fr=6;
+o.eye=()=>{const w=new THREE.Vector3();arm.tip.getWorldPosition(w);return{p:[w.x,w.y+.3,w.z+1.2],l:[w.x,w.y-.5,w.z-1]}};
+o.frame=n=>{if(cooking){bub.forEach((b,i)=>{b.visible=true;const ph=(n/500+i*.37)%1;b.position.set(FX+(Math.sin(i*2.3)*.42),.95+ph*.08,-1.4+Math.cos(i*3.1)*.25);b.scale.setScalar(.6+ph)})}cam1.position.set(car.position.x,3.5,-1.2)};
+o.setNames(["Order arrives","Pick up basket","Fill with food","Lower into oil","Cook with timer","Lift, drain, shake","Dump into hot-hold","Return basket","Order ready"]);
+o.script=function*(){const nm=bins[item][0],ct=[3,3.5,3][item];
+for(let n=1;n<=nOrd;n++){
+o.ph(0,"Order "+n+" of "+nOrd+" arrives on the screen: "+nm+".");screen("Order "+n+"/"+nOrd,nm,"#ffb347");yield* o.wait(.8);
+o.ph(1,"The arm slides along its rail and grips an empty fry basket.");arm.grip(1);yield* mv(RK[0],RK[1]+.35,RK[2],.9);yield* mv(RK[0],RK[1],RK[2],.5);arm.grip(0);yield* o.wait(.3);arm.tip.attach(bk);yield* mv(RK[0],RK[1]+.5,RK[2]+.4,.5);
+o.ph(2,"It carries the basket to the food bin and fills it. Thermal cameras and AI vision identify the food.");yield* mv(-3.3,1.75,-1.4,1.2);cam1.visible=true;cam1.say("Vision: "+nm+" detected","rgba(18,38,58,.92)","#6ff0f2");yield* o.tw(1,p=>fillFood(bk.userData.food,Math.round(18*p)));yield* o.wait(.4);cam1.visible=false;
+o.ph(3,"The arm moves over the fryer and lowers the basket into the hot oil.");yield* mv(FX,1.8,-1.4,1.4);yield* mv(FX,1.22,-1.4,.9);cooking=true;screen("Cooking "+nm,"Timer 03:00","#ff6a3d");
+o.ph(4,"The timer runs while the food cooks. The robot is free to wait for the exact time.");yield* o.tw(ct,p=>{const t=Math.round(180*(1-p));screen("Cooking "+nm,"Timer 0"+Math.floor(t/60)+":"+("0"+t%60).slice(-2),"#ff6a3d")},1);cooking=false;bub.forEach(b=>b.visible=false);
+o.ph(5,"Timer done. The arm lifts the basket, drains the oil and shakes it.");screen("Done!","Draining","#4cc27f");yield* mv(FX,1.75,-1.4,.9);yield* o.tw(1.1,p=>aim(FX+Math.sin(p*18)*.04,1.75+Math.abs(Math.sin(p*18))*.04,-1.4),1);
+o.ph(6,"It carries the food to the hot-holding station and tips it out.");yield* mv(3.2,1.9,-1.4,1.3);yield* o.tw(.8,p=>{bk.rotation.z=1.3*p});
+const f=bk.userData.food;while(f.children.length){const c=f.children[0];holdG.attach(c);c.position.set(3.2+(Math.random()-.5)*.8,1.22+Math.random()*.06,-1.4+(Math.random()-.5)*.4)}
+yield* o.tw(.6,p=>{bk.rotation.z=1.3*(1-p)});packer.userData.arm.rotation.x=-1.2;yield* o.wait(.5);
+o.ph(7,"The arm returns the basket to the rack, ready for the next order.");yield* mv(RK[0],RK[1]+.5,RK[2]+.3,1.4);yield* mv(RK[0],RK[1],RK[2],.5);arm.grip(1);sc.attach(bk);bk.position.set(RK[0],RK[1],RK[2]);bk.rotation.set(0,0,0);yield* mv(RK[0],1.9,RK[2]+.2,.5);
+o.ph(8,"Order "+n+" is ready. A crew member packs it for the guest.");done=n;screen("Order "+n+" ready","Baskets done: "+n,"#4cc27f");yield* o.tw(.8,p=>packer.userData.arm.rotation.x=-1.2*(1-p));yield* o.wait(.5);
+while(holdG.children.length)holdG.remove(holdG.children[0])}
+o.say(nOrd+" basket"+(nOrd>1?"s":"")+" cooked in "+o.T.toFixed(0)+" simulated seconds. The maker says Flippy 2 can handle about 60 baskets an hour.");const a=o.finish();o.bars(o.names,a.map(v=>v||0),"s")};
+/* controls */
+H($("#kit"),$("#kit").innerHTML+bins.map((b,i)=>`<button class="chip ${i==item?"on":""}" data-i="${i}">${b[0]}</button>`).join(""));
+H($("#kcn"),$("#kcn").innerHTML+[1,3,5].map(n=>`<button class="chip ${n==nOrd?"on":""}" data-n="${n}">${n} basket${n>1?"s":""}</button>`).join(""));
+$("#kit").onclick=e=>{const i=e.target.dataset.i;if(i==null)return;item=+i;document.querySelectorAll("#kit .chip").forEach((c,k)=>c.classList.toggle("on",k==item));o.reset()};
+$("#kcn").onclick=e=>{const n=e.target.dataset.n;if(n==null)return;nOrd=+n;document.querySelectorAll("#kcn .chip").forEach(c=>c.classList.toggle("on",+c.dataset.n==nOrd));o.reset()};
+o.begin()})();
+/* Makr Shakr style Bionic Bar */
+(function(){
+const o=mk3("b",420,{sun:[6,16,12],sh:[-9,9,8,-5],cam:{th:.1,ph:1.15,r:13,t:[0,1.7,0],span:9.5}});if(!o)return;
+const {S,E,bx,cy,sph,pl,tx,FM,sc}=o,steel=S(0xc9ced2,.3,.85),dk=S(0x1b2128,.5,.4),wht=S(0xf4f6f8,.28,.1),glassM=S(0xdfeeff,.05,.1,{transparent:true,opacity:.28}),wood=S(0x6b4a35,.5),gl2=S(0xbfd4cf,.1,0,{transparent:true,opacity:.5});
+const floorT=tx(128,128,(g,w,h)=>{g.fillStyle="#2b3540";g.fillRect(0,0,w,h);g.strokeStyle="#3b4855";g.lineWidth=2;g.strokeRect(0,0,w,h)},10,6);
+pl(14,8,FM(floorT),0,0,0,-Math.PI/2);bx(14,4.4,.2,S(0x1d2832,.8),0,2.2,-3.1);pl(13,1.6,E(0x2f7f86,.5),0,2.0,-2.98,0);bx(13,.08,.1,E(0xb8821f,1.2),0,3.0,-2.95,sc,1);
+bx(9,1.0,.9,wood,0,.5,1.5);bx(9.2,.06,1.1,S(0xdfe3e6,.2,.3),0,1.03,1.5);bx(8,.9,1.2,S(0x2b3540,.6,.3),0,.45,-.9);bx(8.2,.05,1.3,steel,0,.92,-.9);
+bx(.34,1.1,.34,dk,.6,.55,.55);bx(.34,1.1,.34,dk,3,.55,.4);
+const aA=o.arm(1.1,1.1,.3,wht,.15),aB=o.arm(1.0,1.0,.3,wht,.14);cy(.28,.34,.35,dk,-.2,1.1,-.2,sc,24);aA.root.position.set(-.2,1.3,-.2);sc.add(aA.root);cy(.25,.3,.35,dk,2.3,1.1,.1,sc,24);aB.root.position.set(2.3,1.3,.1);sc.add(aB.root);
+/* bottle rack on an arc around the mixer arm */
+const BT=[["White rum",0xeaf3ef],["Tequila",0xe8d28a],["Vodka",0xeef4f6],["Triple sec",0xf3b36b],["Coffee liqueur",0x3b2417],["Lime juice",0xb9e06b],["Sugar syrup",0xf4e6c0],["Soda",0xdff6ff],["Espresso",0x4a2c1a]],slots=[],BR=1.35,arcP=f=>[-.2+BR*Math.sin(f),-.1-BR*Math.cos(f)*.8];
+BT.forEach((b,i)=>{const f=-1.35+i*(2.7/(BT.length-1)),p=arcP(f),g=new THREE.Group();g.position.set(p[0],2.05,p[1]);sc.add(g);const lm=S(b[1],.2,0,{transparent:true,opacity:.92});
+cy(.025,.01,.1,steel,0,.05,0,g,10);cy(.03,.03,.12,gl2,0,.16,0,g,12);cy(.07,.03,.1,gl2,0,.27,0,g,16);cy(.07,.07,.28,gl2,0,.46,0,g,16);cy(.062,.062,.22,lm,0,.46,0,g,16);cy(.073,.073,.08,wht,0,.46,0,g,16);cy(.04,.04,.04,dk,0,.62,0,g,10);bx(.02,.45,.02,steel,0,.85,0,g,1);
+slots.push({x:p[0],z:p[1],lm:lm,act:false})});
+for(let k=0;k<14;k++){const m=-1.4+k*.2,p=arcP(m),l=bx(.05,.05,.36,steel,p[0],2.95,p[1],sc,1);l.rotation.y=-m*.8}
+/* glasses and shaker */
+const K=.00095;function vessel(h,r){const g=new THREE.Group(),b=new THREE.Mesh(new THREE.CylinderGeometry(r,r*.82,h,24,1,true),glassM);b.position.y=-h/2;g.add(b);const bt=new THREE.Mesh(new THREE.CylinderGeometry(r*.82,r*.82,.012,24),gl2);bt.position.y=-h;g.add(bt);const L=new THREE.Group();g.add(L);g.userData={L:L,h:h,r:r};sc.add(g);return g}
+function lay(v,arr){const L=v.userData.L,r=v.userData.r;while(L.children.length)L.remove(L.children[0]);let y=-v.userData.h+.012;arr.forEach(a=>{if(a[1]<=0)return;const hh=Math.max(.0008,a[1]*K),m=new THREE.Mesh(new THREE.CylinderGeometry(r*.86,r*.76,hh,20),S(a[0],.15,0,{transparent:true,opacity:.92}));m.position.y=y+hh/2;L.add(m);y+=hh})}
+const MX=[.6,1.27,.55],ST=[3,1.27,.4],mix=vessel(.17,.07),srv=vessel(.17,.065),sk=[0,1,2].map(i=>vessel(.17,.065));
+const cap=new THREE.Group();cy(.075,.07,.1,steel,0,.05,0,cap,20);cy(.03,.03,.04,steel,0,.12,0,cap,12);cap.visible=false;mix.add(cap);
+const strm=mkStream(o,0xffffff),pstrm=mkStream(o,0xffffff),gar=new THREE.Group();sc.add(gar);gar.visible=false;
+function garnish(k){while(gar.children.length)gar.remove(gar.children[0]);if(k==0){[0,1,2].forEach(a=>{const l=new THREE.Mesh(new THREE.SphereGeometry(.035,10,8),S(0x2e8b57,.8));l.scale.set(1,.3,1.4);l.position.set(Math.sin(a*2)*.03,a*.01,Math.cos(a*2)*.03);gar.add(l)})}else if(k==1){const w=new THREE.Mesh(new THREE.TorusGeometry(.06,.01,8,24),S(0x9fd356,.6));w.rotation.x=Math.PI/2;gar.add(w)}else{[0,1,2].forEach(a=>{const b=new THREE.Mesh(new THREE.SphereGeometry(.014,8,6),S(0x2b1a10,.5));b.scale.set(1,.7,1.3);b.position.set((a-1)*.025,0,0);gar.add(b)})}}
+/* kiosk and guest */
+bx(.5,.06,.3,dk,-3.4,1.09,1.55);bx(.5,.7,.05,dk,-3.4,1.45,1.5);const ks=o.cv(256,160);o.pl(.44,.62,new THREE.MeshBasicMaterial({map:ks.t}),-3.4,1.45,1.527,0,sc);
+function kscreen(l1,l2,col){const g=ks.g;g.fillStyle="#0b1620";g.fillRect(0,0,256,160);g.fillStyle="#3fc1c3";g.font="bold 22px sans-serif";g.fillText("BIONIC BAR",12,30);g.fillStyle=col||"#fff";g.font="bold 26px sans-serif";g.fillText(l1,12,80);g.font="bold 20px sans-serif";g.fillStyle="#ffb347";g.fillText(l2,12,118);ks.t.needsUpdate=true}
+const guest=o.person(0xd9482b,0x3a4a5c,0x2b1d14);guest.position.set(-2.6,0,2.6);guest.rotation.y=Math.PI;
+/* recipes */
+const RC={Mojito:{ing:[["White rum",50,0xeaf3ef],["Lime juice",25,0xb9e06b],["Sugar syrup",15,0xf4e6c0],["Soda",60,0xdff6ff]],g:0},Margarita:{ing:[["Tequila",50,0xe8d28a],["Triple sec",25,0xf3b36b],["Lime juice",25,0xb9e06b]],g:1},"Espresso Martini":{ing:[["Vodka",40,0xeef4f6],["Coffee liqueur",20,0x3b2417],["Espresso",30,0x4a2c1a]],g:2}};let cur="Mojito",poured=[];
+const tr=new Map([[aA,{x:-.2,y:2.3,z:.9}],[aB,{x:2.3,y:1.9,z:1.1}]]),hx=c=>("000000"+c.toString(16)).slice(-6);
+function* mvA(a,x,y,z,d){const s=Object.assign({},tr.get(a));yield* o.tw(d,p=>a.set(s.x+(x-s.x)*p,s.y+(y-s.y)*p,s.z+(z-s.z)*p));tr.set(a,{x:x,y:y,z:z})}
+function rec(){const r=RC[cur].ing;let h="";r.forEach((a,i)=>{const w=Math.min(1,(poured[i]||0)/a[1])*230;h+=`<text x="0" y="${20+i*26}" font-size="13">${a[0]}</text><rect x="120" y="${7+i*26}" width="230" height="14" rx="3" fill="var(--line)"/><rect x="120" y="${7+i*26}" width="${w}" height="14" rx="3" fill="#${hx(a[2])}" stroke="var(--mut)" stroke-width=".5"/><text x="360" y="${19+i*26}" font-size="13">${Math.round(poured[i]||0)} / ${a[1]} ml</text>`});const sv=$("#brec");sv.setAttribute("viewBox","0 0 460 "+(r.length*26+6));H(sv,h)}
+function place(v,p){sc.attach(v);v.position.set(p[0],p[1],p[2]);v.rotation.set(0,0,0);v.visible=true}
+function init(){poured=RC[cur].ing.map(()=>0);rec();place(mix,MX);place(srv,ST);lay(mix,[]);lay(srv,[]);cap.visible=false;srv.add(gar);gar.visible=false;strm.visible=false;pstrm.visible=false;
+sk.forEach((k,i)=>{k.position.set(3,1.27-(i+1)*.19,.4);lay(k,[])});
+aA.grip(1);aB.grip(1);tr.set(aA,{x:-.2,y:2.3,z:.9});tr.set(aB,{x:2.3,y:1.9,z:1.1});aA.set(-.2,2.3,.9);aB.set(2.3,1.9,1.1);guest.userData.arm.rotation.x=0;kscreen("Choose a drink","Tap to order","#fff");o.say("Choose a cocktail, then press start. Watch the arm collect a measure from each bottle.")}
+o.init=init;o.follow=()=>{const t=tr.get(aA);return[t.x,1.7,t.z]};o.fr=5;o.eye=()=>{const t=tr.get(aA);return{p:[t.x,t.y+.5,t.z+1.6],l:[t.x,t.y-.3,t.z-1]}};
+o.frame=()=>{slots.forEach(s=>s.lm.emissive.setHex(s.act?0x555533:0))};
+o.setNames(["Order placed","Glass ready","Measure ingredients","Shake","Pour","Garnish","Serve to guest"]);
+o.script=function*(){const R=RC[cur],ing=R.ing;
+o.ph(0,"The guest orders a "+cur+" on the tablet and swipes a room key. The recipe is sent to the robot.");kscreen(cur,"Order sent","#4cc27f");yield* o.tw(.8,p=>guest.userData.arm.rotation.x=-1.0*p);yield* o.tw(.5,p=>guest.userData.arm.rotation.x=-1.0*(1-p));yield* o.wait(.5);
+o.ph(1,"The server arm takes a clean glass. The mixer arm picks up its mixing glass.");
+yield* mvA(aB,ST[0],ST[1],ST[2],1.1);aB.grip(0);aB.tip.attach(srv);srv.position.set(0,0,0);yield* mvA(aB,1.2,1.5,.9,1.1);
+yield* mvA(aA,MX[0],MX[1]+.02,MX[2],1.1);aA.grip(0);aA.tip.attach(mix);mix.position.set(0,0,0);mix.rotation.set(0,0,0);
+o.ph(2,"The mixer arm carries its glass under each bottle. A measured dose drops in.");
+const layers=[];for(let i=0;i<ing.length;i++){const a=ing[i],s=slots[BT.findIndex(b=>b[0]==a[0])];s.act=true;o.say("Measuring "+a[0]+": "+a[1]+" ml.");
+yield* mvA(aA,s.x,1.97,s.z,1.1);const sv=new THREE.Vector3(s.x,2.05,s.z),base=layers.reduce((q,l)=>q+l[1],0);
+yield* o.tw(Math.max(.9,a[1]/55),p=>{poured[i]=a[1]*p;lay(mix,layers.concat([[a[2],a[1]*p]]));strm.go(sv,new THREE.Vector3(s.x,1.97-.17+.012+(base+a[1]*p)*K,s.z),a[2]);rec()},1);strm.visible=false;layers.push([a[2],a[1]]);s.act=false}
+yield* mvA(aA,.5,1.8,.5,1.0);
+o.ph(3,"The arm snaps on a lid and shakes the drink so it chills and mixes.");cap.visible=true;yield* o.tw(2,p=>aA.set(.5+Math.sin(p*40)*.06,1.8+Math.abs(Math.sin(p*40))*.05,.5),1);aA.set(.5,1.8,.5);
+const tot=layers.reduce((q,l)=>q+l[1],0),mc=layers.reduce((q,l)=>{const c=new THREE.Color(l[2]);return[q[0]+c.r*l[1],q[1]+c.g*l[1],q[2]+c.b*l[1]]},[0,0,0]),mixC=new THREE.Color(mc[0]/tot,mc[1]/tot,mc[2]/tot).getHex();lay(mix,[[mixC,tot]]);cap.visible=false;
+o.ph(4,"The server arm holds the serving glass while the mixer arm pours the finished drink into it.");yield* mvA(aA,1.2,1.62,.9,1.1);yield* mvA(aB,1.2,1.3,.9,.6);
+const ap=new THREE.Vector3(),bp=new THREE.Vector3();
+yield* o.tw(1.8,p=>{mix.rotation.z=-1.9*p;lay(mix,[[mixC,tot*(1-p)]]);lay(srv,[[mixC,tot*p]]);mix.getWorldPosition(ap);srv.getWorldPosition(bp);bp.y+=-.17+.012+tot*p*K;if(p>.12&&p<.95)pstrm.go(new THREE.Vector3(ap.x-.04,ap.y-.05,ap.z),bp,mixC);else pstrm.visible=false});pstrm.visible=false;
+yield* o.tw(.6,p=>mix.rotation.z=-1.9*(1-p));
+o.ph(5,"A garnish tops the drink.");garnish(R.g);gar.visible=true;gar.position.set(0,.02,0);yield* o.wait(.7);
+o.ph(6,"The server arm sets the drink on the bar and it slides along to the guest.");yield* mvA(aB,1.2,1.25,1.45,1);aB.grip(1);sc.attach(srv);const s0=srv.position.clone();
+yield* mvA(aB,2.3,1.9,1.1,.8);yield* o.tw(2.2,p=>srv.position.set(s0.x+(-2.6-s0.x)*p,s0.y,s0.z));
+yield* o.tw(.8,p=>guest.userData.arm.rotation.x=-1.2*p);yield* o.wait(.4);srv.visible=false;kscreen("Enjoy your","drink!","#4cc27f");yield* o.tw(.6,p=>guest.userData.arm.rotation.x=-1.2*(1-p));
+o.say("Your "+cur+" was made in "+o.T.toFixed(0)+" simulated seconds. Every pour matched the recipe exactly.");const a=o.finish();o.bars(o.names,a.map(v=>v||0),"s")};
+H($("#brc"),$("#brc").innerHTML+Object.keys(RC).map(k=>`<button class="chip ${k==cur?"on":""}" data-d="${k}">${k}</button>`).join(""));
+$("#brc").onclick=e=>{const d=e.target.dataset.d;if(!d)return;cur=d;document.querySelectorAll("#brc .chip").forEach(c=>c.classList.toggle("on",c.dataset.d==cur));o.reset()};
+o.begin()})();
+
+/* travel helpers */
+function mkPlane(o,cx,cyy,cz,L){const S=o.S,E=o.E,bx=o.bx,cyl=o.cy,sph=o.sph,g=new THREE.Group();g.position.set(cx,cyy,cz);o.sc.add(g);const w=S(0xf2f4f6,.35,.1),dk=S(0x2a3138,.5,.4),R=1.45;
+cyl(R,R,L,w,0,0,0,g,28).rotation.z=Math.PI/2;sph(R,w,L/2,0,0,g,1.7,1,1);cyl(R,R*.3,L*.3,w,-L/2-L*.15,R*.28,0,g,24).rotation.z=Math.PI/2;
+cyl(R*1.015,R*1.015,L*.5,S(0x0f8b8d,.5),L*.05,-R*.0,0,g,28).scale.set(1,1,1);g.children[g.children.length-1].visible=false;
+[1,-1].forEach(s=>{const wg=bx(3.2,.14,8.5,w,.4,-.55,s*4.1,g);wg.rotation.y=s*.42;cyl(.5,.42,1.8,dk,1.3,-1.25,s*3.4,g,18).rotation.z=Math.PI/2;bx(1.8,.1,3.2,w,-L/2-.5,R*.55,s*1.6,g).rotation.y=s*.4});
+bx(2.6,2.8,.14,S(0x0f8b8d,.5),-L/2-.5,R+1,0,g).rotation.z=.5;
+for(let x=-L/2+3.5;x<L/2-4;x+=.95){bx(.34,.4,.04,E(0x24415c,.6),x,.4,R*.99,g,1);bx(.34,.4,.04,E(0x24415c,.6),x,.4,-R*.99,g,1)}
+bx(1,2.1,.05,dk,.1*L,-.1,R*1.0,g,1);cyl(.2,.2,.4,dk,L*.2,-R-.3,0,g,12);cyl(.2,.2,.4,dk,-.5,-R-.2,1.2,g,12);cyl(.2,.2,.4,dk,-.5,-R-.2,-1.2,g,12);g.userData.R=R;return g}
+function mkBag(o,col,tagc){const g=new THREE.Group(),S=o.S,bx=o.bx;bx(.5,.68,.26,S(col,.55),0,.4,0,g);bx(.42,.5,.05,S(col,.5),0,.38,.15,g,1);bx(.5,.04,.27,S(0x20262c,.6),0,.46,0,g,1);bx(.04,.3,.04,S(0x20262c,.4,.6),0,.82,0,g,1);bx(.2,.04,.04,S(0x20262c,.4,.6),0,.97,0,g,1);[-.18,.18].forEach(x=>o.cy(.04,.04,.03,S(0x111111,.8),x,.03,-.05,g,10).rotation.x=Math.PI/2);
+if(tagc!=null){bx(.12,.2,.02,S(tagc,.5),.2,.6,.14,g,1);bx(.05,.05,.03,o.E(0x3fc1c3,1.5),.2,.52,.15,g,1)}g.castShadow=true;return g}
+function bagCv(o,w,h){const c=o.cv(w,h);return c}
+/* Smart airport (Digi Yatra style) */
+(function(){
+const o=mk3("a",420,{sun:[10,22,14],sh:[-22,22,14,-14],cam:{th:.08,ph:1.08,r:34,t:[-1,1.5,-1.5],span:37}});if(!o)return;
+const {S,E,bx,cy,sph,pl,tx,FM,sc}=o,dk=S(0x20262c,.5,.4),steel=S(0xc9ced2,.32,.8),wallM=S(0xe8edf0,.9),teal=S(0x0f8b8d,.5);
+const terr=tx(256,256,(g,w,h)=>{g.fillStyle="#d9dde0";g.fillRect(0,0,w,h);for(let i=0;i<500;i++){g.fillStyle="rgba(120,125,130,"+Math.random()*.25+")";g.fillRect(Math.random()*w,Math.random()*h,2+Math.random()*3,2+Math.random()*3)}g.strokeStyle="rgba(90,95,100,.5)";g.lineWidth=2;g.strokeRect(0,0,w,h)},12,4);
+const apron=tx(128,128,(g,w,h)=>{g.fillStyle="#4a5158";g.fillRect(0,0,w,h);for(let i=0;i<300;i++){g.fillStyle="rgba(255,255,255,"+Math.random()*.06+")";g.fillRect(Math.random()*w,Math.random()*h,2,2)}},6,3);
+pl(37,11,FM(terr),0,0,0,-Math.PI/2);pl(40,16,FM(apron),2,-.01,-13.5,-Math.PI/2);pl(30,.35,E(0xffd24a,.8),9,.01,-11.2,-Math.PI/2).rotation.x=-Math.PI/2;
+pl(34,.18,E(0x3fc1c3,1.2),-1,.012,0,-Math.PI/2);
+bx(26.5,5.2,.2,wallM,-5.35,2.6,-5.6);bx(8.3,5.2,.2,wallM,14.25,2.6,-5.6);bx(2.2,2.6,.2,wallM,9,3.9,-5.6);bx(.2,5.2,4.5,wallM,-18.6,2.6,3.35);bx(.2,5.2,4.5,wallM,-18.6,2.6,-3.35);bx(.2,2.4,2.2,wallM,-18.6,4,0);
+/* windows to the apron */
+bx(18,3.6,.12,S(0xbfe3ff,.05,.2,{transparent:true,opacity:.25}),9.2,2.6,-5.5,sc,1);for(let x=0;x<=18;x+=3)bx(.1,3.6,.14,steel,.2+x,2.6,-5.5,sc,1);bx(18.2,.1,.14,steel,9.2,.9,-5.5,sc,1);
+/* arches and signs */
+for(let x=-16;x<=16;x+=8){bx(.25,5,.25,steel,x,2.5,4.8,sc,1);bx(.25,5,.25,steel,x,2.5,-4.9,sc,1);bx(.25,.25,10,steel,x,5,0,sc,1)}
+function sign(x,t,z){bx(.04,1.2,.04,dk,x-1.1,4.4,z||0,sc,1);bx(.04,1.2,.04,dk,x+1.1,4.4,z||0,sc,1);pl(2.6,.6,new THREE.MeshBasicMaterial({map:o.lab(256,64,t,"#12263a","#ffffff",30)}),x,3.9,z||0,0,sc)}
+sign(-15.5,"ENTRY",3.5);sign(-8,"BAG DROP",3.5);sign(-1.5,"SECURITY",3.5);sign(9,"GATE 12",3.5);
+/* apron: plane and jet bridge */
+const plane=mkPlane(o,7.1,2.5,-12.2,19);
+bx(2.4,2.5,5.2,S(0xc8cdd2,.5,.4),9,2.6,-8.1);bx(2.2,.1,5,dk,9,1.3,-8.1,sc,1);
+/* entry doors */
+const dL=bx(.06,2.8,1.1,S(0xbfe3ff,.05,.2,{transparent:true,opacity:.35}),-18.6,1.4,-.55,sc,1),dR=bx(.06,2.8,1.1,S(0xbfe3ff,.05,.2,{transparent:true,opacity:.35}),-18.6,1.4,.55,sc,1);
+/* e-gate maker */
+function egate(x,z,rot){const g=new THREE.Group();g.position.set(x,0,z);g.rotation.y=rot||0;sc.add(g);[-.55,.55].forEach(s=>{bx(.22,1.1,.9,steel,s,.55,0,g);bx(.22,.12,.5,dk,s,1.16,0,g,1);o.cy(.04,.04,.06,E(0x6ff0f2,1.8),s,1.3,.15,g,12).rotation.x=Math.PI/2;bx(.12,.04,.3,E(0xd9482b,1.4),s,1.2,-.25,g,1)});
+const fl=[-1,1].map(s=>bx(.02,.9,.36,S(0xbfe3ff,.05,.2,{transparent:true,opacity:.5}),s*.34,.55,.1,g,1));g.userData={fl:fl};g.userData.lamp=[g.children[0].children,0];return g}
+function gateOpen(g,p){g.userData.fl.forEach((f,i)=>f.position.x=(i?1:-1)*(.34+.22*p))}
+const eg=egate(-15,0,-Math.PI/2),eb=egate(9,-2.4,0);
+/* guard desk (traditional) */
+bx(1.8,1,.6,S(0x5a4632,.6),-15.2,.5,2.2);const guard=o.person(0x2b3a55,0x1d2a40,0x111111);guard.position.set(-15.2,0,3.0);guard.rotation.y=Math.PI;
+const gb=o.person(0x2b3a55,0x1d2a40,0x111111);gb.position.set(9.9,0,-1.7);gb.rotation.y=Math.PI;gb.visible=false;
+/* check-in kiosks and self bag drop */
+[-1,0,1].forEach(i=>{const x=-10.2+i*1.1;bx(.6,1.2,.5,steel,x,.6,2.4);bx(.5,.35,.05,E(0x2f7f86,.9),x,1.25,2.16,sc,1)});
+const unit=new THREE.Group();unit.position.set(-8,0,-2.1);sc.add(unit);bx(2.4,.7,.9,steel,0,.35,0,unit);const belt=bx(2.2,.06,.7,S(0x20262c,.8),0,.72,0,unit,1);bx(.1,1.1,.9,dk,1.25,.7,0,unit);bx(.5,.45,.06,E(0x2f7f86,1),-.9,1.2,-.35,unit,1);const hatch=bx(.06,.8,.8,steel,1.25,1.1,0,unit,1);
+const scale=bx(.8,.04,.6,S(0xffd24a,.6),-.9,.76,0,unit,1);
+/* security */
+bx(2.4,.7,.7,steel,-3.5,.35,-2.4);bx(2.4,.05,.7,dk,-3.5,.72,-2.4,sc,1);bx(2.2,1.2,1.0,S(0x3a4650,.5,.4),-1.2,.6,-2.4);bx(1.4,.7,1.02,dk,-1.2,.45,-2.4,sc,1);bx(2.4,.7,.7,steel,.8,.35,-2.4);bx(2.4,.05,.7,dk,.8,.72,-2.4,sc,1);
+const arch=new THREE.Group();arch.position.set(-1.2,0,0);sc.add(arch);[-.55,.55].forEach(s=>bx(.2,2.1,.3,S(0xe8edf0,.5),0,1.05,s,arch));bx(.2,.2,1.4,S(0xe8edf0,.5),0,2.15,0,arch);const alamp=bx(.06,.14,.3,E(0x888888,1.2),-.12,2.15,0,arch,1);
+const sguard=o.person(0x2b3a55,0x1d2a40,0x111111);sguard.position.set(-1.2,0,-3.4);sguard.rotation.y=0;
+const q1=o.person(0xb8821f,0x3a4a5c,0x2b1d14),q2=o.person(0x6a4c93,0x2b2f36,0x6b4423);q1.position.set(-4.6,0,.6);q2.position.set(-5.5,0,-.4);q1.rotation.y=q2.rotation.y=Math.PI/2;
+const qc=bx(.5,.3,.3,dk,-4.5,4.5,0,sc,1);const qs=o.bubble();qs.position.set(-4.5,3.9,0);
+/* gate seating, departures board, guide robot */
+[6,7.6].forEach(x=>{bx(1.4,.12,.5,S(0x2f7f86,.7),x,.5,3.6);bx(1.4,.5,.1,S(0x2f7f86,.7),x,.8,3.9)});const sp1=o.person(0x1d5fa8,0x2b2f36,0x111111,true);sp1.position.set(6,0,3.5);sp1.rotation.y=-Math.PI/2;
+const bd=o.cv(256,160);pl(3.8,2.4,new THREE.MeshBasicMaterial({map:bd.t}),3.8,3.0,-5.45,0,sc);
+function board(st){const g=bd.g;g.fillStyle="#0b1620";g.fillRect(0,0,256,160);g.fillStyle="#3fc1c3";g.font="bold 18px sans-serif";g.fillText("DEPARTURES",10,22);g.font="bold 15px sans-serif";[["AI 548  Delhi","12:40","Gate 7"],["6E 231  Mumbai","12:55","Gate 9"],["AI 506  Dubai","13:10","Gate 12"]].forEach((r,i)=>{g.fillStyle=i==2?"#ffb347":"#cfd8de";g.fillText(r[0],10,52+i*34);g.fillText(r[1],150,52+i*34);g.fillText(i==2?st:"On time",196-(i==2?0:0),52+i*34)});bd.t.needsUpdate=true}
+const gr=new THREE.Group();gr.position.set(-12.5,0,2.6);gr.rotation.y=-.5;sc.add(gr);o.cy(.3,.32,.1,dk,0,.06,0,gr,24);o.cy(.1,.12,1,S(0xf4f4f6,.3),0,.6,0,gr,16);bx(.5,.36,.05,E(0x2f7f86,1),0,1.05,.1,gr,1);sph(.22,S(0xf4f4f6,.3),0,1.3,0,gr,1,.85,1);
+const gb2=o.bubble();gb2.position.set(-12.5,2.5,2.6);gb2.say("Welcome! Check-in is straight ahead.");gb2.visible=true;
+/* passenger and bags */
+const P=o.person(0x0f8b8d,0x26323d,0x2b1d14);P.position.set(-19.3,0,0);P.rotation.y=Math.PI/2;
+const big=mkBag(o,0xd9482b,0xd9482b),cab=mkBag(o,0x2b3a55);cab.scale.setScalar(.7);sc.add(big);sc.add(cab);
+const bub=o.bubble(),tray=bx(.7,.05,.5,S(0x666e75,.6,.3),-3.5,.76,-2.4,sc,1);
+let digi=true,moving=false,totals={0:null,1:null},hold=true;
+function init(){P.position.set(-19.3,0,0);P.rotation.y=Math.PI/2;P.visible=true;big.visible=cab.visible=true;hold=true;gateOpen(eg,0);gateOpen(eb,0);dL.position.z=-.55;dR.position.z=.55;alamp.material.emissive.setHex(0x888888);tray.position.set(-3.5,.76,-2.4);tray.visible=false;board("Gate open soon");bub.visible=false;gb.visible=!digi;qs.say(digi?"AI camera: 2 waiting":"AI camera: 2 waiting");qs.visible=true;P.userData.arm.rotation.x=0;o.say("Pick a mode, then press start. Compare Digi Yatra with the traditional process.")}
+o.init=init;o.follow=()=>[P.position.x,1.2,P.position.z];o.fr=7;
+o.eye=()=>{const a=P.rotation.y,f=[Math.sin(a),Math.cos(a)];return{p:[P.position.x+f[0]*.3,1.55,P.position.z+f[1]*.3],l:[P.position.x+f[0]*8,1.3,P.position.z+f[1]*8]}};
+o.frame=n=>{const a=P.rotation.y,c=Math.cos(a),s=Math.sin(a);if(hold){big.position.set(P.position.x-s*.1+c*.45,P.position.y,P.position.z-c*.1-s*.45);big.rotation.y=a}cab.position.set(P.position.x-c*.4+s*.0,P.position.y+.05,P.position.z+s*.4);cab.rotation.y=a;bub.position.set(P.position.x,2.15,P.position.z);gb2.visible=Math.abs(P.position.x+12.5)<5&&P.visible;P.position.y=moving?Math.abs(Math.sin(n/120))*.03:0};
+o.setNames(["Get ready","Entry gate","Bag drop","Security","Wait at the gate","Board the plane"]);
+function* face(txt1,txt2,tm,tf){if(digi){bub.visible=true;bub.say(txt1);yield* o.wait(.6);bub.say(txt2,"rgba(30,142,78,.95)");yield* o.wait(tf)}else{bub.visible=true;bub.say("Show boarding pass and ID","rgba(184,130,31,.95)");yield* o.wait(tm)}bub.visible=false}
+function* walk(pts,v){moving=true;yield* o.drive(P,pts,v||1.7);moving=false}
+o.script=function*(){
+o.ph(0,digi?"The passenger has enrolled in the Digi Yatra app: ID checked, selfie taken, boarding pass added.":"The passenger has a printed or phone boarding pass and a photo ID ready.");bub.visible=true;bub.say(digi?"Digi Yatra ID ready":"Boarding pass + ID ready");yield* o.wait(1.4);bub.visible=false;
+o.ph(1,digi?"At the e-gate the passenger scans the boarding pass and looks at the camera. The face matches and the gate opens.":"At the entrance a guard checks the ID and boarding pass by hand.");
+yield* o.tw(.7,p=>{dL.position.z=-.55-.5*p;dR.position.z=.55+.5*p});yield* walk([[-16.2,0]]);yield* face("Scanning face...","Face matched. Gate open",4.5,1);
+if(digi){yield* o.tw(.5,p=>gateOpen(eg,p))}else{yield* o.wait(.4)}yield* walk([[-13.6,0]]);if(digi)gateOpen(eg,0);
+o.ph(2,digi?"At the self bag drop a face scan finds the booking. The bag is weighed and a tag is printed.":"At the self bag drop the passenger scans the boarding pass and enters details by hand.");
+yield* walk([[-9.5,0],[-9.5,-.8]]);yield* o.turn(P,Math.PI);yield* face("Scanning face...","Booking found",3,.8);if(!digi){bub.visible=true;bub.say("Entering flight details...");yield* o.wait(3.2);bub.visible=false}
+hold=false;const b0=big.position.clone();yield* o.tw(.8,p=>{big.position.set(b0.x+(-8.9-b0.x)*p,b0.y+(.78-b0.y)*p+Math.sin(p*Math.PI)*.25,b0.z+(-2.1-b0.z)*p)});bub.visible=true;bub.say("Weight 18.4 kg. Tag printed.");yield* o.wait(.9);bub.visible=false;
+yield* o.tw(1.4,p=>big.position.x=-8.9+2.0*p);yield* o.tw(.4,p=>big.scale.setScalar(1-p));big.visible=false;
+o.say("The bag disappears into the baggage system. See the next scene for where it goes.");
+o.ph(3,digi?"At the security hold area a face scan replaces the ID check. The cabin bag goes through the X-ray, and the passenger walks through the scanner.":"At security the boarding pass and ID are checked by hand. The bag goes through the X-ray, and the passenger walks through the scanner.");
+yield* walk([[-5.6,0]]);yield* o.turn(P,Math.PI/2);yield* face("Scanning face...","Verified",4.5,.8);
+yield* walk([[-3.9,0],[-3.9,-1.2]]);tray.visible=true;cab.visible=false;yield* o.tw(1.8,p=>tray.position.x=-3.5+2.7*p);bub.visible=true;bub.say("X-ray: bag clear");yield* o.wait(.6);bub.visible=false;
+yield* walk([[-2.4,-.2],[-1.2,0]]);alamp.material.emissive.setHex(0x22cc66);bub.visible=true;bub.say("Scanner: clear","rgba(30,142,78,.95)");yield* o.wait(.7);bub.visible=false;alamp.material.emissive.setHex(0x888888);
+yield* walk([[.4,0]]);tray.visible=false;cab.visible=true;
+o.ph(4,"The departures board shows boarding. The passenger walks to Gate 12.");board("BOARDING");yield* walk([[7.5,0],[9,-.6]]);yield* o.wait(.6);
+o.ph(5,digi?"At the boarding gate a face scan opens the gate. No paper needed.":"At the boarding gate staff scan the boarding pass and check the ID.");yield* walk([[9,-1.5]]);yield* o.turn(P,Math.PI);
+if(!digi)gb.visible=true;yield* face("Scanning face...","Face matched. Welcome aboard",4.5,.8);if(digi)yield* o.tw(.5,p=>gateOpen(eb,p));
+yield* walk([[9,-4.2],[9,-8.5]]);P.visible=false;cab.visible=false;gb.visible=false;
+const tot=o.T;totals[digi?1:0]=tot;o.say("Done in "+tot.toFixed(0)+" simulated seconds. The passenger is boarding.");const a=o.finish();o.bars(o.names,a.map(v=>v||0),"s");
+$("#acm").textContent=(totals[1]!=null?"Digi Yatra: "+totals[1].toFixed(0)+" s. ":"")+(totals[0]!=null?"Traditional: "+totals[0].toFixed(0)+" s.":"")+(totals[1]!=null&&totals[0]!=null?" Difference: "+Math.abs(totals[0]-totals[1]).toFixed(0)+" s.":" Run both modes to compare.")};
+$("#amd").onclick=e=>{const m=e.target.dataset.m;if(m==null)return;digi=m=="1";document.querySelectorAll("#amd .chip").forEach(c=>c.classList.toggle("on",c.dataset.m==m));o.reset()};
+o.begin()})();
+
+/* Autonomous baggage (FLEET style) */
+(function(){
+const o=mk3("g",420,{sun:[8,20,14],sh:[-20,24,12,-12],cam:{th:.08,ph:1.1,r:32,t:[5,1.2,-.5],span:37}});if(!o)return;
+const {S,E,bx,cy,sph,pl,tx,FM,sc}=o,dk=S(0x20262c,.5,.4),steel=S(0xc9ced2,.32,.8),wallM=S(0xdde3e7,.9),FC=[["Delhi",0x0f8b8d],["Dubai",0xb8821f],["Singapore",0xd9482b]],ZK=[-3.4,0,3.4];
+const PK=-9.5,SC=-3.4,PX=2.2,CX=5.6;
+const flo=tx(256,256,(g,w,h)=>{g.fillStyle="#8e979d";g.fillRect(0,0,w,h);for(let i=0;i<500;i++){g.fillStyle="rgba(0,0,0,"+Math.random()*.1+")";g.fillRect(Math.random()*w,Math.random()*h,2,2)}g.strokeStyle="rgba(0,0,0,.2)";g.strokeRect(0,0,w,h)},8,5);
+pl(20,13,FM(flo),-3,0,0,-Math.PI/2);pl(26,13,FM(tx(128,128,(g,w,h)=>{g.fillStyle="#4a5158";g.fillRect(0,0,w,h)},4,4)),20,-.01,0,-Math.PI/2);
+bx(20,5,.2,wallM,-3,2.5,-6.6);bx(.2,5,13.2,wallM,-13.1,2.5,0);pl(20,.3,E(0xffd24a,.7),-3,.012,5.7,-Math.PI/2);
+const plane=mkPlane(o,15.5,2.7,-5.2,16);
+/* pickup station with RFID arch */
+bx(2.6,.1,1.8,S(0x2b3a44,.6),PK,.05,0,sc,1);[-.9,.9].forEach(z=>bx(.15,2.2,.15,steel,PK+1.5,1.1,z,sc,1));bx(.15,.15,2,steel,PK+1.5,2.2,0,sc,1);cy(.06,.06,.1,E(0x3fc1c3,2),PK+1.5,2.1,0,sc,12);
+bx(1.1,.9,.6,steel,PK-1.3,.45,-2);bx(.9,.35,.05,E(0x2f7f86,1),PK-1.3,1.05,-1.7,sc,1);
+/* screening machine with tunnel */
+const mm=S(0x3a4650,.5,.4);bx(3,.4,2.2,mm,SC,.2,0);bx(3,.5,2.2,mm,SC,1.75,0);[-1,1].forEach(s=>bx(3,1.55,.55,mm,SC,.95,s*.82));
+const scan=new THREE.Mesh(new THREE.PlaneGeometry(1.1,1.1),new THREE.MeshBasicMaterial({color:0x3fc1c3,transparent:true,opacity:0,side:THREE.DoubleSide}));scan.rotation.y=Math.PI/2;scan.position.set(SC,.95,0);sc.add(scan);
+const lamp=bx(.3,.2,.1,E(0x888888,1.4),SC+1.5,2.05,1.1,sc,1);
+/* chutes and carts */
+const carts=[];ZK.forEach((z,k)=>{const sl=bx(2.4,.1,1.3,S(0xaeb6bc,.4,.7),PX+1.2,.42,z,sc,1);sl.rotation.z=-.05;[-.65,.65].forEach(d=>bx(2.4,.16,.07,steel,PX+1.2,.52,z+d,sc,1).rotation.z=-.05);
+const c=new THREE.Group();c.position.set(CX,0,z);sc.add(c);bx(1.8,.12,1.5,steel,0,.35,0,c);const cm=S(FC[k][1],.5);bx(.08,.9,1.5,cm,.9,.8,0,c);bx(1.8,.9,.08,cm,0,.8,-.75,c);bx(1.8,.9,.08,cm,0,.8,.75,c);[-.7,.7].forEach(x=>[-.6,.6].forEach(zz=>cy(.1,.1,.08,dk,x,.12,zz,c,12).rotation.x=Math.PI/2));
+pl(1.5,.4,new THREE.MeshBasicMaterial({map:o.lab(256,64,FC[k][0].toUpperCase(),"#12263a","#ffffff",34)}),PX+1.3,1.9,z,0,sc);carts.push(c)});
+/* belts (conveyor mode only) */
+const belts=new THREE.Group();sc.add(belts);const bm=S(0x2b3138,.8);
+function belt(x0,z0,x1,z1){const L=Math.hypot(x1-x0,z1-z0),a=-Math.atan2(z1-z0,x1-x0),b=bx(L,.1,.7,bm,(x0+x1)/2,.5,(z0+z1)/2,belts,1);b.rotation.y=a;bx(L,.4,.06,steel,(x0+x1)/2,.28,(z0+z1)/2,belts,1).rotation.y=a;for(let i=0;i<L*1.5;i++){const t=(i+.5)/(L*1.5),r=bx(.05,.11,.66,S(0x444c53,.8),x0+(x1-x0)*t,.5,z0+(z1-z0)*t,belts,1);r.rotation.y=a}}
+belt(PK+.4,0,SC-1.5,0);belt(SC+1.5,0,PX-.9,0);belt(PX-.9,-3.4,PX-.9,3.4);
+/* vehicles */
+function mkAV(){const g=new THREE.Group(),b=bx(1.0,.22,.7,S(0x1d5fa8,.4,.3),0,.2,0,g);bx(1.02,.05,.72,S(0xffd24a,.6),0,.14,0,g,1);bx(.9,.04,.6,dk,0,.33,0,g,1);const led=bx(.5,.05,.04,E(0x6ff0f2,1.8),0,.22,.36,g,1);cy(.02,.02,.2,steel,-.4,.45,-.28,g,8);const tr=new THREE.Group();tr.position.y=.35;g.add(tr);g.userData.tr=tr;g.userData.led=led;sc.add(g);return g}
+const CH=[[-12,-4.6],[-10.6,-4.6],[-9.2,-4.6],[-7.8,-4.6],[-6.4,-4.6],[-5,-4.6]],avs=CH.map(c=>mkAV()),spare=mkAV(),pads=new THREE.Group();sc.add(pads);CH.forEach(c=>bx(1.3,.03,.9,E(0x22cc66,.5),c[0],.016,c[1],pads,1));bx(1.3,.03,.9,E(0xffb347,.5),-5.4,.016,-2.6,pads,1);
+/* tractor */
+const tg=new THREE.Group();sc.add(tg);bx(1.6,.9,1.1,S(0xffd24a,.5),0,.7,0,tg);bx(.8,.7,1,dk,.5,1.3,0,tg);[-.5,.5].forEach(x=>[-.5,.5].forEach(z=>cy(.25,.25,.2,dk,x,.25,z*1.1,tg,14).rotation.x=Math.PI/2));
+const bub=o.bubble(),sg=o.bubble(),bags=[];
+let ava=true,nB=3,brk=false,lost={0:null,1:null},hit={0:0,1:0},cur=null;
+function home(i){return CH[i%CH.length]}
+function init(){bags.forEach(b=>sc.remove(b));bags.length=0;belts.visible=!ava;pads.visible=ava;
+avs.forEach((a,i)=>{if(a.userData.tr.children.length)a.userData.tr.children.slice().forEach(c=>a.userData.tr.remove(c));a.position.set(CH[i][0],0,CH[i][1]);a.rotation.y=Math.PI/2;a.visible=ava;a.userData.tr.rotation.set(0,0,0);a.userData.led.material.emissive.setHex(0x6ff0f2)});
+spare.children.length;spare.userData.tr.children.slice().forEach(c=>spare.userData.tr.remove(c));spare.position.set(-5.4,0,-2.6);spare.rotation.y=Math.PI/2;spare.visible=ava;spare.userData.tr.rotation.set(0,0,0);
+carts.forEach((c,k)=>{c.position.set(CX,0,ZK[k]);c.children.slice().forEach(ch=>{if(ch.userData.isBag)c.remove(ch)})});tg.position.set(14,0,6.2);tg.rotation.y=0;
+bub.visible=false;sg.visible=false;scan.material.opacity=0;lamp.material.emissive.setHex(0x888888);cur=null;
+for(let i=0;i<nB;i++){const k=i%3,b=mkBag(o,[0x6a4c93,0x2f7f86,0xb8821f,0x3a7d44,0xd9482b,0x1d5fa8][i%6],FC[k][1]);b.userData.k=k;b.userData.isBag=true;b.position.set(PK-2.4-i*1.0,0,2.2);b.rotation.y=Math.PI/2;sc.add(b);bags.push(b)}
+o.say(ava?"Pick the bags and press start. Each autonomous vehicle carries one bag.":"Pick the bags and press start. One fixed conveyor moves every bag along the same line.")}
+o.init=init;o.follow=()=>cur?[cur.getWorldPosition(new THREE.Vector3()).x,1,cur.getWorldPosition(new THREE.Vector3()).z]:[0,1,0];o.fr=8;
+o.eye=()=>{const w=cur?cur.getWorldPosition(new THREE.Vector3()):new THREE.Vector3(PK,0,0);return{p:[w.x-2.4,1.5,w.z+2.2],l:[w.x+3,.4,w.z]}};
+o.setNames(["Tag and scan","Collect the bag","Screening","Sort to the flight","Load on the aircraft"]);
+function* par(a,b){while(true){const x=a.next(),y=b.next();if(x.done&&y.done)return;yield}}
+function* idle(){}
+function* drv(m,pts,v){yield* o.drive(m,pts,v)}
+o.script=function*(){let ret=idle();
+for(let i=0;i<nB;i++){const b=bags[i],k=b.userData.k,av=avs[i%avs.length],fault=brk&&i==Math.min(1,nB-1);cur=b;
+o.ph(0,"Bag "+(i+1)+" of "+nB+" gets a barcode/RFID tag linked to the passenger and the flight to "+FC[k][0]+".");
+yield* par(ret,o.drive(b,[[PK-1.0,0]],2.2));ret=idle();sg.visible=true;sg.position.set(PK,2.7,0);sg.say("RFID: "+FC[k][0]+" flight");yield* o.wait(.8);sg.visible=false;
+let mover=b;
+if(ava){o.ph(1,"An autonomous vehicle drives to the pickup point and the bag is loaded on top.");const h=home(i);yield* o.drive(av,[[h[0],-1.2],[PK,-1.2],[PK,0]],3.2);const s0=b.position.clone();yield* o.tw(.7,p=>b.position.set(s0.x+(PK-s0.x)*p,s0.y+(.36-s0.y)*p+Math.sin(p*Math.PI)*.2,s0.z*(1-p)));av.userData.tr.attach(b);b.position.set(0,0,0);b.rotation.set(0,0,0);mover=av}
+else{o.ph(1,"The bag is placed on the conveyor belt.");const s0=b.position.clone();yield* o.tw(.7,p=>b.position.set(s0.x+(PK+.4-s0.x)*p,s0.y+(.6-s0.y)*p+Math.sin(p*Math.PI)*.2,s0.z*(1-p)))}
+o.ph(2,"The bag goes through the screening machine. Sensors check it for safety.");
+yield* o.drive(mover,[[-6.6,0]],ava?3:2.4);
+if(fault){const tf=o.T;if(ava){av.userData.led.material.emissive.setHex(0xd9482b);bub.visible=true;bub.position.set(-6.6,2,0);bub.say("Vehicle fault! A spare takes over.","rgba(217,72,43,.95)");o.say("One vehicle breaks down. The other vehicles keep working, and a spare takes over this bag.");
+yield* o.drive(spare,[[-6.6,-1.7],[-6.6,-.7]],3.6);
+const s1=b.getWorldPosition(new THREE.Vector3());spare.userData.tr.attach(b);const l0=b.position.clone();yield* o.tw(.8,p=>b.position.set(l0.x*(1-p),l0.y+Math.sin(p*Math.PI)*.2,l0.z*(1-p)));b.position.set(0,0,0);bub.visible=false;
+lost[1]=o.T-tf;hit[1]=1;mover=spare;yield* par(o.drive(av,[[-6.6,-3.2],[-1.6,-3.2]],3.2),o.drive(spare,[[-6.6,0]],3))}
+else{bub.visible=true;bub.position.set(-6.6,1.7,0);bub.say("Belt jam! Everything behind it stops.","rgba(217,72,43,.95)");o.say("A jam stops the whole conveyor. Every bag behind this one has to wait.");yield* o.wait(4.5);bub.visible=false;lost[0]=o.T-tf;hit[0]=nB-i}}
+yield* o.drive(mover,[[SC-1.5,0]],ava?3:2.4);scan.material.opacity=.55;const mx=mover.position.x;yield* o.tw(1.3,p=>{scan.position.x=SC-1.4+2.8*p;mover.position.x=mx+3*p},1);scan.material.opacity=0;lamp.material.emissive.setHex(0x22cc66);sg.visible=true;sg.position.set(SC,2.9,0);sg.say("Screening: clear","rgba(30,142,78,.95)");yield* o.wait(.5);sg.visible=false;lamp.material.emissive.setHex(0x888888);
+o.ph(3,"The system reads the tag and sends the bag to the "+FC[k][0]+" chute.");
+yield* o.drive(mover,[[PX-.9,0],[PX-.9,ZK[k]],[PX+.1,ZK[k]]],ava?3.2:2.4);
+if(ava)yield* o.tw(.5,p=>mover.userData.tr.rotation.x=.4*p);
+sc.attach(b);const sx=b.position.clone(),n=carts[k].children.filter(c=>c.userData.isBag).length,tz=ZK[k]+(n%2?.35:-.35),ty=.43+Math.floor(n/2)*.75;
+yield* o.tw(1.2,p=>b.position.set(sx.x+(CX-.1-sx.x)*p,sx.y+(ty-sx.y)*p,sx.z+(tz-sx.z)*p));carts[k].attach(b);b.rotation.set(0,Math.PI/2,0);
+if(ava){mover.userData.tr.rotation.x=0;const h=mover===spare?[-5.4,-2.6]:home(i);ret=o.drive(mover,[[PX-.9,ZK[k]],[PX-.9,4.9],[h[0],4.9],[h[0],h[1]]],3.6)}
+}
+yield* ret;
+o.ph(4,"All bags are sorted. A tractor tows the carts to the aircraft and a loader lifts the bags into the hold.");cur=carts[1];
+yield* o.drive(tg,[[8.6,6.2],[8.6,3.4]],3);const c0=carts.map(c=>c.position.clone()),tx0=tg.position.clone(),T1=[[17.1,-2.2],[14.3,-2.2],[11.5,-2.2]];
+yield* o.tw(3.4,p=>{carts.forEach((c,kk)=>c.position.set(c0[kk].x+(T1[kk][0]-c0[kk].x)*p,0,c0[kk].z+(T1[kk][1]-c0[kk].z)*p));tg.position.set(tx0.x+(19.5-tx0.x)*p,0,tx0.z+(-2.2-tx0.z)*p)});
+o.say("The carts reach the aircraft and the bags are loaded.");
+const holdP=new THREE.Vector3(17.1,2.0,-3.5);
+for(const bb of bags){sc.attach(bb);const s0=bb.position.clone();yield* o.tw(.9,p=>{bb.position.set(s0.x+(holdP.x-s0.x)*p,s0.y+(holdP.y-s0.y)*p+Math.sin(p*Math.PI)*.4,s0.z+(holdP.z-s0.z)*p);bb.scale.setScalar(1-.6*p)});bb.visible=false}
+o.say("All "+nB+" bags are loaded in "+o.T.toFixed(0)+" simulated seconds.");const a=o.finish();o.bars(o.names,a.map(v=>v||0),"s");
+$("#gcm").textContent=(lost[1]!=null||lost[0]!=null)?"When something broke: "+(lost[1]!=null?"autonomous vehicles lost about "+lost[1].toFixed(0)+" s and only "+hit[1]+" bag was affected. ":"")+(lost[0]!=null?"The fixed conveyor lost about "+lost[0].toFixed(0)+" s and held up "+hit[0]+" bag"+(hit[0]>1?"s":"")+".":""):"Turn on Something breaks and run both systems to compare how each one copes."};
+$("#gmd").onclick=e=>{const m=e.target.dataset.m;if(m==null)return;ava=m=="1";document.querySelectorAll("#gmd .chip[data-m]").forEach(c=>c.classList.toggle("on",c.dataset.m==m));o.reset()};
+$("#gbn").onclick=e=>{const n=e.target.dataset.n;if(n!=null){nB=+n;document.querySelectorAll("#gbn .chip[data-n]").forEach(c=>c.classList.toggle("on",c.dataset.n==n));o.reset();return}if(e.target.id=="gbk"){brk=!brk;e.target.setAttribute("aria-pressed",brk);e.target.classList.toggle("on",brk);o.reset()}};
+o.begin()})();
+
+/* Front office lobby: reception and concierge robots */
+(function(){
+const o=mk3("f",420,{sun:[8,18,14],sh:[-15,15,10,-9],cam:{th:.1,ph:1.1,r:25,t:[0,1.5,-.5],span:25}});if(!o)return;
+const {S,E,bx,cy,sph,pl,tx,FM,sc}=o,dk=S(0x20262c,.5,.4),steel=S(0xc9ced2,.32,.8),wood=S(0x6b4a35,.5),stone=S(0xe9e5dc,.25,.1),wht=S(0xf4f6f8,.28,.1),wallM=S(0xefe8dc,.9);
+const marble=tx(256,256,(g,w,h)=>{g.fillStyle="#e6e2da";g.fillRect(0,0,w,h);for(let i=0;i<40;i++){g.strokeStyle="rgba(120,115,105,"+Math.random()*.18+")";g.lineWidth=1+Math.random()*2;g.beginPath();g.moveTo(Math.random()*w,Math.random()*h);g.bezierCurveTo(Math.random()*w,Math.random()*h,Math.random()*w,Math.random()*h,Math.random()*w,Math.random()*h);g.stroke()}g.strokeStyle="rgba(90,85,78,.35)";g.lineWidth=2;g.strokeRect(0,0,w,h)},10,5);
+pl(23,10.4,FM(marble),0,0,0,-Math.PI/2);pl(6,2.4,S(0x7a2f3b,.9),0,.012,2.6,-Math.PI/2).rotation.x=-Math.PI/2;
+bx(23,4.6,.2,wallM,0,2.3,-5.3);bx(.2,4.6,7.9,wallM,-11.6,2.3,-1.25);bx(.2,4.6,.9,wallM,-11.6,2.3,4.75);bx(.2,2.2,1.6,wallM,-11.6,3.5,3.5);bx(.2,4.6,7.6,wallM,11.6,2.3,-1.4);bx(.2,4.6,.6,wallM,11.6,2.3,4.9);bx(.2,1.6,2.2,wallM,11.6,3.8,3.5);
+pl(5,1,new THREE.MeshBasicMaterial({map:o.lab(512,100,"THE GRAND HOTEL","#3a2a1e","#e8c46a",52)}),-3.5,3.7,-5.18,0,sc);
+[-8,-1,6].forEach(x=>bx(.4,4.6,.35,S(0xd9cdb5,.6),x,2.3,-5.1,sc,1));
+/* reception desk */
+bx(6,1.1,.9,wood,-3.5,.55,-2.6);bx(6.2,.06,1.1,stone,-3.5,1.13,-2.6);bx(6,.9,.2,wood,-3.5,.45,-1.95,sc,1);
+bx(.5,.35,.04,dk,-1.8,1.5,-3.1);bx(.05,.3,.05,dk,-1.8,1.3,-3.1,sc,1);bx(.5,.35,.04,dk,-5.2,1.5,-3.1);bx(.05,.3,.05,dk,-5.2,1.3,-3.1,sc,1);
+bx(3,1,.1,S(0x5a4632,.6),-3.5,2.2,-5.1,sc,1);for(let i=0;i<8;i++)cy(.04,.04,.1,S(0xd4b85a,.4,.8),-4.6+i*.3,2.0+((i%3)*.28),-5.0,sc,8).rotation.x=Math.PI/2;
+const tb=o.cv(256,180);const tabM=o.pl(.55,.4,new THREE.MeshBasicMaterial({map:tb.t}),-3.5,1.28,-2.35,-.9,sc);
+function tab(l1,l2,l3,col){const g=tb.g;g.fillStyle="#0b1620";g.fillRect(0,0,256,180);g.fillStyle="#3fc1c3";g.font="bold 20px sans-serif";g.fillText("SELF CHECK-IN",12,28);g.fillStyle=col||"#fff";g.font="bold 24px sans-serif";g.fillText(l1,12,76);g.fillStyle="#cfd8de";g.font="bold 18px sans-serif";g.fillText(l2||"",12,112);g.fillText(l3||"",12,142);tb.t.needsUpdate=true}
+bx(.34,.03,.24,E(0x2f7f86,.8),-2.6,1.17,-2.35,sc,1);bx(.3,.1,.22,dk,-4.4,1.2,-2.35);const kc=bx(.14,.01,.09,S(0xd4b85a,.4,.6),-4.4,1.26,-2.35,sc,1);
+/* staff door and curtain */
+bx(1.3,2.6,.1,S(0x5a4632,.6),-7.4,1.3,-5.1,sc,1);const cur=bx(1.1,2.4,.04,S(0x7a2f3b,.9),-7.4,1.3,-4.9,sc,1);
+const staff=o.person(0x2b3a55,0x1d2a40,0x111111);staff.position.set(-7.4,0,-4.5);staff.visible=false;
+/* dinosaur receptionist */
+const dino=new THREE.Group();dino.position.set(-3.5,0,-3.7);sc.add(dino);const gm=S(0x4c9a52,.55),bm=S(0xd8e8b0,.7);
+[-.18,.18].forEach(x=>{cy(.09,.08,.6,gm,x,.32,0,dino,12);bx(.2,.08,.32,gm,x,.04,.08,dino)});sph(.4,gm,0,.95,-.02,dino,1,1.2,.95);sph(.3,bm,0,.9,.18,dino,.9,1.1,.6);
+[[.2,.7,-.55],[.14,.55,-.85],[.09,.45,-1.08]].forEach(t=>sph(t[0],gm,0,t[1],t[2],dino,1,1,1.4));
+sph(.25,gm,0,1.68,.18,dino,1,.9,1.2);bx(.22,.14,.32,gm,0,1.6,.45,dino);const jaw=new THREE.Group();jaw.position.set(0,1.52,.3);dino.add(jaw);bx(.2,.06,.3,bm,0,0,.16,jaw);[-.07,0,.07].forEach(x=>cy(0,.015,.05,S(0xffffff,.5),x,.05,.3,jaw,6));
+[-.12,.12].forEach(x=>{sph(.055,S(0xffffff,.3),x,1.75,.34,dino);sph(.028,S(0x111111,.2),x*1.04,1.75,.385,dino)});
+[-.3,.3].forEach(x=>{cy(.04,.03,.3,gm,x,1.0,.3,dino,8).rotation.x=1.1;bx(.07,.04,.08,bm,x,.92,.46,dino,1)});
+sph(.05,S(0xd9482b,.5),0,1.38,.4,dino);[-1,1].forEach(s=>{const b=new THREE.Mesh(new THREE.ConeGeometry(.06,.12,8),S(0xd9482b,.5));b.position.set(s*.08,1.38,.4);b.rotation.z=s*-1.57;dino.add(b)});
+/* concierge stand and Connie */
+cy(.7,.75,1,wood,4,.5,-2.6,sc,32);cy(.74,.74,.06,stone,4,1.03,-2.6,sc,32);
+const con=new THREE.Group();con.position.set(4,1.06,-2.6);con.scale.setScalar(1.6);sc.add(con);
+bx(.17,.22,.1,wht,0,.3,0,con);sph(.075,wht,0,.5,0,con,1,.9,1);const ceyes=[-.035,.035].map(x=>{const e=sph(.022,E(0x6ff0f2,1.8),x,.51,.058,con);return e});[-.08,.08].forEach(x=>bx(.015,.03,.03,E(0x6ff0f2,1.4),x,.5,0,con,1));
+bx(.04,.04,.02,E(0x6ff0f2,1.4),0,.32,.055,con,1);cy(.025,.022,.17,wht,-.11,.34,0,con,8);[-1,1].forEach(s=>{cy(.03,.03,.2,wht,s*.045,.1,0,con,8);bx(.06,.03,.1,wht,s*.045,.02,.03,con,1)});
+const carm=new THREE.Group();carm.position.set(.11,.4,0);con.add(carm);cy(.025,.022,.17,wht,0,-.08,0,carm,8);
+const mapC=o.cv(384,240),mapM=o.pl(2.9,1.8,new THREE.MeshBasicMaterial({map:mapC.t}),6.6,2.4,-5.16,0,sc);bx(3,1.9,.06,dk,6.6,2.4,-5.2,sc,1);
+function map(route){const g=mapC.g;g.fillStyle="#0b1620";g.fillRect(0,0,384,240);g.fillStyle="#3fc1c3";g.font="bold 20px sans-serif";g.fillText("HOTEL MAP",12,26);g.strokeStyle="#4a5a68";g.lineWidth=2;g.strokeRect(14,40,356,180);
+[["Reception",30,70],["Concierge",150,70],["Lifts",300,60],["Restaurant",270,190],["Entrance",20,190]].forEach(z=>{g.fillStyle="#cfd8de";g.font="bold 15px sans-serif";g.fillText(z[0],z[1],z[2])});
+g.fillStyle="#ffb347";g.font="bold 14px sans-serif";g.fillText("Pool: level 3",300,84);
+if(route){g.strokeStyle="#4cc27f";g.lineWidth=6;g.lineCap="round";g.beginPath();g.moveTo(60,170);g.lineTo(165,150);g.lineTo(route=="pool"?318:300,route=="pool"?95:185);g.stroke();g.fillStyle="#4cc27f";g.beginPath();g.arc(route=="pool"?318:300,route=="pool"?95:185,8,0,7);g.fill()}mapC.t.needsUpdate=true}
+const hdesk=bx(1.8,1.05,.7,wood,8.2,.52,-3.3);const hcon=o.person(0x2b3a55,0x1d2a40,0x2b1d14);hcon.position.set(8.2,0,-4.2);
+/* lift, restaurant arch, decor */
+bx(2.4,3,.2,S(0x4a5359,.5,.5),10,1.5,-5.15);const LD=[-1,1].map(s=>bx(.6,2.3,.06,steel,10+s*.3,1.15,-5.02,sc,1));pl(.6,.3,new THREE.MeshBasicMaterial({map:o.lab(128,64,"LIFTS","#12263a","#fff",30)}),10,2.7,-5.03,0,sc);
+bx(.2,3,.2,S(0xd9cdb5,.6),11.4,1.5,2.4);bx(.2,3,.2,S(0xd9cdb5,.6),11.4,1.5,4.6);bx(.2,.4,2.4,S(0xd9cdb5,.6),11.4,3.2,3.5);pl(2,.4,new THREE.MeshBasicMaterial({map:o.lab(256,52,"RESTAURANT","#3a2a1e","#e8c46a",30)}),11.28,3.2,3.5,0,sc).rotation.y=-Math.PI/2;
+[[0,3.6],[-2.2,3.8]].forEach((p,i)=>{bx(2.6,.5,.9,S([0x2f7f86,0xb8821f][i],.8),p[0],.3,p[1]);bx(2.6,.6,.2,S([0x2f7f86,0xb8821f][i],.8),p[0],.7,p[1]+.4)});bx(1.4,.08,.7,wood,-1.1,.4,2.3);cy(.07,.07,.3,dk,-1.1,.2,2.3,sc,8);
+[[ -10.4,-4.4],[10.6,-4.2],[10.6,4.4]].forEach(p=>{cy(.28,.22,.5,S(0xb06a4a,.8),p[0],.25,p[1],sc,16);[0,1,2,3,4].forEach(k=>sph(.3,S(0x2e8b57,.8),p[0]+Math.sin(k*1.9)*.22,.8+k*.14,p[1]+Math.cos(k*1.9)*.22,sc,1,1.2,1))});
+[[-3.5,3.2,-1.5],[4,3.2,-1],[1,3,3]].forEach(c=>{cy(.01,.01,1.4,dk,c[0],3.9,c[2],sc,6);[0,1,2,3,4,5].forEach(a=>sph(.07,E(0xffe2a8,2),c[0]+Math.sin(a)*.3,3.2+Math.cos(a*2)*.1,c[2]+Math.cos(a)*.3,sc));const p=new THREE.PointLight(0xffe2a8,.5,12);p.position.set(c[0],3,c[2]);sc.add(p)});
+const s1=o.person(0x1d5fa8,0x2b2f36,0x111111,true),s2=o.person(0x6a4c93,0x2b2f36,0x6b4423,true);s1.position.set(-.8,0,3.6);s2.position.set(.4,0,3.6);s1.rotation.y=s2.rotation.y=Math.PI;s1.position.y=s2.position.y=.0;
+const G=o.person(0xd9482b,0x3a4a5c,0x2b1d14),bag=mkBag(o,0x6a4c93,0xd9482b);sc.add(bag);const bb=o.bubble(),gb=o.bubble(),nl=o.bubble();
+/* state */
+const QS=[{t:"Where is the pool?",a:"The pool is on level 3. Take the lift, then turn left.",r:"pool"},{t:"Is there a good restaurant?",a:"Our restaurant is through the arch on your right. It is open now.",r:"rest"},{t:"Can I check out late?",a:"I cannot approve that myself. Let me ask the front desk.",r:"late"}];
+let mode="rec",exc=false,qi=0,talk=false,moving=false,holdBag=true,tot={0:null,1:null};
+function names(){o.setNames(mode=="rec"?["Greet","Scan ID","Confirm booking","Payment","Key card","Go to the room"]:["Guest asks","Robot listens","Robot answers","Show the way or escalate","Guest goes on"])}
+function init(){G.position.set(-12.4,0,3.5);G.rotation.y=Math.PI/2;G.visible=true;bag.visible=true;holdBag=true;G.userData.arm.rotation.x=0;staff.visible=false;staff.position.set(-7.4,0,-4.5);staff.userData.arm.rotation.x=0;hcon.userData.arm.rotation.x=0;kc.position.set(-4.4,1.26,-2.35);kc.visible=false;LD.forEach((d,i)=>d.position.x=10+(i?.3:-.3));bb.visible=gb.visible=nl.visible=false;tab("Welcome","Touch to begin","",null);map(null);talk=false;moving=false;carm.rotation.x=0;
+$("#fxr").style.display=mode=="rec"?"":"none";$("#fq").style.display=mode=="con"?"":"none";o.say(mode=="rec"?"Press start. The guest will check in with the dinosaur receptionist.":"Choose a question, then press start.")}
+o.init=init;o.follow=()=>[G.position.x,1.2,G.position.z];o.fr=7;
+o.eye=()=>{const a=G.rotation.y,f=[Math.sin(a),Math.cos(a)];return{p:[G.position.x+f[0]*.3,1.55,G.position.z+f[1]*.3],l:[G.position.x+f[0]*8,1.3,G.position.z+f[1]*8]}};
+o.frame=n=>{const a=G.rotation.y,c=Math.cos(a),s=Math.sin(a);if(holdBag){bag.position.set(G.position.x-s*.1+c*.45,G.position.y,G.position.z-c*.1-s*.45);bag.rotation.y=a}G.position.y=moving?Math.abs(Math.sin(n/120))*.03:0;jaw.rotation.x=talk?.35*Math.abs(Math.sin(n/90)):0;
+bb.position.set(mode=="rec"?dino.position.x:con.position.x,mode=="rec"?2.5:2.4,mode=="rec"?-3.2:-2.6);gb.position.set(G.position.x,2.3,G.position.z)};
+function* walk(pts,v){moving=true;yield* o.drive(G,pts,v||1.7);moving=false}
+function* say(b,txt,d,bg){b.visible=true;b.say(txt,bg);talk=(b===bb&&mode=="rec");yield* o.wait(d);talk=false}
+function* rec(){
+o.ph(0,"The guest walks in. The dinosaur receptionist greets them and offers a choice of languages.");yield* walk([[-8,3.5],[-3.5,-.9]]);yield* o.turn(G,Math.PI);yield* say(bb,"Welcome! Please choose your language.",1.8);tab("Language","English  Japanese","Korean  Chinese","#fff");yield* o.wait(.6);tab("Language: English","Place your ID on the scanner","","#4cc27f");
+o.ph(1,exc?"The passport will not scan. The robot cannot copy it, so it calls a human colleague.":"The guest places the passport on the scanner. The robot reads and checks it.");
+G.userData.arm.rotation.x=-1.0;yield* o.wait(.8);
+if(exc){tab("ID not readable","Please wait for staff","","#d9482b");yield* say(bb,"One moment please. I am calling a colleague.",1.6,"rgba(217,72,43,.95)");staff.visible=true;yield* o.drive(staff,[[-7.4,-3.9],[-4.4,-3.9]],1.6);yield* o.turn(staff,0);staff.userData.arm.rotation.x=-1.0;nl.position.set(-4.4,2.4,-3.9);nl.visible=true;nl.say("Copying passport by hand...","rgba(184,130,31,.95)");yield* o.wait(3);nl.visible=false;staff.userData.arm.rotation.x=0;yield* o.drive(staff,[[-7.4,-3.9],[-7.4,-4.5]],1.6);staff.visible=false}
+else{tab("ID scanned","Details match booking","","#4cc27f");yield* o.wait(1.2)}
+G.userData.arm.rotation.x=0;
+o.ph(2,"The screen shows the booking from the PMS. The guest confirms.");tab("Booking #4821","Deluxe King, 2 nights","Tap to confirm","#fff");yield* say(bb,"I found your booking. Please confirm.",1.8);G.userData.arm.rotation.x=-1.0;yield* o.wait(.5);tab("Confirmed","","","#4cc27f");G.userData.arm.rotation.x=0;
+o.ph(3,"The guest taps a card to pay the deposit. The PMS records it.");tab("Payment","Tap your card","","#fff");G.userData.arm.rotation.x=-1.0;yield* o.wait(1.2);tab("Payment accepted","Thank you","","#4cc27f");G.userData.arm.rotation.x=0;yield* o.wait(.4);
+o.ph(4,"The key encoder prints a key card and the robot tells the guest the room number.");kc.visible=true;yield* o.tw(.8,p=>{kc.position.z=-2.35+.5*p;kc.position.y=1.26+.02*p});yield* say(bb,"Room 508. Enjoy your stay!",1.6);G.userData.arm.rotation.x=-1.0;yield* o.wait(.5);kc.visible=false;G.userData.arm.rotation.x=0;bb.visible=false;
+o.ph(5,"The guest walks to the lifts and goes up to the room.");yield* walk([[2.4,-.4],[10,-.4],[10,-3.8]]);yield* o.turn(G,Math.PI);yield* o.tw(.8,p=>LD.forEach((d,i)=>d.position.x=10+(i?.3+.5*p:-.3-.5*p)));yield* walk([[10,-4.6]]);G.visible=false;bag.visible=false;LD.forEach((d,i)=>d.position.x=10+(i?.3:-.3))}
+function* con2(){const q=QS[qi];
+o.ph(0,"The guest walks up to the concierge robot and asks: "+q.t);yield* walk([[-8,3.5],[4,1.9],[4,-.7]]);yield* o.turn(G,Math.PI);gb.visible=true;gb.say(q.t,"rgba(217,72,43,.95)");yield* o.wait(1.8);gb.visible=false;
+o.ph(1,"Connie listens. Speech is turned into text, then the question's meaning is found.");ceyes.forEach(e=>e.material.emissive.setHex(0xffb347));nl.position.set(4.3,3.0,-2.6);nl.visible=true;for(const t of["1. Speech to text","2. Meaning: "+(q.r=="late"?"request needing approval":"asking where something is"),"3. Search hotel knowledge"]){nl.say(t,"rgba(18,38,58,.92)");yield* o.wait(1)}nl.visible=false;
+o.ph(2,"Connie answers in a clear voice.");ceyes.forEach(e=>e.material.emissive.setHex(0x4cc27f));bb.visible=true;bb.say(q.a);yield* o.tw(.6,p=>carm.rotation.x=-1.2*p);yield* o.wait(2);yield* o.tw(.5,p=>carm.rotation.x=-1.2*(1-p));
+if(q.r=="late"){o.ph(3,"Connie cannot approve late check-out. It passes the request to the human concierge, who approves it.");bb.say("Asking the front desk...","rgba(184,130,31,.95)");yield* o.wait(1.2);hcon.userData.arm.rotation.x=-1.0;nl.visible=true;nl.position.set(8.2,2.6,-4);nl.say("Human: late check-out approved to 2 pm","rgba(30,142,78,.95)");yield* o.wait(2.2);nl.visible=false;hcon.userData.arm.rotation.x=0;bb.say("Good news! Late check-out until 2 pm.","rgba(30,142,78,.95)");yield* o.wait(1.8)}
+else{o.ph(3,"The map screen shows the route to the "+(q.r=="pool"?"pool":"restaurant")+".");map(q.r);yield* o.turn(G,Math.atan2(2.6,-2.2));yield* o.wait(1.8)}
+bb.visible=false;ceyes.forEach(e=>e.material.emissive.setHex(0x6ff0f2));
+o.ph(4,q.r=="rest"?"The guest walks to the restaurant.":"The guest walks to the lifts.");if(q.r=="rest"){yield* walk([[4,1.9],[10.4,3.5]]);G.visible=false;bag.visible=false}else{yield* walk([[4,1.9],[10,-.4],[10,-3.8]]);yield* o.turn(G,Math.PI);yield* o.tw(.8,p=>LD.forEach((d,i)=>d.position.x=10+(i?.3+.5*p:-.3-.5*p)));yield* walk([[10,-4.6]]);G.visible=false;bag.visible=false;LD.forEach((d,i)=>d.position.x=10+(i?.3:-.3))}}
+o.script=function*(){if(mode=="rec")yield* rec();else yield* con2();
+const t=o.T;o.say("Done in "+t.toFixed(0)+" simulated seconds.");const a=o.finish();o.bars(o.names,a.map(v=>v||0),"s");
+if(mode=="rec"){tot[exc?1:0]=t;$("#fcm").textContent=(tot[0]!=null?"Smooth check-in: "+tot[0].toFixed(0)+" s. ":"")+(tot[1]!=null?"With the ID problem: "+tot[1].toFixed(0)+" s.":"")+(tot[0]!=null&&tot[1]!=null?" Difference: "+Math.abs(tot[1]-tot[0]).toFixed(0)+" s, and a human was needed.":" Run both options to compare.")}};
+H($("#fq"),$("#fq").innerHTML+QS.map((q,i)=>`<button class="chip ${i==qi?"on":""}" data-q="${i}">${q.t}</button>`).join(""));
+$("#fmd").onclick=e=>{const m=e.target.dataset.m;if(!m)return;mode=m;document.querySelectorAll("#fmd .chip").forEach(c=>c.classList.toggle("on",c.dataset.m==m));names();o.reset()};
+$("#fxc").onclick=e=>{exc=!exc;e.target.setAttribute("aria-pressed",exc);e.target.classList.toggle("on",exc);o.reset()};
+$("#fq").onclick=e=>{const q=e.target.dataset.q;if(q==null)return;qi=+q;document.querySelectorAll("#fq .chip").forEach((c,k)=>c.classList.toggle("on",k==qi));o.reset()};
+names();o.begin()})();
+
+/* drinks */
+const D={Mojito:[["White rum",50],["Lime juice",25],["Sugar syrup",15],["Soda",60]],Margarita:[["Tequila",50],["Triple sec",25],["Lime juice",25]],"Espresso Martini":[["Vodka",40],["Coffee liqueur",20],["Espresso",30]]},CL=["var(--teal)","var(--brass)","var(--coral)","var(--mut)"];let cur="Mojito";
+function drk(){H($("#dr"),Object.keys(D).map(k=>`<button class="chip ${k==cur?"on":""}" data-d="${k}">${k}</button>`).join(""));const ing=D[cur],tot=ing.reduce((a,i)=>a+i[1],0);let x=10;
+H($("#gl"),ing.map((i,k)=>{const w=i[1]/tot*380,s=`<rect x="${x}" y="10" width="${w}" height="34" fill="${CL[k]}"/><text x="${x+w/2}" y="62" font-size="12" text-anchor="middle">${i[0]}</text>`;x+=w;return s}).join(""));
+$("#dl").textContent=ing.map(i=>i[0]+" "+i[1]+" ml").join(", ")+". Total "+tot+" ml."}
+$("#dr").onclick=e=>{if(e.target.dataset.d){cur=e.target.dataset.d;drk();cons(false)}};
+function cons(go){const tot=D[cur].reduce((a,i)=>a+i[1],0);let h=`<line x1="20" y1="${105-tot/1.6}" x2="390" y2="${105-tot/1.6}" stroke="var(--mut)" stroke-dasharray="4"/><text x="20" y="12" font-size="12">Target ${tot} ml</text>`;
+if(go)for(let i=0;i<6;i++){const hv=tot*(.82+Math.random()*.36);h+=`<circle cx="${60+i*55}" cy="${105-hv/1.6}" r="6" fill="var(--coral)"/><circle cx="${75+i*55}" cy="${105-tot/1.6}" r="6" fill="var(--teal)"/>`}
+h+=`<text x="200" y="126" font-size="12" text-anchor="middle">Coral: human pours   Teal: robot pours</text>`;H($("#cons"),h)}
+$("#pour").onclick=()=>cons(true);drk();cons(false);
+
+/* quiz */
+const Q=[["Which task is BEST suited to a linen delivery robot?",["Calming an angry guest","Carrying towels to rooms at night","Planning a wedding menu"],1,"It is a routine, physical errand."],
+["Why do reception robots still need human back-up?",["They cannot scan IDs","Exceptions and unusual requests need judgment","They only work in daylight"],1,"Robots handle routine cases; people handle exceptions."],
+["A bartending robot's biggest advantage is:",["Creating new recipes alone","Exact, consistent measures","Talking to guests about their day"],1,"It pours the same amount every time."],
+["Autonomous baggage systems track a bag using:",["A barcode or RFID tag","The passenger's signature","The pilot's report"],0,"The tag links each bag to its flight."],
+["Which is a challenge of service robots?",["They never need maintenance","High cost and limited handling of unusual situations","They cannot work at night"],1,"Cost and rigidity are the main limits."],
+["UV disinfection robots are used mainly to:",["Cook food","Kill germs in empty rooms","Carry bags"],1,"UV light disinfects surfaces."]];
+let qi=0,sc=0;function rq(){if(qi>=Q.length){H($("#quiz"),`<h2>Score: ${sc} / ${Q.length}</h2><p>${sc>=5?"Excellent!":"Review the tabs and try again."}</p><button class="chip go" id="rst">Try again</button>`);$("#rst").onclick=()=>{qi=sc=0;rq()};return}
+const q=Q[qi];H($("#quiz"),`<h2>Question ${qi+1} of ${Q.length}</h2><p>${q[0]}</p>`+q[1].map((o,i)=>`<button class="o" data-i="${i}">${o}</button>`).join("")+`<p id="fb"></p>`);
+document.querySelectorAll(".o").forEach(b=>b.onclick=()=>{const i=+b.dataset.i;document.querySelectorAll(".o").forEach(x=>x.disabled=true);b.classList.add(i==q[2]?"right":"wrong");if(i!=q[2])document.querySelectorAll(".o")[q[2]].classList.add("right");else sc++;
+H($("#fb"),`${i==q[2]?"Correct. ":"Not quite. "}${q[3]} <button class="chip go" id="nx">Next</button>`);$("#nx").onclick=()=>{qi++;rq()}})}rq();
+try{localStorage.setItem('lastModNum',2);localStorage.setItem('lastModName','Module 2: Service Robotics & Automation');localStorage.setItem('lastModUrl','Unit 2 Service Robotics and Automation.html');}catch(e){}
+</script></body></html>
