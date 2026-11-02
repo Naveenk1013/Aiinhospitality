@@ -653,31 +653,41 @@ details[open] .chevron-icon { transform: rotate(180deg); }
 
 /* Footer & Portfolio Attribution */
 .site-footer {
-  margin-top: 50px;
-  padding-top: 24px;
+  margin-top: 44px;
+  padding: 24px 16px 20px;
   border-top: 1px solid var(--line);
   text-align: center;
-  font-size: 0.85rem;
-  color: var(--mute);
 }
 
 .footer-inner {
   max-width: 680px;
   margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-credit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  color: var(--mute);
 }
 
 .portfolio-badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  margin-top: 10px;
+  gap: 7px;
   padding: 6px 14px;
-  border-radius: 20px;
+  border-radius: 999px;
   background: var(--card);
   border: 1px solid var(--line);
   text-decoration: none;
   color: var(--ink);
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   font-weight: 600;
   transition: all 0.2s ease;
 }
@@ -685,6 +695,7 @@ details[open] .chevron-icon { transform: rotate(180deg); }
   border-color: var(--a);
   color: var(--a);
   box-shadow: var(--shadow);
+  transform: translateY(-1px);
 }
 .portfolio-badge .lucide-icon { width: 14px; height: 14px; color: var(--a); }
 </style>
@@ -995,16 +1006,15 @@ details[open] .chevron-icon { transform: rotate(180deg); }
     <p>No matching topics found. Try searching for <i>"Winnow"</i>, <i>"BMS"</i>, <i>"Robots"</i>, <i>"Blockchain"</i>, or <i>"VR"</i>.</p>
   </div>
 
-  <!-- Site Footer with Portfolio Link -->
+  <!-- Site Footer -->
   <footer class="site-footer">
     <div class="footer-inner">
-      <p><b>International Institute of Hotel Management (IIHM)</b> &bull; Semester 5 &bull; Department of Hospitality Technology</p>
-      <p style="margin: 8px 0 12px; font-size: 0.8rem;">Curated learning materials optimized for mobile learning and Netlify deployment.</p>
-      <div>
-        <a href="https://naveen-kr.netlify.app/" target="_blank" rel="noopener" class="portfolio-badge">
+      <div class="footer-credit">
+        <span>Made by</span>
+        <a href="https://iihmportfolio.vercel.app/" target="_blank" rel="noopener" class="portfolio-badge" title="Naveen Kumar - Professional Portfolio">
           <!-- Lucide Globe SVG -->
           <svg class="lucide-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          Portfolio: naveen-kr.netlify.app
+          <span>Naveen Kumar &bull; Portfolio</span>
           <!-- Lucide ExternalLink SVG -->
           <svg class="lucide-icon" style="width:12px;height:12px;opacity:0.7" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
         </a>
