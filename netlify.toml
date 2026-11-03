@@ -42,6 +42,16 @@
   to = "/Unit 4 Hospitality 5.0 & Sustainable Technologies.html"
   status = 200
 
+[[redirects]]
+  from = "/unit5"
+  to = "/Unit 5 Future Hospitality Technologies.html"
+  status = 200
+
+[[redirects]]
+  from = "/module5"
+  to = "/Unit 5 Future Hospitality Technologies.html"
+  status = 200
+
 # Cache control and security headers
 [[headers]]
   for = "/images/*"

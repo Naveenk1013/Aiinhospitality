@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Module 5: Future Hospitality Technologies | IIHM Semester 5</title>
+<style>
+:root {
+  --bg: #f8f7fc;
+  --card: #ffffff;
+  --card-sub: #f3f1fa;
+  --ink: #1e1b2e;
+  --mute: #625d79;
+  --line: #dfdaf0;
+  
+  --a: #7c3aed;
+  --a2: #ede9fe;
+  --b: #0284c7;
+  --b2: #e0f2fe;
+  --r: #dc2626;
+  --r2: #fee2e2;
+  --y: #d97706;
+  --y2: #fef3c7;
+  
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f0d19;
+    --card: #171424;
+    --card-sub: #1f1b32;
+    --ink: #f1effa;
+    --mute: #a39eb8;
+    --line: #2b2644;
+    --a: #a78bfa;
+    --a2: #2e1065;
+    --b: #38bdf8;
+    --b2: #082f49;
+    --r: #f87171;
+    --r2: #450a0a;
+    --y: #fbbf24;
+    --y2: #451a03;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0f0d19;
+  --card: #171424;
+  --card-sub: #1f1b32;
+  --ink: #f1effa;
+  --mute: #a39eb8;
+  --line: #2b2644;
+  --a: #a78bfa;
+  --a2: #2e1065;
+  --b: #38bdf8;
+  --b2: #082f49;
+  --r: #f87171;
+  --r2: #450a0a;
+  --y: #fbbf24;
+  --y2: #451a03;
+}
+
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.w {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 20px 16px 80px;
+}
+
+h1 {
+  font-size: 1.85rem;
+  margin: 0.2em 0 0.1em;
+  line-height: 1.25;
+  color: var(--ink);
+  font-weight: 800;
+}
+.sub {
+  color: var(--mute);
+  margin: 0 0 16px;
+  font-size: 0.92rem;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 6px 0 10px;
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  background: var(--bg);
+  z-index: 20;
+  border-bottom: 1px solid var(--line);
+}
+.tabs button {
+  flex: 0 0 auto;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.tabs button:hover {
+  border-color: var(--a);
+  color: var(--a);
+}
+.tabs button.on {
+  background: var(--a);
+  color: #ffffff;
+  border-color: var(--a);
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
+}
+
+/* Content Sections */
+.sec {
+  display: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.sec.on {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+h2 {
+  font-size: 1.35rem;
+  margin: 26px 0 10px;
+  border-bottom: 2px solid var(--a);
+  padding-bottom: 4px;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.def {
+  background: var(--a2);
+  border-left: 4px solid var(--a);
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin: 12px 0;
+  font-size: 0.98rem;
+}
+.ex {
+  background: var(--b2);
+  border-left: 4px solid var(--b);
+  padding: 11px 16px;
+  border-radius: 8px;
+  margin: 10px 0;
+  font-size: 0.94rem;
+}
+.ex b:first-child {
+  color: var(--b);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 3px;
+}
+.how {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--a);
+  padding: 11px 16px;
+  border-radius: 8px;
+  margin: 10px 0;
+  font-size: 0.94rem;
+}
+.how b:first-child {
+  color: var(--a);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 3px;
+}
+.warn {
+  background: var(--y2);
+  border-left: 4px solid var(--y);
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin: 10px 0;
+  font-size: 0.92rem;
+}
+.bad {
+  background: var(--r2);
+  border-left: 4px solid var(--r);
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin: 10px 0;
+  font-size: 0.92rem;
+}
+
+details {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  margin: 12px 0;
+  padding: 0 16px;
+  transition: box-shadow 0.2s;
+}
+details[open] {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+summary {
+  cursor: pointer;
+  padding: 13px 0;
+  font-weight: 700;
+  font-size: 0.98rem;
+  user-select: none;
+}
+details[open] summary {
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 10px;
+}
+
+ul { margin: 6px 0 12px; padding-left: 20px; }
+li { margin: 5px 0; }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.88rem;
+  margin: 14px 0;
+  background: var(--card);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+th, td {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+th {
+  background: var(--a2);
+  color: var(--ink);
+  font-weight: 700;
+}
+.sc { overflow-x: auto; }
+
+/* SVG Diagrams */
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 12px auto;
+}
+svg text {
+  font-family: system-ui, sans-serif;
+  fill: var(--ink);
+}
+.bx { fill: var(--card); stroke: var(--a); stroke-width: 1.5; }
+.bb { fill: var(--b2); stroke: var(--b); stroke-width: 1.5; }
+.bg { fill: var(--a2); stroke: var(--a); stroke-width: 1.5; }
+.by { fill: var(--y2); stroke: var(--y); stroke-width: 1.5; }
+
+/* Image Cards with Zoom */
+.img-card {
+  margin: 16px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--card);
+  box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.img-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+.img-card img {
+  width: 100%;
+  height: auto;
+  max-height: 380px;
+  object-fit: cover;
+  display: block;
+  cursor: zoom-in;
+  transition: filter 0.2s ease;
+}
+.img-card img:hover { filter: brightness(1.02); }
+.img-card .cap {
+  padding: 11px 15px;
+  font-size: 0.85rem;
+  color: var(--mute);
+  background: var(--card);
+  border-top: 1px solid var(--line);
+  line-height: 1.45;
+}
+.img-card .cap b { color: var(--ink); }
+
+/* Interactive Simulator Elements */
+.i-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px;
+  margin: 18px 0;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+}
+.i-card h3 {
+  margin: 0 0 12px;
+  font-size: 1.08rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--a);
+}
+.i-badge {
+  background: var(--a2);
+  color: var(--a);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.i-badge.live {
+  background: var(--r2);
+  color: var(--r);
+}
+.i-badge.live::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--r);
+  animation: pulseDot 1.4s infinite ease-in-out;
+}
+.i-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+  margin: 12px 0;
+}
+.i-box {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 10px;
+  text-align: center;
+  transition: background 0.2s;
+}
+.i-box .val {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 3px 0;
+}
+.i-box .lbl {
+  font-size: 0.72rem;
+  color: var(--mute);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.i-btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 0.86rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.i-btn:hover {
+  background: var(--a2);
+  border-color: var(--a);
+  color: var(--a);
+}
+.i-btn.on {
+  background: var(--a);
+  color: #fff;
+  border-color: var(--a);
+  box-shadow: 0 2px 6px rgba(124, 58, 237, 0.25);
+}
+.i-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0;
+}
+.i-meter-row { margin: 10px 0; }
+.i-meter-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.i-meter {
+  background: var(--bg);
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+.i-meter-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--a), #38bdf8);
+  border-radius: 5px;
+  transition: width 0.4s cubic-bezier(.4,0,.2,1);
+}
+.i-meter-bar.warn { background: linear-gradient(90deg, var(--y), #f97316); }
+.i-meter-bar.danger { background: linear-gradient(90deg, var(--r), #ef4444); }
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.4; }
+}
+
+/* Lightbox Modal */
+.lightbox-modal {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(6px);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  cursor: zoom-out;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.lightbox-modal.open { display: flex; opacity: 1; }
+.lightbox-content {
+  max-width: 920px;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: default;
+}
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 76vh;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  object-fit: contain;
+}
+.lightbox-cap {
+  color: #f0f3ee;
+  font-size: 0.88rem;
+  margin-top: 12px;
+  text-align: center;
+  max-width: 800px;
+  line-height: 1.5;
+}
+.lightbox-close {
+  position: absolute;
+  top: 18px; right: 22px;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  border: none;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.lightbox-close:hover { background: rgba(255,255,255,0.4); }
+
+/* Quiz Styling */
+.q {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin: 12px 0;
+}
+.q p { margin: 0 0 10px; font-weight: 600; font-size: 0.96rem; }
+.q button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin: 6px 0;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+.q button:hover { border-color: var(--a); }
+.q button.ok { background: var(--a2); border-color: var(--a); color: var(--ink); font-weight: 600; }
+.q button.no { background: var(--r2); border-color: var(--r); color: var(--ink); }
+.q .fb { font-size: 0.85rem; color: var(--mute); margin-top: 8px; display: none; line-height: 1.4; }
+
+/* Course Navigation & Footer */
+.card-nav {
+  margin-top: 36px;
+  background: var(--card-sub);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+.tab-btn {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.tab-btn:hover {
+  border-color: var(--a);
+  color: var(--a);
+  transform: translateY(-1px);
+}
+
+.site-footer {
+  margin-top: 40px;
+  padding: 24px 16px 20px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+.footer-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer-credit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  color: var(--mute);
+}
+.portfolio-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 0.84rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.portfolio-badge:hover {
+  border-color: var(--a);
+  color: var(--a);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transform: translateY(-1px);
+}
+.portfolio-badge svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--a);
+  fill: none;
+  stroke-width: 2;
+  display: inline-block;
+  margin: 0;
+}
+</style>
+</head>
+<body>
+
+<div id="readProgress" style="position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--a),#38bdf8,#818cf8);z-index:9999;transition:width .12s ease-out"></div>
+
+<div class="w">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:0.85rem">
+    <a href="index.html" style="text-decoration:none;color:var(--a);font-weight:600;display:inline-flex;align-items:center;gap:4px">
+      ← Course Portal
+    </a>
+    <span style="color:var(--mute)">IIHM SEM 5 &bull; AI in Hospitality</span>
+  </div>
+
+  <h1>Module 5: Future Hospitality Technologies (8 Hrs)</h1>
+  <p class="sub">Emerging Tech &bull; Generative search, quantum computing, smart destinations, autonomous robotics, spatial metaverse, drone logistics, and emotion AI.</p>
+
+  <div class="tabs" id="tabs"></div>
+
+  <!-- TAB 1: SEARCH & QUANTUM -->
+  <div class="sec" data-t="1. Search &amp; Quantum">
+    <h2>1. Generative Search &amp; GEO in Travel</h2>
+    <div class="def">
+      <b>Generative Search (GEO / Generative Engine Optimization)</b> = Next-generation conversational search engines that replace traditional blue lists with natural-language multi-destination itinerary synthesis, entity matching, and instant direct-booking recommendations.
+    </div>
+
+    <div class="img-card">
+      <img src="images/unit5/geo_generative_search_travel.jpg" alt="Traveler using conversational GEO AI search on tablet in hotel lounge">
+      <div class="cap"><b>Figure 5.1: Generative Search (GEO)</b>: Transforming keyword queries into rich conversational package synthesis with deep attribute tagging (eco-ratings, plunge pools, quiet work pods).</div>
+    </div>
+
+    <details open>
+      <summary>🤖 The Shift: Traditional SEO vs. Generative Engine Optimization (GEO)</summary>
+      <ul>
+        <li><b>Keyword Search (SEO)</b>: Matches static keywords (e.g. <i>"luxury hotel Ubud"</i>) and ranks properties primarily on pay-per-click ad spending and backlinks.</li>
+        <li><b>Generative Search (GEO)</b>: Evaluates semantic intent: <i>"Find a tranquil eco-resort in Ubud with private plunge pool, daily organic vegan breakfast, fast Wi-Fi, and soundproof work nook under $320/night."</i></li>
+        <li><b>Schema Micro-Data</b>: Hotels must mark up granular attributes (exact HVAC decibel levels, carbon offset stats, pillow menus, hypoallergenic ratings) so AI scrapers select their listing for specialized traveler personas.</li>
+      </ul>
+      <div class="how">
+        <b>How &amp; Where It Works</b>
+        Hotels deploy Schema.org microdata and LLM API connectors. When a user asks an AI travel assistant (e.g., ChatGPT Travel or Google SGE) for a personalized stay, the engine queries verified hotel APIs directly, constructing tailored packages and bypassing traditional 20% OTA commission walls.
+      </div>
+      <div class="ex">
+        <b>Current Industry Example</b>
+        <b>Tripadvisor AI Trip Planner &amp; Expedia ChatGPT Integration</b>: Allows users to construct personalized itineraries through continuous conversation, automatically bundling flights, boutique lodging, and dining reservations in one click.
+      </div>
+    </details>
+
+    <!-- Simulator 1: GEO Search -->
+    <div class="i-card">
+      <h3>
+        <span>Simulator 5A: Generative Engine Optimization (GEO) Query Matcher</span>
+        <span class="i-badge live">Live Semantic NLP</span>
+      </h3>
+      <p style="font-size:0.88rem;color:var(--mute);margin:0 0 10px">Test how an AI Generative Engine compares hotel metadata against complex natural-language traveler requests:</p>
+      
+      <div class="i-btn-group">
+        <button class="i-btn on" onclick="testGeo(0)">🌴 Eco-Wellness Retreat</button>
+        <button class="i-btn" onclick="testGeo(1)">💼 Tech Executive Workstay</button>
+        <button class="i-btn" onclick="testGeo(2)">👨‍👩‍👧 Family Allergy-Safe Suite</button>
+      </div>
+
+      <div style="margin:10px 0">
+        <input type="text" id="geoInput" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font-size:0.9rem" readonly>
+      </div>
+
+      <div class="i-grid">
+        <div class="i-box">
+          <div class="val" id="geoScore" style="color:var(--a)">96%</div>
+          <div class="lbl">GEO Semantic Match</div>
+        </div>
+        <div class="i-box">
+          <div class="val" id="geoOtaRank" style="color:var(--b)">#1 Pick</div>
+          <div class="lbl">AI Recommendation</div>
+        </div>
+        <div class="i-box">
+          <div class="val" id="geoDirectComm" style="color:var(--a)">$0 OTA Fee</div>
+          <div class="lbl">Direct API Booking</div>
+        </div>
+      </div>
+
+      <div class="how" id="geoResultBox">
+        <b>Engine Synthesis:</b> <span id="geoSummary">Selected "Maya Ubud Eco Sanctuary" based on verified Schema.org attributes: Solar BESS power, certified organic vegan kitchen, 200 Mbps fiber line, and private forest plunge pool.</span>
+      </div>
+    </div>
+
+    <h2>2. Quantum Computing in Hospitality &amp; Travel</h2>
+    <div class="def">
+      <b>Quantum Computing</b> = Computing models that harness quantum mechanics (qubits, superposition, and entanglement) to calculate millions of combinatorial variables concurrently, solving massive optimization challenges beyond classical supercomputers.
+    </div>
+
+    <div class="img-card">
+      <img src="images/unit5/quantum_computing_hospitality.jpg" alt="Quantum computing revenue management visualization with holographic global routing network">
+      <div class="cap"><b>Figure 5.2: Quantum Optimization</b>: Solving multi-thousand variable matrices in milliseconds—optimizing flight disruptions, crew schedules, dynamic hotel rates, and perishable supply logistics.</div>
+    </div>
+
+    <details open>
+      <summary>⚛️ High-Impact Quantum Use Cases in Hospitality</summary>
+      <ul>
+        <li><b>Combinatorial Disruption Recovery</b>: When a blizzard shuts an international hub, classical systems take 45–60 minutes to approximate flight re-routings and guest hotel vouchers. Quantum Annealing resolves the global assignment matrix in under 30 milliseconds.</li>
+        <li><b>Hyper-Dynamic Revenue Optimization</b>: Simulates hundreds of thousands of competitor rate changes, airline passenger load shifts, local weather forecasts, and currency volatility simultaneously to price hotel rooms tick-by-tick.</li>
+        <li><b>Perishable Food Supply Chain Optimization</b>: Synchronizes international shipments of high-grade culinary ingredients across luxury chains, cutting spoilage by up to 34%.</li>
+      </ul>
+      <div class="how">
+        <b>How &amp; Where It Works</b>
+        Quantum Annealing chips (e.g., D-Wave Advantage, IBM Quantum) map hotel room capacity and stranded passenger profiles into an energy landscape. The lowest energy state represents the mathematically optimal room distribution, preventing both empty hotel inventory and passenger stranding.
+      </div>
+      <div class="ex">
+        <b>Current Industry Example</b>
+        <b>Lufthansa &amp; Marriott Global Operations Pilot</b>: Testing D-Wave quantum algorithms to reallocate thousands of flight crews and distressed passengers into partner hotels during unforeseen European airspace strikes.
+      </div>
+    </details>
+
+    <!-- Simulator 2: Quantum Disruption -->
+    <div class="i-card">
+      <h3>
+        <span>Simulator 5B: Quantum Disruption &amp; Revenue Recovery Benchmark</span>
+        <span class="i-badge">Quantum Annealing</span>
+      </h3>
+      <p style="font-size:0.88rem;color:var(--mute);margin:0 0 10px">Simulate sudden global travel disruption and compare Classical Supercomputing vs. Quantum Optimization speed:</p>
+      
+      <div class="i-btn-group">
+        <button class="i-btn on" onclick="runQuantumSim('typhoon')">🌀 Tokyo Typhoon Hub Closure</button>
+        <button class="i-btn" onclick="runQuantumSim('strike')">⚠️ Heathrow ATC Ground Stop</button>
+        <button class="i-btn" onclick="runQuantumSim('surge')">🎟️ Sudden 12,000 Mega-Expo Demand</button>
+      </div>
+
+      <div class="i-grid" style="margin:12px 0">
+        <div class="i-box">
+          <div class="val" id="qTimeClassic" style="color:var(--r)">42.5 min</div>
+          <div class="lbl">Classical Server Time</div>
+        </div>
+        <div class="i-box">
+          <div class="val" id="qTimeQuantum" style="color:var(--a)">18 ms</div>
+          <div class="lbl">Quantum Execution Time</div>
+        </div>
+        <div class="i-box">
+          <div class="val" id="qSpeedup" style="color:var(--a)">141,000x</div>
+          <div class="lbl">Algorithmic Speedup</div>
+        </div>
+        <div class="i-box">
+          <div class="val" id="qRevSaved" style="color:var(--a)">$380,000</div>
+          <div class="lbl">Revenue / Cost Saved</div>
+        </div>
+      </div>
+
+      <div class="how" id="qVerdictBox">
+        <b>Benchmark Analysis:</b> <span id="qVerdictTxt">Quantum system allocated 4,200 distressed passengers across 18 partner hotels and 84 shuttle vans in 18ms with zero stranded travelers.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 2: DESTINATIONS & AUTONOMOUS -->
+  <div class="sec" data-t="2. Destinations &amp; Hotels">
+    <h2>1. Smart Tourism Destinations &amp; Urban IoT Grids</h2>
+    <div class="def">
+      <b>Smart Destination</b> = A connected urban or resort territory integrating IoT sensor grids, 5G networks, environmental monitors, and predictive AI to regulate tourist footfall, preserve heritage, and deliver effortless digital guest journeys.
+    </div>
+
+    <div class="img-card">
+      <img src="images/unit5/smart_destinations_iot_city.jpg" alt="Smart tourism destination with illuminated IoT street sensors and electric autonomous shuttles">
+      <div class="cap"><b>Figure 5.3: Smart Destination Grids</b>: Urban IoT networks track real-time crowd densities, pedestrian flows, and air quality to dynamically distribute visitors away from congested monuments.</div>
+    </div>
+
+    <details open>
+      <summary>🌆 Core Components of Smart Destinations</summary>
+      <ul>
+        <li><b>Pedestrian Heatmaps &amp; Overtourism Prevention</b>: Optical and Wi-Fi sniffer sensors measure crowd buildup at historic sites, pushing dynamic discount notifications for quieter alternative cultural attractions.</li>
+        <li><b>Unified Biometric Travel Wallets</b>: A single secure facial biometric enrollment allows a visitor to board public metro shuttles, enter museums, and unlock their hotel room without showing paper tickets or IDs.</li>
+        <li><b>Environmental Sensing</b>: Real-time air quality, noise pollution, and smart waste bin capacity monitoring deployed across beach fronts and shopping districts.</li>
+      </ul>
+      <div class="how">
+        <b>How &amp; Where It Works</b>
+        Destination Management Organizations (DMOs) integrate city camera feeds and transit tap-ins into a centralized digital twin command center. When footfall at a landmark reaches 85% safety capacity, digital street signage and mobile tourism apps automatically route approaching visitors to nearby gardens with free beverage vouchers.
+      </div>
+      <div class="ex">
+        <b>Current Industry Example</b>
+        <b>Singapore Tourism Board's Sentosa Smart Island &amp; Barcelona City OS</b>: Integrated sensor platforms managing smart electric shuttles, digital tourist passes, and sensor-monitored beach cleanliness.
+      </div>
+    </details>
+
+    <!-- Simulator 3: Footfall Balancing -->
+    <div class="i-card">
+      <h3>
+        <span>Simulator 5C: Smart Destination Footfall &amp; Overtourism Balancer</span>
+        <span class="i-badge">IoT Urban Grid</span>
+      </h3>
+      <p style="font-size:0.88rem;color:var(--mute);margin:0 0 10px">Adjust daily tourist arrival volume and toggle AI Dynamic Diversion to see real-time crowd redistribution:</p>
+
+      <div style="margin:10px 0">
+        <label style="font-size:0.85rem;font-weight:700">Daily Tourist Influx: <b id="touristCountVal">28,000</b> visitors</label>
+        <input type="range" id="touristSlider" min="5000" max="50000" step="1000" value="28000" style="width:100%" oninput="updateDestSim()">
+      </div>
+
+      <div style="display:flex;align-items:center;gap:10px;margin:12px 0">
+        <button class="i-btn on" id="diversionToggleBtn" onclick="toggleDiversion()">AI Dynamic Diversion: ACTIVE</button>
+        <span style="font-size:0.82rem;color:var(--mute)">Pushes smart transit vouchers to bypass bottlenecks</span>
+      </div>
+
+      <div class="i-grid">
+        <div class="i-box">
+          <div class="val" id="destZone1" style="color:var(--a)">62%</div>
+          <div class="lbl">Historic Cathedral Load</div>
+        </div>
+        <div class="i-box">
+          <div class="val" id="destZone2" style="color:var(--b)">54%</div>
+          <div class="lbl">Marina Promenade Load</div>
+        </div>
+        <div class="i-box">
+          <div class="val" id="destZone3" style="color:var(--a)">58%</div>
+          <div class="lbl">Artisan Craft Village</div>
+        </div>
+        <div class="i-box">
+          <div class="val" id="destStatus" style="color:var(--a)">Optimal Flow</div>
+          <div class="lbl">City Footfall Status</div>
+        </div>
+      </div>
+    </div>
+
+    <h2>2. Autonomous Hotels &amp; Service Robotics</h2>
+    <div class="def">
+      <b>Autonomous Hotel</b> = A hospitality concept where routine touchpoints (check-in, key dispensing, room service deliveries, and night cleaning) are executed by robotic and AI systems, freeing staff for high-touch personalized concierge care.
+    </div>
+
+    <div class="img-card">
+      <img src="images/unit5/autonomous_hotel_service_robot.jpg" alt="Autonomous delivery robot delivering fresh towels to guestroom door in luxury corridor">
+      <div class="cap"><b>Figure 5.4: Autonomous Service Robots</b>: IoT-connected delivery bots autonomously ride elevators and navigate carpeted corridors to deliver amenities in under 4 minutes.</div>
+    </div>
+
+    <details open>
+      <summary>🤖 Operations Inside an Autonomous Property</summary>
+      <ul>
+        <li><b>Sub-30-Second Facial Check-In</b>: High-speed kiosks scan guest face, retrieve reservation from PMS, and encode mobile NFC key in seconds.</li>
+        <li><b>Autonomous Elevator Relay Bots</b>: Delivery bots communicate wirelessly with smart elevator control boards via Wi-Fi/Zigbee protocols, riding between floors to deliver late-night orders.</li>
+        <li><b>UV-C Robotic Sanitation</b>: Autonomous robots disinfect ballrooms, dining areas, and guestroom corridors overnight using hospital-grade UV-C light beams.</li>
+      </ul>
+      <div class="ex">
+        <b>Current Industry Example</b>
+        <b>FlyZoo Hotel (Alibaba Group, Hangzhou) &amp; Henn na Hotel (Japan)</b>: Facial recognition check-in, robotic bartender arms crafting bespoke cocktails, and automated luggage storage robot arms.
+      </div>
+    </details>
+
+    <table>
+      <tr><th>Operational Dimension</th><th>Traditional Hotel</th><th>Autonomous Hotel 5.0</th></tr>
+      <tr><td>Check-In Experience</td><td>Queuing at physical desk; manual ID photocopy</td><td>Facial scan / Mobile NFC digital key in &lt; 25 seconds</td></tr>
+      <tr><td>Amenity Deliveries</td><td>Bell staff runner dispatch (15–25 min)</td><td>Autonomous elevator bot dispatch (3–5 min)</td></tr>
+      <tr><td>Night Operations</td><td>Night auditor + security patrol staff</td><td>Autonomous LiDAR patrols &amp; sensor monitoring</td></tr>
+      <tr><td>Human Staff Focus</td><td>Routine paperwork &amp; keycard encoding</td><td>High-empathy concierge care &amp; VIP hospitality</td></tr>
+    </table>
+  </div>
+
+  <!-- TAB 3: METAVERSE & EVENTS -->
+  <div class="sec" data-t="3. Metaverse &amp; Events">
+    <h2>1. The Hospitality Metaverse &amp; Spatial VR</h2>
+    <div class="def">
+      <b>Hospitality Metaverse</b> = Photorealistic 3D spatial environments (VR/WebXR) enabling MICE corporate event planners, wedding couples, and luxury travelers to tour, configure, and inspect hotel spaces with true-to-life 1:1 scale fidelity before signing contracts.
+    </div>
+
+    <div class="img-card">
+      <img src="images/unit5/hospitality_metaverse_mice_vr.jpg" alt="Event planner wearing spatial VR headset customizing 3D hotel ballroom floorplan">
+      <div class="cap"><b>Figure 5.5: Spatial MICE Planning</b>: Planners interact with photorealistic 1:1 scale 3D digital twins, testing banquet seating layouts, stage lighting, and sightlines remotely.</div>
+    </div>
+
+    <details open>
+      <summary>🥽 Core Applications in Sales &amp; MICE Bookings</summary>
+      <ul>
+        <li><b>Zero-Travel Site Inspections</b>: Corporate planners in London or New York inspect a convention resort in Dubai or Singapore in photorealistic spatial 3D, saving thousands in travel budget.</li>
+        <li><b>Real-Time Event Prototyping</b>: Drag and drop 60 banquet tables, adjust LED wall heights, evaluate acoustics, and preview table floral centerpieces in real-time VR.</li>
+        <li><b>"Try Before You Buy" Pre-Booking</b>: Luxury travelers take virtual walkthroughs of presidential suites or overwater villas before finalizing non-refundable high-value bookings.</li>
+      </ul>
+      <div class="ex">
+        <b>Current Industry Example</b>
+        <b>Atlantis The Palm Virtual 360 Tours &amp; Marriott Bonvoy Virtual Worlds</b>: Driving high-value wedding and convention bookings through interactive WebXR 3D walkthroughs.
+      </div>
+    </details>
+
+    <h2>2. AI-Powered MICE Event Management</h2>
+    <div class="def">
+      <b>MICE Tech (Meetings, Incentives, Conferences, Exhibitions)</b> = AI matchmaking algorithms and IoT badge heatmaps that automate corporate networking, attendee registration, and convention crowd flow dynamics.
+    </div>
+
+    <details open>
+      <summary>🎪 Smart Conference &amp; Expo Automation</summary>
+      <ul>
+        <li><b>AI Matchmaking Networks</b>: Analyzes attendee industry profiles and interests to recommend 1-on-1 networking meetings and curated session agendas.</li>
+        <li><b>Smart RFID/NFC Badges</b>: Measures booth dwell time without manual scanning, generating warm sales leads for hotel expo exhibitors.</li>
+        <li><b>Dynamic HVAC &amp; Acoustic Load Balancing</b>: Senses crowd clusters and automatically boosts cooling airflow to prevent stuffy banquet halls.</li>
+      </ul>
+      <div class="how">
+        <b>How &amp; Where It Works</b>
+        Smart badges ping Bluetooth low-energy (BLE) beacons every 30 seconds. The event engine identifies attendee bottlenecks, dispatching catering staff to restock coffee stations before lines form.
+      </div>
+      <div class="ex">
+        <b>Current Industry Example</b>
+        <b>Cvent AI Event Management &amp; Bizzabo Smart Badge Platforms</b>: Automates venue floorplan safety compliance and provides real-time attendee interest analytics.
+      </div>
+    </details>
+  </div>
+
+  <!-- TAB 4: AUTONOMOUS TRANSPORT & DRONES -->
+  <div class="sec" data-t="4. Transport &amp; Drones">
+    <h2>1. Autonomous Resort Transportation &amp; eVTOL</h2>
+    <div class="def">
+      <b>Autonomous Tourism Transport</b> = Driverless electric shuttle pods, autonomous golf buggies, and electric vertical takeoff and landing (eVTOL) aircraft delivering quiet, zero-emission transfers across vast resort campuses.
+    </div>
+
+    <div class="img-card">
+      <img src="images/unit5/autonomous_resort_shuttle_evtol.jpg" alt="Autonomous resort electric pod shuttle and sleek eVTOL air taxi approaching coastal vertiport">
+      <div class="cap"><b>Figure 5.6: Autonomous Eco-Transport</b>: Zero-emission electric pods navigate resort pathways via LiDAR while eVTOL air taxis offer whisper-quiet aerial transfers from airports.</div>
+    </div>
+
+    <details open>
+      <summary>🚗 Resort Shuttles &amp; Urban Air Mobility</summary>
+      <ul>
+        <li><b>LiDAR Electric Resort Shuttles</b>: Driverless electric pods moving guests between beachfront villas, spas, and golf clubs safely, stopping automatically for pedestrians and wildlife.</li>
+        <li><b>eVTOL Air Taxis</b>: Electric aircraft connecting international airport hubs directly to island resort helipads in 12 minutes instead of 90-minute bumpy road/boat rides.</li>
+        <li><b>Zero Emissions &amp; Silent Operation</b>: Replaces noisy diesel shuttle vans and speedboat engines, preserving serene resort soundscapes.</li>
+      </ul>
+      <div class="ex">
+        <b>Current Industry Example</b>
+        <b>Joby Aviation, EHang &amp; Volocopter in Dubai/Neom</b>: Commercial flight corridors transporting luxury hotel guests from international terminals directly to waterfront resort vertiports.
+      </div>
+    </details>
+
+    <h2>2. Express Drone Logistics &amp; Aerial Surveillance</h2>
+    <div class="def">
+      <b>Resort Drone Systems</b> = Autonomous commercial drones utilized for express amenity delivery to isolated beaches/golf courses and night thermal perimeter surveillance.
+    </div>
+
+    <div class="img-card">
+      <img src="images/unit5/drone_resort_delivery_beach.jpg" alt="Commercial delivery drone lowering insulated package to luxury beach cabana">
+      <div class="cap"><b>Figure 5.7: Express Drone Deliveries</b>: Precision winch tethers deliver chilled drinks, sunscreen, or first-aid kits directly to guests on private sandbanks in minutes.</div>
+    </div>
+
+    <details open>
+      <summary>🛸 Drone Applications in Hospitality</summary>
+      <ul>
+        <li><b>Beach &amp; Golf Hole Deliveries</b>: Guests order refreshments on resort mobile apps. The drone navigates via GPS/RTK, lowering the package via automated winch without landing.</li>
+        <li><b>Thermal Perimeter Security</b>: Autonomous drones equipped with infrared cameras patrol vast resort fences and beach shorelines after dark, detecting swimmers in distress or unauthorized access.</li>
+      </ul>
+      <div class="ex">
+        <b>Current Industry Example</b>
+        <b>Soneva Luxury Resorts (Maldives) &amp; Flytrex Logistics</b>: Delivering light snacks, prescription medications, and champagne bottles across sprawling private island sandbars.
+      </div>
+    </details>
+
+    <!-- Simulator 4: Fleet Dispatcher -->
+    <div class="i-card">
+      <h3>
+        <span>Simulator 5D: Autonomous Resort Dispatch Console</span>
+        <span class="i-badge live">Live Telemetry</span>
+      </h3>
+      <p style="font-size:0.88rem;color:var(--mute);margin:0 0 10px">Dispatch autonomous delivery drones or electric shuttles to resort guest waypoints:</p>
+
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">
+        <button class="i-btn on" id="dBtn1" onclick="setDispatchTarget(1)">🏖️ Beach Cabana 7</button>
+        <button class="i-btn" id="dBtn2" onclick="setDispatchTarget(2)">⛳ Golf Hole 14</button>
+        <button class="i-btn" id="dBtn3" onclick="setDispatchTarget(3)">🏡 Hilltop Villa 22</button>
+      </div>
+
+      <div class="i-grid" style="margin:12px 0">
+        <div class="i-box">
+          <div class="val" id="dispVehicle" style="color:var(--a)">Hexacopter Drone</div>
+          <div class="lbl">Assigned Vehicle</div>
+        </div>
+        <div class="i-box">
+          <div class="val" id="dispEta" style="color:var(--b)">2.4 min</div>
+          <div class="lbl">Estimated Arrival</div>
+        </div>
+        <div class="i-box">
+          <div class="val" id="dispBattery" style="color:var(--a)">94%</div>
+          <div class="lbl">Fleet Battery</div>
+        </div>
+        <div class="i-box">
+          <div class="val" id="dispStatus" style="color:var(--a)">Ready for Launch</div>
+          <div class="lbl">Mission Status</div>
+        </div>
+      </div>
+
+      <button class="i-btn on" style="width:100%;margin-top:6px" onclick="launchMission()">🚀 Launch Autonomous Delivery Mission</button>
+      
+      <div class="how" id="dispMissionLog" style="margin-top:10px;display:none">
+        <b>Live Telemetry:</b> <span id="dispLogTxt">Winch tether spooling...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 5: LEARNING & EMOTION AI -->
+  <div class="sec" data-t="5. Learning &amp; Emotion AI">
+    <h2>1. AI-Powered Learning Platforms &amp; VR Empathy Training</h2>
+    <div class="def">
+      <b>AI Learning Platforms</b> = Micro-learning engines and immersive VR simulations that train hotel staff through dynamic roleplay with responsive AI guest avatars.
+    </div>
+
+    <div class="img-card">
+      <img src="images/unit5/ai_vr_hospitality_staff_training.jpg" alt="Hotel receptionist wearing VR goggles practicing with holographic AI guest avatar">
+      <div class="cap"><b>Figure 5.8: VR Roleplay &amp; AI Avatar Training</b>: Frontline trainees practice de-escalating upset guests in risk-free VR simulations with live vocal tone scoring.</div>
+    </div>
+
+    <details open>
+      <summary>🎓 Transforming Hospitality Staff Upskilling</summary>
+      <ul>
+        <li><b>Simulated Guest De-escalation</b>: Staff converse with AI avatars whose facial expressions and voice tones react realistically to the trainee's pacing, empathy, and vocabulary.</li>
+        <li><b>Adaptive Bite-Sized Learning</b>: Systems push 2-minute mobile micro-lessons before shifts, targeting each employee's specific knowledge gaps (e.g. food wine pairings, VIP handling).</li>
+        <li><b>Objective Scoring</b>: Measures speech speed, filler words ("um", "like"), and SOP compliance instantly.</li>
+      </ul>
+      <div class="ex">
+        <b>Current Industry Example</b>
+        <b>Hilton Worldwide VR Training &amp; Lobster Ink AI</b>: Hilton trainees practice guest interactions in VR, boosting empathy comprehension by over 40% compared to traditional manuals.
+      </div>
+    </details>
+
+    <h2>2. Emotion Recognition &amp; Biometric Sentiment AI</h2>
+    <div class="def">
+      <b>Emotion AI</b> = Computer vision and acoustic tone analysis systems that measure facial micro-expressions and vocal pitch to gauge guest satisfaction and stress levels in real time.
+    </div>
+
+    <div class="img-card">
+      <img src="images/unit5/emotion_ai_front_desk_recognition.jpg" alt="Luxury hotel reception desk with discrete staff tablet displaying anonymous sentiment analytics">
+      <div class="cap"><b>Figure 5.9: Emotion AI &amp; Service Recovery</b>: Discrete reception tablets monitor anonymous queue sentiment, prompting staff to offer immediate service recovery before complaints escalate.</div>
+    </div>
+
+    <details open>
+      <summary>👁️ Real-Time Mood Detection &amp; Ethical Safeguards</summary>
+      <ul>
+        <li><b>Front Desk Queue Analytics</b>: Optical sensors detect prolonged brow-furrowing and tense posture, alerting the Duty Manager to open additional counters or serve welcome drinks.</li>
+        <li><b>Call Center Voice Tone Analysis</b>: Evaluates guest vocal tremors or volume spikes during phone reservations to flag unresolved frustrations for supervisor intervention.</li>
+      </ul>
+      <div class="warn">
+        <b>Crucial Ethics &amp; Privacy Mandate:</b> Facial emotion recognition must strictly adhere to GDPR and global privacy standards:
+        <ul style="margin:4px 0 0">
+          <li>100% anonymized processing—no raw facial images or biometrics stored permanently.</li>
+          <li>Clear opt-in guest signage and transparent disclosure.</li>
+          <li>System provides <i>suggestions</i> for human staff; humans retain final decision-making authority.</li>
+        </ul>
+      </div>
+      <div class="ex">
+        <b>Current Industry Example</b>
+        <b>NEC IOCI Biometric Sentiment Engine</b>: Deployed in international airport VIP lounges to identify wait fatigue and streamline service dispatch.
+      </div>
+    </details>
+
+    <!-- Simulator 5: Emotion Console -->
+    <div class="i-card">
+      <h3>
+        <span>Simulator 5E: Front Desk Emotion AI &amp; Service Recovery Console</span>
+        <span class="i-badge live">Sentiment Telemetry</span>
+      </h3>
+      <p style="font-size:0.88rem;color:var(--mute);margin:0 0 10px">Simulate arriving guest facial &amp; vocal expressions to test automated service recovery prompts:</p>
+
+      <div class="i-btn-group">
+        <button class="i-btn on" onclick="testEmotion(0)">😤 Arriving Guest: Flight Delayed &amp; Tense</button>
+        <button class="i-btn" onclick="testEmotion(1)">😐 Arriving Guest: Neutral / Tired</button>
+        <button class="i-btn" onclick="testEmotion(2)">😊 Arriving Guest: Honeymoon / Delighted</button>
+      </div>
+
+      <div class="i-grid" style="margin:12px 0">
+        <div class="i-box">
+          <div class="val" id="emScore" style="color:var(--r)">-0.78</div>
+          <div class="lbl">Sentiment Valence</div>
+        </div>
+        <div class="i-box">
+          <div class="val" id="emDwell" style="color:var(--r)">High Stress</div>
+          <div class="lbl">Facial Tension</div>
+        </div>
+        <div class="i-box">
+          <div class="val" id="emPriority" style="color:var(--r)">Priority 1</div>
+          <div class="lbl">Service Escalation</div>
+        </div>
+      </div>
+
+      <div class="how" id="emActionBox">
+        <b>Duty Manager Prompt:</b> <span id="emActionTxt">"Guest exhibits elevated wait stress (+4 min queue). Immediately dispatch lobby host with chilled signature lavender tea and offer express in-suite check-in."</span>
+      </div>
+    </div>
+
+    <!-- ROI Calculator -->
+    <h2>3. Future Technology ROI &amp; Labor Efficiency Calculator</h2>
+    <div class="calc" style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:16px 0">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+        <div>
+          <label style="font-size:0.84rem;font-weight:700">Hotel Room Inventory</label>
+          <input type="number" id="roiRooms" value="180" min="20" max="800" style="width:100%;padding:8px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)" oninput="calcRoi()">
+        </div>
+        <div>
+          <label style="font-size:0.84rem;font-weight:700">Average Daily Rate (₹)</label>
+          <input type="number" id="roiAdr" value="9500" min="2000" step="500" style="width:100%;padding:8px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)" oninput="calcRoi()">
+        </div>
+      </div>
+
+      <div style="margin:12px 0">
+        <label style="font-size:0.84rem;font-weight:700">Tech Automation &amp; Direct GEO Booking Boost: <b id="roiBoostVal">18</b>%</label>
+        <input type="range" id="roiBoost" min="5" max="35" value="18" style="width:100%" oninput="calcRoi()">
+      </div>
+
+      <div class="i-grid" style="margin:12px 0">
+        <div class="i-box">
+          <div class="val" id="roiDirectSavings" style="color:var(--a)">₹24.8 L</div>
+          <div class="lbl">OTA Commission Saved</div>
+        </div>
+        <div class="i-box">
+          <div class="val" id="roiLaborSavings" style="color:var(--b)">₹18.5 L</div>
+          <div class="lbl">Labor Hours Reallocated</div>
+        </div>
+        <div class="i-box">
+          <div class="val" id="roiTotalValue" style="color:var(--a);font-size:1.35rem">₹43.3 L</div>
+          <div class="lbl">Annual Value Created</div>
+        </div>
+      </div>
+      <small style="color:var(--mute)">Interactive forecast based on 72% occupancy, 18% OTA commission avoidance via GEO, and robotic runner labor efficiencies.</small>
+    </div>
+  </div>
+
+  <!-- TAB 6: RECAP & QUIZ -->
+  <div class="sec" data-t="6. Recap + Quiz">
+    <h2>Module 5 Executive Summary</h2>
+    <table>
+      <tr><th>Technology Domain</th><th>Core Operational Application &amp; Strategic Impact</th></tr>
+      <tr><td><b>Generative Search (GEO)</b></td><td>Conversational itinerary building bypassing standard OTAs; requires Schema.org micro-data.</td></tr>
+      <tr><td><b>Quantum Computing</b></td><td>Solves combinatorial crises (flight re-routing, dynamic rate matrix optimization) in milliseconds.</td></tr>
+      <tr><td><b>Smart Destinations</b></td><td>Urban IoT sensors manage footfall, prevent overtourism, and power unified biometric transit.</td></tr>
+      <tr><td><b>Autonomous Hotels</b></td><td>Sub-30s facial check-in and elevator-riding delivery robots free staff for high-touch service.</td></tr>
+      <tr><td><b>Hospitality Metaverse</b></td><td>1:1 scale 3D digital twins enable zero-travel MICE site inspections and pre-booking tours.</td></tr>
+      <tr><td><b>Autonomous Transport &amp; Drones</b></td><td>Zero-emission eVTOL airport transfers and automated winch beach deliveries to cabanas.</td></tr>
+      <tr><td><b>AI Learning &amp; Emotion AI</b></td><td>VR de-escalation roleplay with AI avatars, paired with queue mood analytics for rapid service recovery.</td></tr>
+    </table>
+
+    <h2>Knowledge Check</h2>
+    <div id="quiz"></div>
+  </div>
+
+  <!-- Course Navigation Across Units -->
+  <div class="card-nav">
+    <h3 style="margin:0 0 8px;font-size:1.05rem">Course Curriculum Navigation</h3>
+    <p style="color:var(--mute);font-size:0.88rem;margin:0 0 14px">Navigate across the IIHM Semester 5 AI in Hospitality learning modules:</p>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+      <a href="index.html" class="tab-btn">🏠 Course Home</a>
+      <a href="Unit 1 Digital Twins & Extended Reality.html" class="tab-btn">Unit 1: Digital Twins</a>
+      <a href="Unit 2 Service Robotics and Automation.html" class="tab-btn">Unit 2: Robotics</a>
+      <a href="Unit 3  Blockchain, IoB & AI Agents.html" class="tab-btn">Unit 3: Blockchain &amp; IoB</a>
+      <a href="Unit 4 Hospitality 5.0 & Sustainable Technologies.html" class="tab-btn">Unit 4: Hospitality 5.0</a>
+      <a href="Unit 5 Future Hospitality Technologies.html" class="tab-btn" style="border-color:var(--a);color:var(--a);font-weight:700">Unit 5: Future Tech</a>
+    </div>
+  </div>
+
+  <!-- Standardized Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-credit">
+        <span>Made by</span>
+        <a href="https://iihmportfolio.vercel.app/" target="_blank" rel="noopener" class="portfolio-badge" title="Naveen Kumar - Professional Portfolio">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span>Naveen Kumar &bull; Portfolio</span>
+          <svg style="width:12px;height:12px;opacity:0.7" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<!-- Lightbox Modal -->
+<div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <div class="lightbox-content">
+    <img id="lightboxImg" src="" alt="Enlarged visual">
+    <div class="lightbox-cap" id="lightboxCap"></div>
+  </div>
+</div>
+
+<script>
+// --- Tab Navigation ---
+var secs = [].slice.call(document.querySelectorAll('.sec')),
+    tb = document.getElementById('tabs');
+
+function show(i) {
+  secs.forEach(function(s, j) { s.classList.toggle('on', i === j); });
+  [].slice.call(tb.children).forEach(function(b, j) { b.classList.toggle('on', i === j); });
+  try { location.hash = 't' + (i + 1); } catch(e){}
+  window.scrollTo(0, 0);
+}
+
+secs.forEach(function(s, i) {
+  var b = document.createElement('button');
+  b.textContent = s.getAttribute('data-t');
+  b.onclick = function() { show(i); };
+  tb.appendChild(b);
+});
+
+var h = parseInt((location.hash || '').replace('#t', ''), 10);
+show(h >= 1 && h <= secs.length ? h - 1 : 0);
+
+// --- Lightbox Zoom ---
+function initLightbox() {
+  var modal = document.getElementById('lightboxModal'),
+      modalImg = document.getElementById('lightboxImg'),
+      modalCap = document.getElementById('lightboxCap'),
+      imgs = document.querySelectorAll('.img-card img');
+
+  imgs.forEach(function(img) {
+    img.onclick = function() {
+      var cap = img.parentElement.querySelector('.cap');
+      modalImg.src = img.src;
+      modalCap.innerHTML = cap ? cap.innerHTML : img.alt;
+      modal.classList.add('open');
+    };
+  });
+}
+function closeLightbox(e) {
+  if (e && e.target && e.target.tagName === 'IMG') return;
+  var modal = document.getElementById('lightboxModal');
+  if (modal) modal.classList.remove('open');
+}
+window.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+initLightbox();
+
+// --- Reading Progress ---
+window.addEventListener('scroll', function() {
+  var h = document.documentElement, b = document.body;
+  var st = 'scrollTop', sh = 'scrollHeight';
+  var percent = (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight) * 100;
+  var bar = document.getElementById('readProgress');
+  if (bar) bar.style.width = Math.min(100, Math.max(0, percent)) + '%';
+});
+
+// --- Simulator 5A: GEO Search ---
+var geoScenarios = [
+  { prompt: "Find a tranquil eco-resort in Ubud with private plunge pool, daily organic vegan breakfast, fast Wi-Fi, and soundproof work nook under $320/night.", match: "97%", rank: "#1 Recommended", comm: "$0 Direct API", desc: 'Selected "Maya Ubud Eco Sanctuary" based on verified Schema.org attributes: Solar BESS power, certified organic vegan kitchen, 200 Mbps fiber line, and private forest plunge pool.' },
+  { prompt: "Book a quiet business hotel near London ExCeL with ergonomic chair, 4K monitor in-room, express laundry, and 24-hr gym under £220/night.", match: "94%", rank: "#1 Recommended", comm: "$0 Direct API", desc: 'Selected "Canary Riverside Tech Suites" with micro-data match for ergonomic Herman Miller seating, in-room 32-inch 4K USB-C monitors, and soundproof double-glazed glazing.' },
+  { prompt: "Resort in Switzerland with hypoallergenic bedding, HEPA room filtration, nut-free certified dining, and heated indoor pool for family with toddler.", match: "98%", rank: "#1 Recommended", comm: "$0 Direct API", desc: 'Selected "Alpine Pure Health Resort" featuring medical-grade HEPA 13 filters, zero-carpet hardwood flooring, allergen-certified kitchen staff, and toddler splash zones.' }
+];
+
+function testGeo(idx) {
+  var sc = geoScenarios[idx];
+  document.getElementById('geoInput').value = sc.prompt;
+  document.getElementById('geoScore').textContent = sc.match;
+  document.getElementById('geoOtaRank').textContent = sc.rank;
+  document.getElementById('geoDirectComm').textContent = sc.comm;
+  document.getElementById('geoSummary').textContent = sc.desc;
+  
+  var btns = document.querySelectorAll('#tabs ~ .sec:first-of-type .i-btn-group button');
+  btns.forEach(function(b, i) { b.classList.toggle('on', i === idx); });
+}
+testGeo(0);
+
+// --- Simulator 5B: Quantum Disruption ---
+var qScenarios = {
+  typhoon: { classic: "42.5 min", quantum: "18 ms", speed: "141,000x", rev: "$380,000", verdict: "Quantum system allocated 4,200 distressed passengers across 18 partner hotels and 84 shuttle vans in 18ms with zero stranded travelers." },
+  strike: { classic: "56.0 min", quantum: "24 ms", speed: "140,000x", rev: "$520,000", verdict: "Quantum Annealing re-routed 68 flight crews and assigned 2,900 hotel rooms across 4 terminal hotels in 24ms, preventing crew timeout penalties." },
+  surge: { classic: "38.2 min", quantum: "12 ms", speed: "191,000x", rev: "$295,000", verdict: "Dynamic pricing matrix recomputed 14,000 hotel room rates across 26 city properties tick-by-tick, capturing optimal peak RevPAR." }
+};
+
+function runQuantumSim(type) {
+  var data = qScenarios[type];
+  document.getElementById('qTimeClassic').textContent = data.classic;
+  document.getElementById('qTimeQuantum').textContent = data.quantum;
+  document.getElementById('qSpeedup').textContent = data.speed;
+  document.getElementById('qRevSaved').textContent = data.rev;
+  document.getElementById('qVerdictTxt').textContent = data.verdict;
+}
+
+// --- Simulator 5C: Smart Destination Crowds ---
+var isDiversionActive = true;
+function toggleDiversion() {
+  isDiversionActive = !isDiversionActive;
+  var btn = document.getElementById('diversionToggleBtn');
+  btn.textContent = 'AI Dynamic Diversion: ' + (isDiversionActive ? 'ACTIVE' : 'OFF');
+  btn.className = 'i-btn ' + (isDiversionActive ? 'on' : '');
+  updateDestSim();
+}
+
+function updateDestSim() {
+  var count = parseInt(document.getElementById('touristSlider').value, 10);
+  document.getElementById('touristCountVal').textContent = count.toLocaleString('en-IN');
+
+  var baseRatio = count / 30000;
+  var z1, z2, z3, status, color;
+
+  if (isDiversionActive) {
+    z1 = Math.min(88, Math.round(55 * baseRatio));
+    z2 = Math.min(85, Math.round(50 * baseRatio));
+    z3 = Math.min(82, Math.round(52 * baseRatio));
+    status = z1 > 82 ? "Moderate Crowding" : "Optimal Flow";
+    color = z1 > 82 ? "var(--y)" : "var(--a)";
+  } else {
+    z1 = Math.min(100, Math.round(92 * baseRatio));
+    z2 = Math.min(75, Math.round(40 * baseRatio));
+    z3 = Math.min(50, Math.round(25 * baseRatio));
+    status = z1 >= 90 ? "CRITICAL OVERCROWDING" : "Unbalanced Flow";
+    color = z1 >= 90 ? "var(--r)" : "var(--y)";
+  }
+
+  document.getElementById('destZone1').textContent = z1 + '%';
+  document.getElementById('destZone1').style.color = z1 > 85 ? 'var(--r)' : (z1 > 70 ? 'var(--y)' : 'var(--a)');
+  document.getElementById('destZone2').textContent = z2 + '%';
+  document.getElementById('destZone3').textContent = z3 + '%';
+  document.getElementById('destStatus').textContent = status;
+  document.getElementById('destStatus').style.color = color;
+}
+updateDestSim();
+
+// --- Simulator 5D: Autonomous Drone / Pod Dispatch ---
+var targetLocations = {
+  1: { name: "Beach Cabana 7", veh: "Hexacopter Drone", eta: "2.4 min", bat: "94%" },
+  2: { name: "Golf Hole 14", veh: "LiDAR Express Drone", eta: "3.1 min", bat: "91%" },
+  3: { name: "Hilltop Villa 22", veh: "Autonomous Electric Pod", eta: "5.8 min", bat: "88%" }
+};
+var currentTarget = 1;
+
+function setDispatchTarget(id) {
+  currentTarget = id;
+  [1, 2, 3].forEach(function(i) {
+    var b = document.getElementById('dBtn' + i);
+    if (b) b.classList.toggle('on', i === id);
+  });
+  var t = targetLocations[id];
+  document.getElementById('dispVehicle').textContent = t.veh;
+  document.getElementById('dispEta').textContent = t.eta;
+  document.getElementById('dispBattery').textContent = t.bat;
+  document.getElementById('dispStatus').textContent = "Ready for Launch";
+  document.getElementById('dispStatus').style.color = "var(--a)";
+  document.getElementById('dispMissionLog').style.display = 'none';
+}
+
+function launchMission() {
+  var t = targetLocations[currentTarget];
+  var stat = document.getElementById('dispStatus');
+  var log = document.getElementById('dispMissionLog');
+  var txt = document.getElementById('dispLogTxt');
+  
+  stat.textContent = "In Transit (En Route)";
+  stat.style.color = "var(--b)";
+  log.style.display = 'block';
+  txt.innerHTML = "<b>Step 1/3:</b> Autonomous " + t.veh + " cleared launch pad. Navigating GPS/RTK waypoint to <b>" + t.name + "</b>...";
+  
+  setTimeout(function() {
+    txt.innerHTML = "<b>Step 2/3:</b> Approach verified via optical obstacle sensors. Lowering payload via automated winch tether...";
+  }, 1200);
+
+  setTimeout(function() {
+    stat.textContent = "Delivered Successfully";
+    stat.style.color = "var(--a)";
+    txt.innerHTML = "<b>Step 3/3:</b> Payload safely deposited at <b>" + t.name + "</b>. Vehicle returning to solar charging hub.";
+  }, 2400);
+}
+
+// --- Simulator 5E: Emotion Recognition ---
+var emotionProfiles = [
+  { val: "-0.82", tension: "Severe Frustration (Anger)", p: "🚨 Priority 1 Escalation", col: "var(--r)", action: "Guest exhibits elevated flight delay stress (+5 min in reception queue). Promptly alert Duty Manager to greet guest by name, offer chilled lavender tea, and conduct immediate in-suite check-in." },
+  { val: "+0.08", tension: "Mild Fatigue (Neutral)", p: "ℹ️ Standard Priority", col: "var(--y)", action: "Guest shows signs of travel fatigue. Offer refreshing iced towel and inform them that complimentary turn-down service and luggage delivery are underway." },
+  { val: "+0.94", tension: "Delighted (Brand Advocate)", p: "🌟 Loyalty Recognition", col: "var(--a)", action: "Guest is smiling and relaxed. Confirm romantic anniversary dinner reservation and present complimentary champagne card from the General Manager." }
+];
+
+function testEmotion(idx) {
+  var p = emotionProfiles[idx];
+  document.getElementById('emScore').textContent = p.val;
+  document.getElementById('emScore').style.color = p.col;
+  document.getElementById('emDwell').textContent = p.tension;
+  document.getElementById('emDwell').style.color = p.col;
+  document.getElementById('emPriority').textContent = p.p;
+  document.getElementById('emPriority').style.color = p.col;
+  document.getElementById('emActionTxt').textContent = p.action;
+
+  var btns = document.querySelectorAll('#tabs ~ .sec:nth-of-type(5) .i-btn-group button');
+  btns.forEach(function(b, i) { b.classList.toggle('on', i === idx); });
+}
+
+// --- ROI Calculator ---
+function calcRoi() {
+  var rooms = parseInt(document.getElementById('roiRooms').value, 10) || 100;
+  var adr = parseInt(document.getElementById('roiAdr').value, 10) || 8000;
+  var boost = parseInt(document.getElementById('roiBoost').value, 10);
+  document.getElementById('roiBoostVal').textContent = boost;
+
+  var annualRev = rooms * adr * 365 * 0.72;
+  var otaSaved = annualRev * 0.20 * (boost / 100) * 0.50; // saving half of 20% OTA fee via GEO direct bookings
+  var laborSaved = rooms * 10500; // ~₹10,500 annual runner labor efficiency per room
+
+  var totalLakhs = (otaSaved + laborSaved) / 100000;
+  document.getElementById('roiDirectSavings').textContent = '₹' + (otaSaved / 100000).toFixed(1) + ' L';
+  document.getElementById('roiLaborSavings').textContent = '₹' + (laborSaved / 100000).toFixed(1) + ' L';
+  document.getElementById('roiTotalValue').textContent = '₹' + totalLakhs.toFixed(1) + ' Lakhs';
+}
+calcRoi();
+
+// --- Module Quiz ---
+var Q = [
+  ["What distinguishes Generative Engine Optimization (GEO) from traditional travel SEO?",
+   ["GEO relies solely on purchasing expensive banner ads on search pages",
+    "GEO structures micro-data attributes so conversational LLMs synthesize direct booking packages from natural language prompts",
+    "GEO only works for airlines and is not applicable to hotels"],
+   1, "GEO optimizes granular hotel attributes (plunge pools, acoustic ratings, organic dining) for conversational AI trip planners."],
+
+  ["How does Quantum Computing revolutionize hotel operations during major global travel crises?",
+   ["It replaces all physical hotel rooms with online virtual simulations",
+    "It solves multi-variable global airline re-routing and hotel room reallocation matrices in milliseconds rather than hours",
+    "It automates front desk credit card receipt printing"],
+   1, "Quantum Annealing evaluates thousands of flight, hotel, and crew combinations simultaneously in milliseconds."],
+
+  ["What is the primary function of an urban IoT sensor grid in a Smart Destination?",
+   ["To charge tourists entry fees at every city street corner",
+    "To track pedestrian footfall densities and dynamically redistribute crowds to prevent overtourism at historic sites",
+    "To shut down city Wi-Fi after midnight"],
+   1, "Smart Destinations monitor crowd densities in real time, pushing dynamic transit incentives to avoid bottlenecks."],
+
+  ["How do autonomous service robots ride elevators in high-rise luxury hotels?",
+   ["They require human bell staff to press elevator buttons for them",
+    "They communicate wirelessly with smart elevator control boards via Wi-Fi or Zigbee IoT protocols",
+    "They utilize manual mechanical robot arms to push physical floor buttons"],
+   1, "Robots interface directly with elevator dispatch systems over secure wireless IoT protocols."],
+
+  ["Why are 3D Digital Twins and spatial VR headsets valuable for MICE hotel sales teams?",
+   ["They eliminate the need for hotels to maintain physical ballrooms",
+    "They enable event planners to inspect and customize banquet layouts and lighting in 1:1 photorealistic scale remotely",
+    "They only display video game characters to tourists"],
+   1, "Spatial VR allows corporate planners to verify floorplans, sightlines, and stage setups without expensive international travel."],
+
+  ["What is a major advantage of utilizing express delivery drones in sprawling beachfront resorts?",
+   ["They replace human chefs by cooking food mid-air",
+    "They deliver light refreshments, first aid, or amenities to isolated beach loungers or golf holes in minutes without road vehicles",
+    "They monitor guest conversations for marketing data"],
+   1, "Drones provide quiet, rapid point-to-point aerial delivery across vast resort compounds and offshore sandbars."],
+
+  ["What ethical requirement is mandatory when deploying Emotion AI sentiment tracking at hotel reception desks?",
+   ["Hotels must save permanent facial scans in a public database",
+    "Guests must be informed transparently, biometrics must be processed anonymously without saving raw photos, and staff make final decisions",
+    "Emotion recognition can only be used on employees, never guests"],
+   1, "Emotion AI mandates strict GDPR compliance, anonymous edge processing, and human-in-the-loop service delivery."]
+];
+
+var qd = document.getElementById('quiz');
+Q.forEach(function(q, n) {
+  var d = document.createElement('div');
+  d.className = 'q';
+  var p = document.createElement('p');
+  p.textContent = (n + 1) + '. ' + q[0];
+  d.appendChild(p);
+  var f = document.createElement('div');
+  f.className = 'fb';
+  q[1].forEach(function(o, k) {
+    var b = document.createElement('button');
+    b.textContent = o;
+    b.onclick = function() {
+      d.querySelectorAll('button').forEach(function(x) { x.className = ''; });
+      b.className = (k === q[2]) ? 'ok' : 'no';
+      f.style.display = 'block';
+      f.textContent = (k === q[2] ? '✅ Correct! ' : '❌ Incorrect. ') + q[3];
+    };
+    d.appendChild(b);
+  });
+  d.appendChild(f);
+  qd.appendChild(d);
+});
+
+// Resume module tracking
+try {
+  localStorage.setItem('lastModNum', 5);
+  localStorage.setItem('lastModName', 'Module 5: Future Hospitality Technologies');
+  localStorage.setItem('lastModUrl', 'Unit 5 Future Hospitality Technologies.html');
+} catch(e){}
+</script>
+</body>
+</html>
